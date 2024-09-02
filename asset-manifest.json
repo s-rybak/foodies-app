@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/foodies-app/static/css/main.807529e9.css",
+    "main.js": "/foodies-app/static/js/main.9b78a031.js",
+    "index.html": "/foodies-app/index.html",
+    "main.807529e9.css.map": "/foodies-app/static/css/main.807529e9.css.map",
+    "main.9b78a031.js.map": "/foodies-app/static/js/main.9b78a031.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.807529e9.css",
+    "static/js/main.9b78a031.js"
+  ]
+}
