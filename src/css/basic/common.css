@@ -1,0 +1,108 @@
+:root {
+  /* FONTS */
+  --font-family: "Mulish", sans-serif;
+
+  --font-size-normal: 24px;
+  --font-size-small: 12px;
+  --font-size-large: 40px;
+
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* COLORS */
+  --color-main: #050505;
+  --color-gray: #bfbebe;
+  --color-white: #fff;
+  --colot-button: #1a1a1a;
+
+  /* BREAKPOINTS */
+  --mobile: 375px;
+  --tablet: 768px;
+  --desktop: 1440px;
+
+  /* BORDER RADIUS */
+  --radius-circle: 50%;
+  --radius-medium: 30px;
+  --radius-small: 10px;
+  --radius-large: 60px;
+
+  /* TRANSITION */
+  --transition-time: 250ms;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family), sans-serif;
+  color: var(--color-main);
+  max-width: 1900px;
+  margin: 0 auto;
+  background-color: var(--color-white);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+svg {
+  width: 1em;
+  height: 1em;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  justify-content: space-between;
+}
+
+.gap-12px {
+  gap: 12px;
+}
+.gap-20px {
+  gap: 20px;
+}
+
+.container {
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+}

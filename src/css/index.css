@@ -1,0 +1,5 @@
+@import-normalize; /* bring in normalize.css styles */
+@import url("./basic/common.css");
+
+@import url("./index/nav.css");
+@import url("./index/footer.css");
