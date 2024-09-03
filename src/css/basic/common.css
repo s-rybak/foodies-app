@@ -23,8 +23,6 @@
   /* BORDER RADIUS */
   --radius-circle: 50%;
   --radius-medium: 30px;
-  --radius-small: 10px;
-  --radius-large: 60px;
 
   /* TRANSITION */
   --transition-time: 250ms;
@@ -94,6 +92,12 @@ svg {
   margin: 0 auto;
 }
 
+.btn {
+  color: var(--color-white);
+  background-color: var(--color-main);
+  border-radius: var(--radius-medium);
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -104,5 +108,28 @@ svg {
 @media only screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+  }
+}
+
+.container-exercises {
+  width: 100%;
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-exercises {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container-exercises {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
   }
 }
