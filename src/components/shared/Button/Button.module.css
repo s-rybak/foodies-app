@@ -1,0 +1,35 @@
+.button {
+  background-color: rgba(5, 5, 5, 0.9);
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.auth {
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-button);
+  background-color: var(--color-gray);
+}
+.auth:hover {
+  background-color: var(--color-main);
+  color: var(--color-white);
+  transition: color var(--transition-time);
+}
+@media screen and (min-width: 768px) {
+  .auth {
+    width: 400px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
