@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/738.2408766b.chunk.js","mappings":"mJAEe,SAASA,IACtB,OACEC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,iBAET,C","sources":["pages/Category/Category.jsx"],"sourcesContent":["//import style from './Category.module.css'\n\nexport default function Category() {\n  return (\n    <div>Category data</div>\n  )\n}\n"],"names":["Category","_jsx","children"],"sourceRoot":""}

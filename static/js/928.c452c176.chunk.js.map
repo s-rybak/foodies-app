@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/928.c452c176.chunk.js","mappings":"mJAEe,SAASA,IACtB,OACEC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YAET,C","sources":["pages/NotFound/NotFound.jsx"],"sourcesContent":["//import style from './NotFound.module.css'\n\nexport default function NotFound() {\n  return (\n    <div>NotFound</div>\n  )\n}\n"],"names":["NotFound","_jsx","children"],"sourceRoot":""}
