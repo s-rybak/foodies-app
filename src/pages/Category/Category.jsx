@@ -1,4 +1,4 @@
-import style from './Category.module.css'
+//import style from './Category.module.css'
 
 export default function Category() {
   return (
