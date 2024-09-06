@@ -1,0 +1,66 @@
+.sign-in {}
+
+.sign-in__title {
+  margin: 0 0 40px;
+
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.sign-in__input {}
+
+.sign-in__form {}
+
+.sign-in__subtitle {
+  font-size: 14px;
+  color: #bfbebe;
+}
+
+.sign-in__subtitle>span {
+  color: #000;
+}
+
+.form {}
+
+.form__inputs {
+  margin: 0 0 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form__input {
+  padding: 16px 18px;
+
+  border-radius: 30px;
+  border: 1px solid #bfbebe;
+
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.form__input::placeholder {
+  color: #bfbebe;
+}
+
+.form__input:hover,
+.form__input:focus {
+  border-color: #000;
+}
+
+.form__button {
+  width: 100%;
+  height: 56px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  border-radius: 30px;
+  border: 1px solid #bfbebe;
+  background-color: #bfbebe;
+
+  color: #fff;
+
+  outline: none;
+}
