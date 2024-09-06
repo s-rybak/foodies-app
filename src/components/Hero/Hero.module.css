@@ -6,19 +6,25 @@
   background-color: var(--color-main);
   color: var(--color-white);
   text-align: center;
-  border-radius: var(--radius-medium);
-  margin: 8px 8px 0 8px;
-  padding: 16px 16px;
+  border-radius: 0 0 var(--radius-medium) var(--radius-medium);
+  margin: 0 8px 0 8px;
+  padding: 140px 16px 100px 16px;
 }
 
 .subtitle {
   margin-bottom: 20px;
 }
 
+.button:hover {
+  background-color: var(--color-white);
+  color: var(--color-main);
+  border-color: var(--color-white);
+}
+
 @media screen and (min-width: 768px) {
   .component {
-    margin: 16px 16px 0 16px;
-    padding: 20px 29px;
+    margin: 0 16px 0 16px;
+    padding: 151px 29px 91px 29px;
   }
 
   .subtitle {
@@ -28,6 +34,8 @@
 
 @media screen and (min-width: 1440px) {
   .component {
-    margin: 20px 20px 0 20px;
+    margin: 0 20px 0 20px;
+    padding-top: 88px;
+    padding-bottom: 82px;
   }
 }

@@ -1,6 +1,8 @@
 import HeroTitle from "components/Hero/HeroTitle/HeroTitle";
 import SubtitleComponent from "components/Subtitles/SubtitleComponent/SubtitleComponent";
 import ButtonOutline from "components/Buttons/ButtonOutline/ButtonOutline";
+import HeroImages from "./HeroImages/HeroImages";
+import LinkOutline from "components/Links/LinkOutline/LinkOutline";
 
 import css from "./Hero.module.css";
 
@@ -12,7 +14,12 @@ function Hero() {
 				Amazing recipes for beginners in the world of cooking, enveloping you in
 				the aromas and tastes of various cuisines.
 			</SubtitleComponent>
-			<ButtonOutline>Add recipe</ButtonOutline>
+			{false ? (
+				<ButtonOutline className={css.button}>Add recipe</ButtonOutline>
+			) : (
+				<LinkOutline className={css.button}>Add recipe</LinkOutline>
+			)}
+			<HeroImages />
 		</div>
 	);
 }
