@@ -20,7 +20,7 @@ export const App = () => {
         Open modal
       </button>
       <Modal isOpen={isOpen} onClose={setIsOpen}>
-        <SignInForm />
+        <SignInForm variant="sign-in" />
       </Modal>
     </div>
   );

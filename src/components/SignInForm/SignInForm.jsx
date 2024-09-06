@@ -1,8 +1,9 @@
-
-export const SignInForm = () => {
+export const SignInForm = ({ variant }) => {
   return (
     <div className="sign-in">
-      <h2 className="sign-in__title">Sign in</h2>
+      <h2 className="sign-in__title">
+        {variant === "sign-in" ? "Sign in" : "Sign up"}
+      </h2>
 
       <form className="sign-in__form form">
         <div className="form__inputs">
