@@ -1,0 +1,19 @@
+.button {
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: var(--radius-medium);
+  padding: 16px 32px;
+  text-transform: uppercase;
+  line-height: var(--font-line-height-little);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-little);
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: var(--font-size-moderate);
+    line-height: var(--font-line-height-moderate);
+  }
+}
