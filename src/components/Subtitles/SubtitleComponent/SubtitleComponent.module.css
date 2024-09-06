@@ -1,0 +1,13 @@
+.subtitle {
+  max-width: 577px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-little);
+  line-height: var(--font-line-height-little);
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle {
+    font-size: var(--font-size-little);
+    line-height: var(--font-line-height-moderate);
+  }
+}

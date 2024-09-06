@@ -1,0 +1,21 @@
+.title {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bolder);
+  line-height: 1;
+  font-size: var(--font-size-large);
+  max-width: 875px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 40px;
+    font-size: var(--font-size-extra-large);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title {
+    font-size: var(--font-size-gigantic);
+  }
+}

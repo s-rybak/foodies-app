@@ -1,0 +1,33 @@
+.component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  text-align: center;
+  border-radius: var(--radius-medium);
+  margin: 8px 8px 0 8px;
+  padding: 16px 16px;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .component {
+    margin: 16px 16px 0 16px;
+    padding: 20px 29px;
+  }
+
+  .subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .component {
+    margin: 20px 20px 0 20px;
+  }
+}
