@@ -1,0 +1,49 @@
+.modal {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal_open {
+  display: block;
+}
+
+.background {
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.window {
+  padding: 80px;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  border-radius: 20px;
+  width: 560px;
+}
+
+.close {
+  all: unset;
+
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeIcon {
+  height: 24px;
+  width: 24px;
+}

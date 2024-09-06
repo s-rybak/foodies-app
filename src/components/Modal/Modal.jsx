@@ -1,18 +1,21 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import css from "./Modal.module.css";
+import cx from "classnames";
 
-export const Modal = ({ children, isOpen, onClose }) => {
-  const className = `modal${isOpen ? " modal--open" : ""}`;
+export const Modal = ({ children }) => {
+  const { pathname } = useLocation();
+  const isOpen = pathname.includes("auth");
 
   return (
-    <div className={className}>
-      <div className="modal__background">
-        <div className="modal__window">
-          <button
-            className="modal__close"
-            onClick={() => {
-              onClose(false);
-            }}
-          >
+    <div
+      className={cx(css.modal, {
+        [css.modal_open]: isOpen,
+      })}
+    >
+      <div className={css.background}>
+        <div className={css.window}>
+          <Link to="/" className={css.close}>
             <svg
               width="24"
               height="24"
@@ -35,7 +38,7 @@ export const Modal = ({ children, isOpen, onClose }) => {
                 stroke-linejoin="round"
               />
             </svg>
-          </button>
+          </Link>
           {children}
         </div>
       </div>

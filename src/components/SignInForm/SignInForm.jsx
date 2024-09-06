@@ -1,27 +1,67 @@
-export const SignInForm = ({ variant }) => {
+import { Link, useLocation } from "react-router-dom";
+import css from "./SignInForm.module.css";
+// import cx from "classnames";
+import { useEffect, useState } from "react";
+export const SignInForm = () => {
+  const { pathname } = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
+  const variant = pathname.includes("sign-up") ? "sign-up" : "sign-in";
+
+  useEffect(() => {
+    setShowPassword(false);
+  }, []);
+
   return (
-    <div className="sign-in">
-      <h2 className="sign-in__title">
+    <div className={css.signIn}>
+      <h2 className={css.title}>
         {variant === "sign-in" ? "Sign in" : "Sign up"}
       </h2>
-
-      <form className="sign-in__form form">
-        <div className="form__inputs">
-          <input type="email" placeholder="Email*" className="form__input" />
+      <form className={css.form}>
+        <div className={css.inputs}>
+          {variant === "sign-up" && (
+            <input
+              type="text"
+              name="name"
+              placeholder="Name*"
+              className={css.input}
+            />
+          )}
           <input
-            type="password"
-            placeholder="Password"
-            className="form__input"
+            type="email"
+            name="email"
+            placeholder="Email*"
+            className={css.input}
           />
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            className={css.input}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? " + " : " - "}
+          </button>
         </div>
 
-        <button type="submit" className="form__button">
-          Sign in
+        <button type="submit" className={css.button}>
+          {variant === "sign-in" ? "Sign in" : "Create"}
         </button>
       </form>
-
-      <p className="sign-in__subtitle">
-        Don't have an account? <span>Create an account</span>
+      <p className={css.subtitle}>
+        {variant === "sign-in" ? (
+          <>
+            Don't have an account?{" "}
+            <Link to="/foodies-app/auth/sign-up">Create an account</Link>
+          </>
+        ) : (
+          <>
+            I already have an account?{" "}
+            <Link to="/foodies-app/auth/sign-in">Sign in</Link>
+          </>
+        )}
       </p>
     </div>
   );
