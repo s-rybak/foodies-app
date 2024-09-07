@@ -3,7 +3,7 @@ import style from "./CategoryList.module.css";
 import CardCategory from "./CardCategory/CardCategory.jsx";
 
 const CategoryList = () => {
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     "Beef",
     "Breakfast",
     "Desserts",
