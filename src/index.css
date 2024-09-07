@@ -6,10 +6,21 @@
 
   --font-size-normal: 24px;
   --font-size-small: 12px;
+  --font-size-little: 14px;
+  --font-size-moderate: 16px;
   --font-size-large: 40px;
+  --font-size-extra-large: 70px;
+  --font-size-gigantic: 90px;
 
+  --font-weight-bolder: 800;
+  --font-weight-bold: 700;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
+
+  --font-letter-spacing-negative: -2%;
+
+  --font-line-height-moderate: 1.5;
+  --font-line-height-little: 1.43;
 
   /* COLORS */
   --color-main: #050505;
@@ -50,6 +61,7 @@ body {
   max-width: 1900px;
   margin: 0 auto;
   background-color: var(--color-white);
+  letter-spacing: var(--font-letter-spacing-negative);
 }
 
 ul {
