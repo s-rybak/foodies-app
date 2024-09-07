@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfoodies_app=self.webpackChunkfoodies_app||[]).push([[72],{72:(e,s,p)=>{p.r(s),p.d(s,{default:()=>a});var u=p(579);function a(){return(0,u.jsx)("div",{children:"Home"})}}}]);
-//# sourceMappingURL=72.6199b7e7.chunk.js.map
