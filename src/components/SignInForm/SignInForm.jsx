@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import css from "./SignInForm.module.css";
+import icons from "../../img/icons.svg";
 // import cx from "classnames";
 import { useEffect, useState } from "react";
 export const SignInForm = () => {
@@ -9,7 +10,7 @@ export const SignInForm = () => {
 
   useEffect(() => {
     setShowPassword(false);
-  }, []);
+  }, [pathname]);
 
   return (
     <div className={css.signIn}>
@@ -39,10 +40,19 @@ export const SignInForm = () => {
             className={css.input}
           />
           <button
+            className={css.showPass}
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
           >
-            {showPassword ? " + " : " - "}
+            {showPassword ? (
+              <svg className={css.icon}>
+                <use href={`${icons}#eye`}></use>
+              </svg>
+            ) : (
+              <svg className={css.icon}>
+                <use href={`${icons}#eye-slash`}></use>
+              </svg>
+            )}
           </button>
         </div>
 
