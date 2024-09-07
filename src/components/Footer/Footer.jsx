@@ -11,17 +11,17 @@ const Footer = () => {
         </NavLink>
         <ul className={styles.list_social}>
           <li className={styles.item_social}>
-            <a href="https://www.facebook.com/goITclub/" target="_blank">
+            <a href="https://www.facebook.com/goITclub/" rel="noreferrer" target="_blank">
               <Icon iconId="icon-facebook" width="20" height="20" customStyle={styles.icon} />
             </a>
           </li>
           <li className={styles.item_social}>
-            <a href="https://www.instagram.com/goitclub/" target="_blank">
+            <a href="https://www.instagram.com/goitclub/" rel="noreferrer" target="_blank">
               <Icon iconId="icon-instagram" width="20" height="20" customStyle={styles.icon} />
             </a>
           </li>
           <li className={styles.item_social}>
-            <a href="https://www.youtube.com/c/GoIT" target="_blank">
+            <a href="https://www.youtube.com/c/GoIT" rel="noreferrer" target="_blank">
               <Icon iconId="icon-youTube" width="20" height="20" customStyle={styles.icon} />
             </a>
           </li>
