@@ -41,10 +41,7 @@
 <symbol id="icon-youTube" viewBox="0 0 32 32">
 <path d="M30.112 9.356c0 0-0.288-2.080-1.152-2.971-1.056-1.189-2.304-1.189-2.88-1.288-4.032-0.297-10.080-0.297-10.080-0.297s-6.048 0-10.080 0.297c-0.576 0.099-1.824 0.099-2.88 1.288-0.864 0.891-1.152 2.971-1.152 2.971s-0.288 2.377-0.288 4.754v2.179c0 2.377 0.288 4.853 0.288 4.853s0.288 2.080 1.152 2.971c1.056 1.189 2.496 1.189 3.168 1.288 2.304 0.099 9.792 0.198 9.792 0.198s6.048 0 10.080-0.297c0.576-0.099 1.824-0.099 2.88-1.288 0.864-0.891 1.152-2.971 1.152-2.971s0.288-2.377 0.288-4.754v-2.179c0-2.377-0.288-4.754-0.288-4.754zM13.024 19.063v-8.32l7.776 4.16-7.776 4.16z"></path>
 </symbol>
-<symbol id="icon-arrow-up-right" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M9.333 22.667l13.333-13.333"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M9.333 9.333h13.333v13.333"></path>
-</symbol>
+<symbol id="icon-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></symbol>
 <symbol id="icon-chevron-down" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M8 12l8 8 8-8"></path>
 </symbol>

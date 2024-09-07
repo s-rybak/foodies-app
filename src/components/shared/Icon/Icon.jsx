@@ -1,5 +1,5 @@
 import cx from "classnames";
-import icons from '../../../assets/img/icons.svg';
+import icons from '../../../assets/img/icons/icons.svg';
 
 const Icon = ({ iconId, width = "16", height = "16", stroke = "#000", customStyle = "" }) => {
   return (
