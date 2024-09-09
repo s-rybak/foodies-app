@@ -1,0 +1,7 @@
+.container {
+  border-radius: var(--radius-medium);
+}
+
+.image {
+  width: 100%;
+}
