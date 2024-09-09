@@ -1,5 +1,6 @@
 import styles from "./Button.module.css";
 import cx from "classnames";
+import Icon from "../Icon/Icon";
 
 const Button = ({
   disabled = false,
@@ -9,6 +10,11 @@ const Button = ({
   type = "button",
   classname,
   id,
+  iconId,
+  iconWidth = "20",
+  iconHeight = "20",
+  stroke = "var(--color-main)",
+  iconStyle,
 }) => {
   return (
     <button
@@ -19,6 +25,15 @@ const Button = ({
       disabled={disabled}
     >
       {text}
+      {iconId && (
+        <Icon
+          iconId={iconId}
+          width={iconWidth}
+          height={iconHeight}
+          stroke={stroke}
+          customStyle={iconStyle}
+        />
+      )}
     </button>
   );
 };

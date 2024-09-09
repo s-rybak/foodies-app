@@ -1,0 +1,26 @@
+.pathinfo {
+  color: var(--color-gray);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+  text-transform: uppercase;
+}
+
+.slash {
+  margin: 0 8px;
+}
+
+.homeLink {
+  color: var(--color-gray);
+  text-decoration: none;
+}
+
+.currentPage {
+  color: var(--color-main);
+}
+
+.homeLink:hover {
+  color: var(--color-main);
+  text-decoration: underline;
+}
