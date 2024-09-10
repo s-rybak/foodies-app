@@ -17,7 +17,7 @@ export const App = () => {
           <Route path="/recipe" element={<Recipe />} />
           <Route path="*" element={<NotFound />} />
         </Route>
-      </Routes>      
+      </Routes>
     </BrowserRouter>
   );
 };
