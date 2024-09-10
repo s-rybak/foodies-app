@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/166.7acb5c71.chunk.js","mappings":"oJAEe,SAASA,IACtB,OACEC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,UAET,C","sources":["pages/Recipe/Recipe.jsx"],"sourcesContent":["//import style from './Recipe.module.css'\n\nexport default function Recipe() {\n  return (\n    <div>Recipe</div>\n  )\n}\n"],"names":["Recipe","_jsx","children"],"sourceRoot":""}

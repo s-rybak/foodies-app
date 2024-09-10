@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfoodies_app=self.webpackChunkfoodies_app||[]).push([[166],{6166:(e,p,s)=>{s.r(p),s.d(p,{default:()=>u});var i=s(579);function u(){return(0,i.jsx)("div",{children:"Recipe"})}}}]);
-//# sourceMappingURL=166.7acb5c71.chunk.js.map

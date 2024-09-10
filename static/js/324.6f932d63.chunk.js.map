@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/324.6f932d63.chunk.js","mappings":"oJAEe,SAASA,IACtB,OACEC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,WAET,C","sources":["pages/Profile/Profile.jsx"],"sourcesContent":["//import style from './Profile.module.css'\n\nexport default function Profile() {\n  return (\n    <div>Profile</div>\n  )\n}\n"],"names":["Profile","_jsx","children"],"sourceRoot":""}
