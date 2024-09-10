@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/foodies-app/static/css/main.7dfff273.css",
-    "main.js": "/foodies-app/static/js/main.cf173f7b.js",
+    "main.css": "/foodies-app/static/css/main.d1524d90.css",
+    "main.js": "/foodies-app/static/js/main.2f175dba.js",
     "static/css/8.fb5c2b7b.chunk.css": "/foodies-app/static/css/8.fb5c2b7b.chunk.css",
     "static/js/8.2cb234cb.chunk.js": "/foodies-app/static/js/8.2cb234cb.chunk.js",
     "static/js/738.b49b2813.chunk.js": "/foodies-app/static/js/738.b49b2813.chunk.js",
@@ -43,8 +43,8 @@
     "static/media/hero-image-small-tablet_and_desktop.webp": "/foodies-app/static/media/hero-image-small-tablet_and_desktop.c9ffc4a15320dbdac131.webp",
     "static/media/hero-image-small.webp": "/foodies-app/static/media/hero-image-small.cb607fd36e3f10c4c846.webp",
     "index.html": "/foodies-app/index.html",
-    "main.7dfff273.css.map": "/foodies-app/static/css/main.7dfff273.css.map",
-    "main.cf173f7b.js.map": "/foodies-app/static/js/main.cf173f7b.js.map",
+    "main.d1524d90.css.map": "/foodies-app/static/css/main.d1524d90.css.map",
+    "main.2f175dba.js.map": "/foodies-app/static/js/main.2f175dba.js.map",
     "8.fb5c2b7b.chunk.css.map": "/foodies-app/static/css/8.fb5c2b7b.chunk.css.map",
     "8.2cb234cb.chunk.js.map": "/foodies-app/static/js/8.2cb234cb.chunk.js.map",
     "738.b49b2813.chunk.js.map": "/foodies-app/static/js/738.b49b2813.chunk.js.map",
@@ -52,7 +52,7 @@
     "928.9d4a26f2.chunk.js.map": "/foodies-app/static/js/928.9d4a26f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dfff273.css",
-    "static/js/main.cf173f7b.js"
+    "static/css/main.d1524d90.css",
+    "static/js/main.2f175dba.js"
   ]
 }
