@@ -8,10 +8,6 @@ const Recipe = lazy(() => import('pages/Recipe/Recipe.jsx'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound.jsx'));
 
 export const App = () => {
-  const { pathname } = useLocation();
-  console.log(pathname);
-
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <BrowserRouter basename="/">
       <Routes>
