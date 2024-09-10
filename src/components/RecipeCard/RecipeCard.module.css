@@ -9,9 +9,6 @@
 
   border-radius: 30px;
   overflow: hidden;
-
-
-
 }
 
 .image {
@@ -26,6 +23,8 @@
   font-weight: 900;
   line-height: 24px;
   letter-spacing: -2%;
+
+  text-transform: uppercase;
 }
 
 .text {
