@@ -1,0 +1,48 @@
+.button {
+  background-color: transparent;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  max-width: 150px;
+}
+
+.photo {
+  border-radius: var(--radius-medium);
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--color-gray);
+}
+
+.label {
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+}
+
+.name {
+  font-size: var(--font-size-little);
+  line-height: 1.43;
+  font-weight: var(--font-weight-bold);
+}
+
+@media screen and (min-width: 768px) {
+  .photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .label {
+    font-size: var(--font-size-little);
+    line-height: 1.43;
+  }
+
+  .name {
+    font-size: var(--font-size-moderate);
+    color: var(--color-button);
+    line-height: 1.5;
+  }
+}
