@@ -5,6 +5,7 @@
   "homepage": "https://s-rybak.github.io/foodies-app/",
   "dependencies": {
     "@babel/core": "^7.25.2",
+    "@reduxjs/toolkit": "^2.2.7",
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
@@ -16,11 +17,16 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
+    "modern-normalize": "^3.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "react-modal": "^3.16.1",
+    "react-redux": "^9.1.2",
     "react-router-dom": "^6.26.1",
     "react-scripts": "^5.0.1",
     "redux": "^5.0.1",
+    "sass": "^1.78.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,5 +53,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "postcss-loader": "^8.1.1",
+    "resolve-url-loader": "^5.0.0",
+    "sass-loader": "^16.0.1"
   }
 }

@@ -1,0 +1,50 @@
+.card {
+  max-width: 325px;
+  min-height: 370px;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #eee;
+  position: relative;
+}
+
+.cardImg {
+  object-fit: cover;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cardActions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 24px;
+  display: flex;
+  gap: 4px;
+}
+
+.button {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 0 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titlebutton {
+  background: rgba(255, 255, 255, 0.2);
+}
+.iconbutton {
+  color: var(--color-white);
+}
