@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import css from "./SignInForm.module.css";
 import icons from "assets/img/icons/icons.svg";
-// import cx from "classnames";
 import { useEffect, useState } from "react";
 const SignInForm = ({ variant }) => {
   const [showPassword, setShowPassword] = useState(false);
