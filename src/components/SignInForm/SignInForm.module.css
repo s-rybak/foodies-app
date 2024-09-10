@@ -1,12 +1,13 @@
 .signIn {}
 
 .title {
-  margin: 0 0 40px;
+  margin: 0 0 32px;
 
   text-transform: uppercase;
   text-align: left;
 
-  font-size: 32px;
+  font-size: 28px;
+  font-weight: 900;
 }
 
 .input {}
@@ -25,7 +26,7 @@
 .form {}
 
 .inputs {
-  margin: 0 0 40px;
+  margin: 0 0 32px;
 
   position: relative;
 
@@ -35,7 +36,7 @@
 }
 
 .input {
-  padding: 16px 18px;
+  padding: 14px;
 
   border-radius: 30px;
   border: 1px solid #bfbebe;
@@ -45,6 +46,7 @@
 }
 
 .input::placeholder {
+  font-size: 14px;
   color: #bfbebe;
 }
 
@@ -54,12 +56,13 @@
 }
 
 .button {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   width: 100%;
-  height: 56px;
+  height: 48px;
 
   text-align: center;
   text-transform: uppercase;
+  font-size: 14px;
 
   border-radius: 30px;
   border: 1px solid #bfbebe;
@@ -84,4 +87,42 @@
   width: 20px;
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin: 0 0 40px;
+
+    text-transform: uppercase;
+    text-align: left;
+
+    font-size: 32px;
+  }
+
+  .inputs {
+    margin: 0 0 40px;
+
+  }
+
+  .input {
+    padding: 16px 18px;
+
+    border-radius: 30px;
+    border: 1px solid #bfbebe;
+
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+  }
+
+  .button {
+    margin: 0 0 20px;
+
+    font-size: 16px;
+    height: 56px;
+  }
+
 }

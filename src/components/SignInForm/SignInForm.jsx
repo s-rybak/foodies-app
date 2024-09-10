@@ -1,16 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import css from "./SignInForm.module.css";
-import icons from "../../img/icons.svg";
+import icons from "assets/img/icons/icons.svg";
 // import cx from "classnames";
 import { useEffect, useState } from "react";
-export const SignInForm = () => {
-  const { pathname } = useLocation();
+const SignInForm = ({ variant }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const variant = pathname.includes("sign-up") ? "sign-up" : "sign-in";
 
   useEffect(() => {
     setShowPassword(false);
-  }, [pathname]);
+  }, [variant]);
 
   return (
     <div className={css.signIn}>
@@ -46,11 +44,11 @@ export const SignInForm = () => {
           >
             {showPassword ? (
               <svg className={css.icon}>
-                <use href={`${icons}#eye`}></use>
+                <use href={`${icons}#icon-eye`}></use>
               </svg>
             ) : (
               <svg className={css.icon}>
-                <use href={`${icons}#eye-slash`}></use>
+                <use href={`${icons}#icon-eye-off`}></use>
               </svg>
             )}
           </button>
@@ -76,3 +74,5 @@ export const SignInForm = () => {
     </div>
   );
 };
+
+export default SignInForm;
