@@ -15,8 +15,9 @@ import author_photo_2x from "../../../assets/img/receip_temporary/author_photo_2
 import Container from "components/UI/Container/Container";
 
 import css from "./RecipeMainInfo.module.css";
+import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 
-function RecipeMainInfo() {
+function RecipeMainInfo({ ingredients }) {
 	return (
 		<Container className={css.container}>
 			<RecipeMainInfoImage
@@ -29,20 +30,24 @@ function RecipeMainInfo() {
 				altText="Fish"
 			/>
 
-			<div className={css.content}>
-				<RecipeTitle>Salmon Avocado Salad</RecipeTitle>
-				<RecipeTags tags={["Seafood", "40 min"]} />
-				<Text>
-					Is a healthy salad recipe that's bigon nutrients and flavor. A moist,
-					pan seared salmon is layered on top of spinach, avocado, tomatoes, and
-					red onions. Then drizzled with a homemade lemon vinaigrette. Is a
-					healthy salad recipe that's big on nutrients and flavor.
-				</Text>
-				<RecipeAuthor
-					authorPhotoStandard={author_photo_1x}
-					authorPhotoRetina={author_photo_2x}
-					authorName="Nadia"
-				/>
+			<div className={css.info}>
+				<div className={css.content}>
+					<RecipeTitle>Salmon Avocado Salad</RecipeTitle>
+					<RecipeTags tags={["Seafood", "40 min"]} />
+					<Text>
+						Is a healthy salad recipe that's bigon nutrients and flavor. A
+						moist, pan seared salmon is layered on top of spinach, avocado,
+						tomatoes, and red onions. Then drizzled with a homemade lemon
+						vinaigrette. Is a healthy salad recipe that's big on nutrients and
+						flavor.
+					</Text>
+					<RecipeAuthor
+						authorPhotoStandard={author_photo_1x}
+						authorPhotoRetina={author_photo_2x}
+						authorName="Nadia"
+					/>
+				</div>
+				<RecipeIngredients ingredients={ingredients} />
 			</div>
 		</Container>
 	);

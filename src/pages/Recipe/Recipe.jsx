@@ -1,11 +1,11 @@
 //import style from './Recipe.module.css'
 
-import RecipeMainInfo from "components/Recipe/RecipeMainInfo/RecipeMainInfo";
+import RecipeInfo from "components/Recipe/RecipeInfo/RecipeInfo";
 
 export default function Recipe() {
 	return (
 		<>
-			<RecipeMainInfo />
+			<RecipeInfo />
 		</>
 	);
 }
