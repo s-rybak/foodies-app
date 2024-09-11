@@ -1,0 +1,116 @@
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-height: 432px;
+    padding-bottom: 120px;
+}
+
+
+.testimonials h2 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bolder);
+    color: var(--color-main);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .testimonials h2 {
+        font-size: 28px;
+    }
+}
+
+.testimonial_text {
+    font-size: var(--font-size-moderate);
+}
+
+@media (max-width: 768px) {
+    .testimonial_text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial_message {
+        font-size: 18px;
+    }
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: var(--font-size-normal);
+    line-height: var(--font-line-height-moderate);
+    max-width: 822px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background-color: var(--color-white);
+    min-height: 300px;
+    min-height: 300px;
+}
+
+.slider h4 {
+    font-size: var(--font-size-normal);
+    font-weight: bold;
+    margin-top: auto;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .slider h4 {
+        font-size: 16px;
+    }
+}
+
+.container_icon {
+    text-align: left;
+    max-width: 822px;
+    width: 100%;
+    padding: 0 0 0 65px;
+}
+
+.icon {
+    width: 59px;
+    height: 48px;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        width: 40px;
+        height: 32px;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination button {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-gray);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+@media (max-width: 768px) {
+    .pagination button {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.pagination button.active {
+    background-color: #000;
+}
+
+.pagination button:hover {
+    background-color: #555;
+}
