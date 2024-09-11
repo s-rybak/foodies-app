@@ -1,12 +1,12 @@
 //import style from './Category.module.css'
 
-import { RecipeCard } from "components/RecipeCard/RecipeCard";
+import { RecipeList } from "components/RecipeList/RecipeList";
 
 export default function Category() {
   return (
     <>
       <div>Category data</div>
-      <RecipeCard />
+      <RecipeList />
     </>
   );
 }
