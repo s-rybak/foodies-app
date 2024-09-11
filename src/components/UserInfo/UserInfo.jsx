@@ -1,5 +1,5 @@
 import styles from './/UserInfo.module.css';
-import cx from 'classnames';
+// import cx from 'classnames';
 
 const UserInfo = ({ user }) => {
   return (
@@ -7,7 +7,7 @@ const UserInfo = ({ user }) => {
       <div className={styles.userInfoContainer}>
         <img
           src={user.photo}
-          alt={`${user.name}'s photo`}
+          alt={`${user.name}`}
           className={styles.userPhoto}
         />
         <div className={styles.userDetails}>

@@ -2,11 +2,13 @@ import SharedLayout from "layout/SharedLayout/SharedLayout.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 
+
 const Home = lazy(() => import("pages/Home/Home.jsx"));
 const Category = lazy(() => import("pages/Category/Category.jsx"));
 const Recipe = lazy(() => import("pages/Recipe/Recipe.jsx"));
-const Profile = lazy(() => import("pages/Profile/Profile.jsx"));
+// const Profile = lazy(() => import("pages/Profile/Profile.jsx"));
 const NotFound = lazy(() => import("pages/NotFound/NotFound.jsx"));
+const UserPage = lazy(() => import("pages/UserPage/UserPage.jsx"));
 
 export const App = () => {
 	return (
@@ -27,9 +29,13 @@ export const App = () => {
 						path="/recipe/:recipeId"
 						element={<Recipe />}
 					/>
-					<Route
+					{/* <Route
 						path="/user/:authorId"
 						element={<Profile />}
+					/> */}
+					<Route
+						path="/user/:id"
+						element={<UserPage />}
 					/>
 					<Route
 						path="*"

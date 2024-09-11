@@ -1,11 +1,14 @@
-.profileButton {
-    display: block;
-    max-width: 100%;
-    width: 343px;
-   
-  }
-  .profileMainTitle {
-    margin-top: 32px;
-  
-  }
-  
+.userPage {
+  max-width: 375px;
+  margin: 64px auto;
+}
+.userPageButton {
+  width: 100%;
+  margin-top: 32px;
+}
+.userPageMainTitle {
+  margin-top: 32px;
+}
+.userPageSubtitle {
+  margin-bottom: 32px;
+}
