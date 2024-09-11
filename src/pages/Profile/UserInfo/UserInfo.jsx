@@ -1,5 +1,6 @@
+import PathInfo from "components/PathInfo";
 import UserInfo from "components/Profile/UserInfo/UserInfo";
-import { Container } from "components/UI";
+import { Container, Title, UnderTitle } from "components/UI";
 
 export default function ProfileInfo() {
   const userInfo = {
@@ -28,6 +29,12 @@ export default function ProfileInfo() {
 
   return (
     <Container>
+      <PathInfo currentPage="Profile" />
+      <Title>Profile</Title>
+      <UnderTitle maxWidth={442}>
+        Reveal your culinary art, share your favorite recipe and create
+        gastronomic masterpieces with us.
+      </UnderTitle>
       <UserInfo userInfo={userInfo} profileHeadButton={profileHeadButton} />
     </Container>
   );
