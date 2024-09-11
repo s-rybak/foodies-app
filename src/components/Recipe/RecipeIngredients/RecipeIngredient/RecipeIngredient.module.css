@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    gap: 14px;
+  }
+
+  .text {
+    gap: 4px;
+  }
+}

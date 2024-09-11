@@ -5,6 +5,7 @@ import { lazy } from "react";
 const Home = lazy(() => import("pages/Home/Home.jsx"));
 const Category = lazy(() => import("pages/Category/Category.jsx"));
 const Recipe = lazy(() => import("pages/Recipe/Recipe.jsx"));
+const UserInfo = lazy(() => import("pages/Profile/UserInfo/UserInfo"));
 const NotFound = lazy(() => import("pages/NotFound/NotFound.jsx"));
 
 export const App = () => {
@@ -14,7 +15,8 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/category" element={<Category />} />
-          <Route path="/recipe" element={<Recipe />} />
+          <Route path="/user/:id" element={<UserInfo/>} />
+          <Route path="/recipe/:recipeId" element={<Recipe />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
