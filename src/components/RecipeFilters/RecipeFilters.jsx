@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import SelectFilter from "components/Shared/SelectFilter/SelectFilter";
+import SelectFilter from "./SelectFilter/SelectFilter";
 import { selectIngredientsOptions } from "store/ingredientsSlice/selectors";
 import { selectAreasOptions } from "store/areasSlice/selectors";
 import { fetchIngredients } from "store/ingredientsSlice/thunks";

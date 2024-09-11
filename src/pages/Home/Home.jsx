@@ -2,11 +2,14 @@
 import Categories from "components/Categories/Categories";
 
 import Hero from "components/Hero/Hero";
+import RecipeFilters from "components/RecipeFilters/RecipeFilters";
 
 export default function Home() {
-  return <>
+  return (
+    <>
       <Hero />
       <Categories />
-  </>
-   ;
+      <RecipeFilters />
+    </>
+  );
 }
