@@ -1,11 +1,15 @@
 import Image from "components/UI/Image/Image";
-import style from "./ProfileHead.module.css";
+import style from "./UserInfo.module.css";
 import avatar from "assets/img/avatar";
 import emptyImages from "assets/img/empty";
 import { Link } from "react-router-dom";
 import { SvgIcon } from "components/UI";
 
-export default function ProfileHead({ userInfo, button, uploadAvatar = true }) {
+export default function UserInfo({
+  userInfo,
+  profileHeadButton,
+  uploadAvatar = true,
+}) {
   const useAvatar = avatar[userInfo.avatar] ?? emptyImages["noImage"];
   const avatarEmpty = avatar[userInfo.avatar] ? false : true;
 
@@ -39,8 +43,11 @@ export default function ProfileHead({ userInfo, button, uploadAvatar = true }) {
           ))}
         </ul>
       </div>
-      <Link to={button.link} className={style["profile-head-button"]}>
-        {button.name}
+      <Link
+        to={profileHeadButton.link}
+        className={style["profile-head-button"]}
+      >
+        {profileHeadButton.name}
       </Link>
     </div>
   );

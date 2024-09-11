@@ -1,4 +1,5 @@
-import ProfileInfoPage from "components/Profile/ProfileInfoPage/ProfileInfoPage";
+import UserInfo from "components/Profile/UserInfo/UserInfo";
+import { Container } from "components/UI";
 
 export default function ProfileInfo() {
   const userInfo = {
@@ -26,9 +27,8 @@ export default function ProfileInfo() {
   };
 
   return (
-    <ProfileInfoPage
-      userInfo={userInfo}
-      profileHeadButton={profileHeadButton}
-    />
+    <Container>
+      <UserInfo userInfo={userInfo} profileHeadButton={profileHeadButton} />
+    </Container>
   );
 }
