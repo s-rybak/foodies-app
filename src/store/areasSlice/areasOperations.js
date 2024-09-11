@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+/*import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { areasApi } from "../../services/Api.js";
 
@@ -14,3 +14,6 @@ export const fetchAreas = createAsyncThunk("getAreas", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+
+*/

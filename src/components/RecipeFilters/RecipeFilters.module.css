@@ -1,0 +1,12 @@
+/*.select {
+  border-radius: 20px;
+  padding: 8px;
+  width: 330px;
+}*/
+
+.filters_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  z-index: 3;
+}

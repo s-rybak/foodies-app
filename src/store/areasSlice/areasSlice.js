@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+/*import { createSlice } from "@reduxjs/toolkit";
 
 import { fetchAreas } from "./areasOperations.js";
 
@@ -34,3 +34,4 @@ const areasSlice = createSlice({
 });
 
 export default areasSlice.reducer;
+*/

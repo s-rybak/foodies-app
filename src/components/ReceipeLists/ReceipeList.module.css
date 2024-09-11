@@ -1,0 +1,13 @@
+.recipe_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .recipe_list {
+    row-gap: 40px;
+    column-gap: 20px;
+  }
+}

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import areas from "./areas/areasSlice";
+import areas from "./areasSlice/areasSlice";
 
 const store = configureStore({
   reducer: {
