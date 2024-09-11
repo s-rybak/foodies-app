@@ -7,8 +7,6 @@ import Hero from "components/Hero/Hero";
 export default function Home() {
   return (
     <>
-      <h1>Test: Home Component is Rendering</h1>{" "}
-      {/* Временный тестовый текст */}
       <Hero />
       <Categories />
       <Testimonials />
