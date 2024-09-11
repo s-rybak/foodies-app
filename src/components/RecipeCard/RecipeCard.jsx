@@ -18,9 +18,7 @@ const dummyCardInfo = {
 export const RecipeCard = () => {
   return (
     <li className={css.card}>
-      <div className={css.imageContainer}>
-        <img className={css.image} src={recipeImg} alt="Recipe photo" />
-      </div>
+      <img className={css.image} src={recipeImg} alt="Recipe photo" />
       <h3 className={css.title}>{dummyCardInfo.title}</h3>
       <p className={css.text}>{dummyCardInfo.text}</p>
 
@@ -35,7 +33,7 @@ export const RecipeCard = () => {
         <div className={css.buttons}>
           <button className={css.btn} type="button">
             <svg className={css.icon}>
-              <use href={`${icons}#icon-heart`}></use>
+              <use href={`${icons}#icon-heart-outline`}></use>
             </svg>
           </button>
           <button className={css.btn} type="button">

@@ -1,19 +1,20 @@
 .card {
   list-style: none;
-}
 
-.imageContainer {
-  margin: 0 0 16px;
-
-  height: 230px;
-
-  border-radius: 30px;
-  overflow: hidden;
+  max-width: 343px;
 }
 
 .image {
+  margin: 0 0 16px;
+
+  height: 230px;
+  width: 100%;
+
   object-fit: cover;
-  object-position: bottom;
+  object-position: center;
+
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .title {
@@ -22,7 +23,8 @@
   font-size: 18px;
   font-weight: 900;
   line-height: 24px;
-  letter-spacing: -2%;
+  letter-spacing: -0.2px;
+
 
   text-transform: uppercase;
 }
@@ -32,7 +34,8 @@
 
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -2%;
+  letter-spacing: -0.2px;
+
   font-weight: 500;
 }
 
@@ -64,7 +67,8 @@
   font-size: 14px;
   line-height: 20px;
 
-  letter-spacing: -2%;
+  letter-spacing: -0.2px;
+
 
 }
 
@@ -90,4 +94,44 @@
 .icon {
   height: 16px;
   width: 16px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 342px;
+  }
+
+  .image {
+    height: 275px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .avatarContainer {
+    height: 40px;
+    width: 40px;
+  }
+
+  .name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .btn {
+    height: 42px;
+    width: 42px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .card {
+    width: 290px;
+  }
 }
