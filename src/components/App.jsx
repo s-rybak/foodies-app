@@ -6,18 +6,21 @@ const Home = lazy(() => import('pages/Home/Home.jsx'));
 const Category = lazy(() => import('pages/Category/Category.jsx'));
 const Recipe = lazy(() => import('pages/Recipe/Recipe.jsx'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound.jsx'));
+const UserPage = lazy(() => import('pages/UserPage/UserPage.jsx'));
+
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename='/'>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/recipe" element={<Recipe />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path='/category' element={<Category />} />
+          <Route path='/recipe' element={<Recipe />} />
+          <Route path='/user/:id' element={<UserPage />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
-      </Routes>      
+      </Routes>
     </BrowserRouter>
   );
 };
