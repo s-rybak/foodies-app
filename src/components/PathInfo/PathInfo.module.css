@@ -1,0 +1,14 @@
+/* PathInfo.module.css */
+.path-info {
+  font-size: 1rem;
+  margin: 20px 0;
+}
+
+.home-link {
+  text-decoration: none;
+  color: BFBEBE;
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}

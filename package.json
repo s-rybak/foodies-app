@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "postcss-loader": "^8.1.1",
     "resolve-url-loader": "^5.0.0",
     "sass-loader": "^16.0.1"

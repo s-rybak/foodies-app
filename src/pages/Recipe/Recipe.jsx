@@ -1,7 +1,20 @@
-//import style from './Recipe.module.css'
+// RecipePage.jsx
+import React from "react";
+import { useParams } from "react-router-dom";
+import PathInfo from "components/PathInfo/PathInfo";
+import PopularRecipes from "components/PopularRecipes/PopularRecipes";
+import style from "./Recipe.module.css";
 
-export default function Recipe() {
+const RecipePage = () => {
+  const { id } = useParams();
+
   return (
-    <div>Recipe</div>
-  )
-}
+    <div className={style["recipe-page"]}>
+      <PathInfo currentPage="Recipe" />
+      <RecipeInfo recipeId={id} />
+      <PopularRecipes />
+    </div>
+  );
+};
+
+export default RecipePage;
