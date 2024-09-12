@@ -11,21 +11,23 @@
   font-weight: 900;
 }
 
-.input {
-}
-
-.form {
-}
-
 .subtitle {
-  font-size: 14px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  color: var(--color-gray);
+
+  & a {
+    color: var(--color-main);
+  }
 }
 
 .subtitle > span {
   color: #000;
-}
-
-.form {
 }
 
 .inputs {
@@ -108,6 +110,15 @@
     font-size: 32px;
   }
 
+  .subtitle {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.28px;
+    color: var(--color-gray);
+  }
+
   .inputs {
     margin: 0 0 40px;
   }
@@ -135,5 +146,11 @@
 
   .button:hover {
     background-color: var(--color-main);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .subtitle {
+    color: var(--color-button);
   }
 }

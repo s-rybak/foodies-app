@@ -29,6 +29,8 @@
   --color-gray: #bfbebe;
   --color-white: #fff;
   --color-button: #1a1a1a;
+  --color-success: #73af55;
+  --color-error: #d06079;
 
   /* BREAKPOINTS */
   --mobile: 375px;

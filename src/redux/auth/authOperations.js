@@ -14,8 +14,7 @@ export const signUpUser = createAsyncThunk(
     } catch (error) {
       if (error.status === 400) {
         return thunkApi.rejectWithValue(
-          "There is something wrong with the provided data: " +
-            (error.response.data.message || "Invalid input.")
+          "There is something wrong with the provided data. Please ensure all fields are filled out correctly and meet the required criteria."
         );
       }
       if (error.status === 409) {
