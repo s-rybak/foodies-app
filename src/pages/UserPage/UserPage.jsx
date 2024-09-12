@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PathInfo from '../../components/PathInfo/PathInfo';
 import MainTitle from '../../components/shared/MainTitle/MainTitle';
 import SubtitleComponent from 'components/Subtitles/SubtitleComponent/SubtitleComponent';
@@ -10,34 +10,37 @@ import ListItems from 'components/ListItems/ListItems';
 import ListPagination from 'components/ListPagination/ListPagination';
 import { Modal } from 'components/Modal';
 import Logout from 'components/Logout/Logout';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from 'store/users/userOperation';
+import { selectUser } from 'store/users/userSelectors';
 
-const user = {
-  photo: 'https://example.com/photo.jpg',
-  name: 'John Doe',
-  email: 'john.doe@example.com',
-  recipeCount: 12,
-  favoriteCount: 34,
-  followersCount: 56,
-  followingCount: 78,
-};
+// const userData = {
+//   id: 'f8a2df06-eac5-49d1-8d13-47b21554ce7e',
+//   email: 'gol06rrzi7@vvatxiy.com',
+//   avatarURL: null,
+// };
 
 const UserPage = () => {
-  const { pathname } = useLocation();
-  console.log('pathname', pathname);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { user, loading, error } = useSelector(selectUser);
 
   const [activeTab, setActiveTab] = useState('my-recipes');
   const [pageNumber, setPageNumber] = useState(1);
-
-  const [data, setData] = useState([
+  const [dataRecepi, setDataRecepi] = useState([
     { id: '1', name: 'Recipe 1' },
     { id: '2', name: 'Recipe 2' },
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isOwnProfile = user.id === id;
+
+  useEffect(() => {
+    dispatch(fetchUser(id));
+  }, [id, dispatch]);
 
   const handleOpenModal = () => {
-    console.log('you click on log out button');
     setIsModalOpen(true);
   };
 
@@ -49,8 +52,12 @@ const UserPage = () => {
     setActiveTab(tab);
     setPageNumber(1);
   };
+
+  if (loading) return <div>Завантаження...</div>;
+  if (error) return <div>Помилка: {error}</div>;
+
   return (
-    <section className={styles.userPageWrapper}>
+    <div className={styles.userPageWrapper}>
       <PathInfo currentPage='profile' />
       <MainTitle text='Profile' addStyle={styles.userPageMainTitle} />
       <SubtitleComponent className={styles.userPageSubtitle}>
@@ -60,16 +67,24 @@ const UserPage = () => {
       <div className={styles.userWrapper}>
         <div className={styles.userInfoWrapper}>
           <UserInfo user={user} />
-          <Button
-            text='Log out'
-            classname={styles.userPageButton}
-            onClick={handleOpenModal}
-          />
+          {isOwnProfile ? (
+            <Button
+              text='Log out'
+              classname={styles.userPageButton}
+              onClick={handleOpenModal}
+            />
+          ) : (
+            <Button
+              text='Follow'
+              classname={styles.userPageButton}
+              // onClick={}
+            />
+          )}
         </div>
-        {/* <FollowButton /> */}
+
         <div className={styles.tabsWrapper}>
           <TabsList isOwnProfile={true} onTabChange={handleTabChange} />
-          <ListItems activeTab={activeTab} data={data} />
+          <ListItems activeTab={activeTab} data={dataRecepi} />
           <ListPagination />
         </div>
       </div>
@@ -79,7 +94,7 @@ const UserPage = () => {
           <Logout setModalLogoutOpen={handleCloseModal} />
         </Modal>
       )}
-    </section>
+    </div>
   );
 };
 

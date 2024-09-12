@@ -1,26 +1,34 @@
-.pathinfo {
-    color: var(--color-gray);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 18px;
-    letter-spacing: -0.24px;
-    text-transform: uppercase;
-  }
-  
-  .slash {
-    margin: 0 8px;
-  }
-  
-  .homeLink {
-    color: var(--color-gray);
-    text-decoration: none;
-  }
-  
-  .currentPage {
-    color: var(--color-main);
-  }
-  
-  .homeLink:hover {
-    color: var(--color-main);
-    text-decoration: underline;
-  }
+/* PathInfo.module.css */
+.path-info {
+  font-size: 1rem;
+  margin: 20px 0;
+  position: relative;
+}
+
+.home-link {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}
+
+.home-link::after {
+  content: "/";
+  padding: 0 8px;
+}
+
+.current-page {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-main);
+}

@@ -12,11 +12,10 @@
   margin-bottom: 32px;
   border-bottom: 1px solid var(--color-gray);
 
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
 }
-
 
 .tabItem {
   position: relative;
