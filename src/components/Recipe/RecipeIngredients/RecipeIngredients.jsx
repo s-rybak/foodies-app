@@ -14,8 +14,8 @@ function RecipeIngredients({ ingredients }) {
 						key={nanoid()}>
 						<RecipeIngredient
 							name={ingredient.name}
-							image={ingredient.image}
-							amount={ingredient.amount}
+							image={ingredient.img}
+							amount={ingredient.recipe_ingredients.measure}
 						/>
 					</li>
 				))}

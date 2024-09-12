@@ -11,12 +11,16 @@ import css from "./RecipeMainInfo.module.css";
 
 function RecipeMainInfo({
 	image,
-	author,
+	authorId,
+	authorPhotoStandard,
+	authorPhotoRetina,
+	authorName,
 	title,
-	tags,
+	time,
+	category,
 	description,
 	preparation,
-	isFavorite,
+	recipeId,
 	ingredients,
 }) {
 	return (
@@ -34,19 +38,19 @@ function RecipeMainInfo({
 			<div className={css.info}>
 				<div className={css.content}>
 					<RecipeTitle>{title}</RecipeTitle>
-					<RecipeTags tags={tags} />
+					<RecipeTags tags={[category, time]} />
 					<Text>{description}</Text>
 					<RecipeAuthor
-						authorId={author.id}
-						authorPhotoStandard={author.photo.standard}
-						authorPhotoRetina={author.photo.retina}
-						authorName={author.name}
+						authorId={authorId}
+						authorPhotoStandard={authorPhotoStandard}
+						authorPhotoRetina={authorPhotoRetina}
+						authorName={authorName}
 					/>
 				</div>
 				<RecipeIngredients ingredients={ingredients} />
 				<RecipePreparation
 					preparation={preparation}
-					isFavorite={isFavorite}
+					recipeId={recipeId}
 				/>
 			</div>
 		</Container>

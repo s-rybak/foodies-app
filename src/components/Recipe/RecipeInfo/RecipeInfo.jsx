@@ -58,18 +58,33 @@ const data = {
 	],
 };
 
-function RecipeInfo() {
+function RecipeInfo({
+	title,
+	category,
+	time,
+	description,
+	image,
+	authorName,
+	authorId,
+	ingredients,
+	preparation,
+	recipeId,
+}) {
 	return (
 		<>
 			<RecipeMainInfo
+				title={title}
+				category={category}
+				time={time}
+				description={description}
 				image={data.image}
-				author={data.author}
-				title={data.title}
-				tags={data.tags}
-				description={data.description}
-				preparation={data.preparation}
-				isFavorite={data.isFavorite}
-				ingredients={data.ingredients}
+				authorName={authorName}
+				authorId={authorId}
+				authorPhotoStandard={data.author.photo.standard}
+				authorPhotoRetina={data.author.photo.retina}
+				ingredients={ingredients}
+				preparation={preparation}
+				recipeId={recipeId}
 			/>
 		</>
 	);

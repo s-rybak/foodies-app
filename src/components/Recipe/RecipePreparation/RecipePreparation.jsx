@@ -3,8 +3,11 @@ import Text from "components/UI/Text/Text";
 
 import css from "./RecipePreparation.module.css";
 import ButtonOutline from "components/Buttons/ButtonOutline/ButtonOutline";
+import { useState } from "react";
 
-function RecipePreparation({ preparation, isFavorite }) {
+function RecipePreparation({ preparation, recipeId }) {
+	const [isFavorite, setIsFavorite] = useState(false);
+
 	return (
 		<div>
 			<SectionTitle className={css.title}>Recipe Preparation</SectionTitle>
