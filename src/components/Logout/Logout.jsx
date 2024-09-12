@@ -26,7 +26,7 @@ export const Logout = ({ setModalLogoutOpen }) => {
                         text="Cancel"
                         variant={'log_cancel'}
                         onClick={() => setModalLogoutOpen(false)}
-                        classname={styles.cancelButton}
+                        className={styles.cancelButton}
                     />
                 </ul>
             </form>
