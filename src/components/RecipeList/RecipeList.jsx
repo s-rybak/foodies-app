@@ -3,6 +3,7 @@ import css from "./RecipeList.module.css";
 import { RecipeCard } from "components/RecipeCard/RecipeCard";
 import recipeImg from "../../assets/img/recipes/recipe1.png";
 import avatar from "../../assets/img/recipes/avatar1.png";
+import { Container } from "components/UI";
 
 const dummyListInfo = [
   {
@@ -66,32 +67,38 @@ export const RecipeList = () => {
       const data = await res.json();
       console.log(data);
 
-      return data;
+      return data.recipes;
     } catch (error) {
       console.log("The request returned an error", error);
     }
   };
 
   useEffect(() => {
-    const recipes = loadRecipes();
-    console.log(recipes);
-
-    setRecipes(recipes);
+    loadRecipes().then(setRecipes);
   }, []);
 
-  console.log(recipes);
+  console.log(recipes, "before render");
 
   return (
-    <ul className={css.list}>
-      {dummyListInfo.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          title={recipe.title}
-          text={recipe.text}
-          imgUrl={recipe.imgUrl}
-          user={recipe.user}
+    <Container>
+      <ul className={css.list}>
+        {dummyListInfo.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            title={recipe.title}
+            text={recipe.text}
+            imgUrl={recipe.imgUrl}
+            user={recipe.user}
+          />
+        ))}
+      </ul>
+{/* 
+      {recipes.length > 0 ? (
+        <img
+          src={`https://foodies-api-hrrk.onrender.com/${recipes[0].thumb}`}
+          alt=""
         />
-      ))}
-    </ul>
+      ) : null} */}
+    </Container>
   );
 };
