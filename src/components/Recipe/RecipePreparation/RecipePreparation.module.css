@@ -1,0 +1,30 @@
+.title {
+  margin-bottom: 20px;
+}
+
+.text {
+  margin-bottom: 32px;
+}
+
+.button {
+  color: var(--color-gray);
+  border-color: var(--color-gray);
+}
+
+.button:hover {
+  color: var(--color-white);
+  border-color: var(--color-main);
+  background-color: var(--color-main);
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .button {
+    color: var(--color-button);
+  }
+}
