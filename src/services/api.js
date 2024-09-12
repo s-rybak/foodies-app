@@ -2,22 +2,17 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
-export const apiInstance = axios.create({
+/**
+ * Axios instance with default common settings.
+ */
+export const api = axios.create({
   baseURL: BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  timeout: 10000,
+  headers: { "content-type": "application/json" },
 });
 
-export const apiInstanceImages = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    "Content-Type": "multipart/form-data",
-  },
-});
-
-export const categoriesApi = {
-  getCategories: () => apiInstance.get("/api/categories"),
-  getMoreCategories: (value) =>
-    apiInstance.get(`/api/categories?page=${value}`),
+export const setToken = token => {
+  api.defaults.headers.common.Authorization = "Bearer " + token;
 };
+
+export default api;
