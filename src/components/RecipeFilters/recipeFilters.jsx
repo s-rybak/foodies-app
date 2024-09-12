@@ -3,12 +3,12 @@ import { selectAreas } from "store/areas/areasSelectors";
 import css from "./recipeFilters.module.css";
 import { selectIngredients } from "store/ingredients/ingredientsSelectors";
 
-export const AreaFilters = ({ changeHandler }) => {
-  const { areas } = useSelector(selectAreas);
-
+export const IngredientsFilters = ({ changeHandler }) => {
+  const { ingredients } = useSelector(selectIngredients);
+  console.log(ingredients);
   return (
-    <select name="areas" className={css.select} onChange={changeHandler}>
-      {areas.map(({ id, name }) => (
+    <select name="ingredients" className={css.select} onChange={changeHandler}>
+      {ingredients.map(({ id, name }) => (
         <option key={id} value={name}>
           {name}
         </option>
@@ -17,12 +17,12 @@ export const AreaFilters = ({ changeHandler }) => {
   );
 };
 
-export const IngredientsFilters = ({ changeHandler }) => {
-  const { ingredients } = useSelector(selectIngredients);
+export const AreaFilters = ({ changeHandler }) => {
+  const { areas } = useSelector(selectAreas);
 
   return (
-    <select name="ingredients" className={css.select} onChange={changeHandler}>
-      {ingredients.map(({ id, name }) => (
+    <select name="areas" className={css.select} onChange={changeHandler}>
+      {areas.map(({ id, name }) => (
         <option key={id} value={name}>
           {name}
         </option>
@@ -40,5 +40,10 @@ const RecipeFilters = ({ changeHandler }) => {
     </div>
   );
 };
+
+<div className={css.container}>
+  <IngredientsFilters />
+  <AreaFilters />
+</div>;
 
 export default RecipeFilters;
