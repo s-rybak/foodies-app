@@ -3,6 +3,7 @@ import { persistReducer, persistStore, PERSIST } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { authReducer } from "./auth/authSlice";
+import testimonialsReducer from "./testimonials/testimonialsSlice";
 
 const authConfig = {
   key: "auth",
@@ -16,6 +17,7 @@ const authConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
+    testimonials: testimonialsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

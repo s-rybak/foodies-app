@@ -40,9 +40,9 @@ const Testimonials = () => {
       </div>
       <div className={styles.slider}>
         <p className={styles.testimonial_message}>
-          {testimonials[currentIndex]?.text}
+          {testimonials[currentIndex]?.testimonial}
         </p>
-        <h4>{testimonials[currentIndex]?.author}</h4>
+        <h4>{testimonials[currentIndex]?.user?.name}</h4>
       </div>
       <div className={styles.pagination}>
         {testimonials.map((testimonial, index) => (

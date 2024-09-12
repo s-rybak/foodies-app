@@ -8,6 +8,9 @@
     padding-bottom: 120px;
 }
 
+.testimonial_message{
+    word-break: break-all;
+}
 
 .testimonials h2 {
     font-size: var(--font-size-large);

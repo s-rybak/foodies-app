@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTestimonials } from "./operations";
+import { fetchTestimonials } from "./testimonialsOperations";
 
 const initialState = {
   testimonials: [],
