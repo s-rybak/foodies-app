@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTestimonials } from "../redux/operations";
+import { fetchTestimonials } from "../../redux/testimonials/testimonialsOperations";
 import {
   selectTestimonials,
   selectLoading,
   selectError,
-} from "../redux/selectors";
+} from "../../redux/testimonials/testimonialsSelectors";
 import styles from "./Testimonials.module.css";
 import Icon from "../shared/Icon/Icon";
 
