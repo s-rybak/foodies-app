@@ -1,4 +1,5 @@
-.signIn {}
+.signIn {
+}
 
 .title {
   margin: 0 0 32px;
@@ -10,20 +11,22 @@
   font-weight: 900;
 }
 
-.input {}
+.input {
+}
 
-.form {}
+.form {
+}
 
 .subtitle {
   font-size: 14px;
-  color: #bfbebe;
 }
 
-.subtitle>span {
+.subtitle > span {
   color: #000;
 }
 
-.form {}
+.form {
+}
 
 .inputs {
   margin: 0 0 32px;
@@ -87,6 +90,12 @@
   width: 20px;
   display: flex;
   justify-content: center;
+  fill: none;
+  stroke: currentColor;
+}
+
+.error-container {
+  padding: 10px;
 }
 
 @media (min-width: 768px) {
@@ -101,7 +110,6 @@
 
   .inputs {
     margin: 0 0 40px;
-
   }
 
   .input {
@@ -125,4 +133,7 @@
     height: 56px;
   }
 
+  .button:hover {
+    background-color: var(--color-main);
+  }
 }
