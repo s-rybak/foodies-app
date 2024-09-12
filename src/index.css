@@ -77,6 +77,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
 button {
   cursor: pointer;
   padding: 0;
