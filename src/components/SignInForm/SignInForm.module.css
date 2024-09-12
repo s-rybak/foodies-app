@@ -11,6 +11,9 @@
 }
 
 .subtitle {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
   font-size: 14px;
   color: #bfbebe;
 }

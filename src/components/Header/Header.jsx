@@ -17,6 +17,12 @@ export default function Header() {
   const [modalSignInOpen, setModalSignInOpen] = useState(false);
   const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalSignUpOpen((prev) => !prev);
+    setModalSignInOpen((prev) => !prev);
+  };
+
   return (
     <header className={cx(styles.header, !isHome && styles.headerAll)}>
       <NavLink
@@ -44,13 +50,13 @@ export default function Header() {
         isOpen={modalSignInOpen}
         onClose={() => setModalSignInOpen(false)}
       >
-        <SignInForm variant="sign-in" />
+        <SignInForm variant="sign-in"  toggleModal={toggleModal}/>
       </CustomModal>
       <CustomModal
         isOpen={modalSignUpOpen}
         onClose={() => setModalSignUpOpen(false)}
       >
-        <SignInForm variant="sign-up" />
+        <SignInForm variant="sign-up" toggleModal={toggleModal} />
       </CustomModal>
       <CustomModal
         isOpen={modalLogoutOpen}

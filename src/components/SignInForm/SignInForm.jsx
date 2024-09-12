@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import css from "./SignInForm.module.css";
 import icons from "assets/img/icons/icons.svg";
-// import cx from "classnames";
 import { useEffect, useState } from "react";
-const SignInForm = ({ variant }) => {
+const SignInForm = ({ variant, toggleModal }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
@@ -58,19 +56,17 @@ const SignInForm = ({ variant }) => {
           {variant === "sign-in" ? "Sign in" : "Create"}
         </button>
       </form>
-      <p className={css.subtitle}>
-        {variant === "sign-in" ? (
-          <>
-            Don't have an account?{" "}
-            <Link to="/foodies-app/auth/sign-up">Create an account</Link>
-          </>
-        ) : (
-          <>
-            I already have an account?{" "}
-            <Link to="/foodies-app/auth/sign-in">Sign in</Link>
-          </>
-        )}
-      </p>
+      <button type="button" onClick={toggleModal} className={css.subtitle}>
+        {variant === "sign-in"
+          ? "Don't have an account?"
+          : "I already have an account?"}
+
+          <span>
+          {variant === "sign-in"
+          ? " Create an account"
+          : " Sign in"}
+          </span>
+      </button>
     </div>
   );
 };
