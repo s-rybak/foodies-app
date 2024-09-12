@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000";
 
 export const apiInstance = axios.create({
   baseURL: BASE_URL,
@@ -20,4 +20,12 @@ export const categoriesApi = {
   getCategories: () => apiInstance.get("/api/categories"),
   getMoreCategories: (value) =>
     apiInstance.get(`/api/categories?page=${value}`),
+};
+
+export const areasApi = {
+  getAreas: () => apiInstance.get("/api/areas"),
+};
+
+export const ingredientsApi = {
+  getIngredients: () => apiInstance.get("/api/ingredients"),
 };
