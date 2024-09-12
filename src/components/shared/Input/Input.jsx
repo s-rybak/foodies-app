@@ -3,6 +3,7 @@ import Icon from "../Icon/Icon.jsx";
 import cx from "classnames";
 
 const Input = ({
+  register,
   placeholder,
   iconId,
   type,
@@ -10,6 +11,8 @@ const Input = ({
   notEmpty,
   width,
   classname,
+  name,
+  id,
 }) => {
   const handleClickEye = () => {
     togglePasswordVisibility();
@@ -18,18 +21,24 @@ const Input = ({
   if (!iconId)
     return (
       <input
+        id={id}
         className={cx(styles.input, classname, `${notEmpty ? styles.notEmpty : ""}`)}
         placeholder={placeholder}
         type={type}
+        name={name}
+        {...register(name, { required: true })}
       />
     );
 
   return (
     <div className={styles.container}>
       <input
+        id={id}
         className={cx(styles.input, classname, `${notEmpty ? styles.notEmpty : ""}`)}
         placeholder={placeholder}
         type={type}
+        name={name}
+        {...register(name)}
       />
       {iconId && (
         <button className={styles.btn} onClick={handleClickEye} type="button">

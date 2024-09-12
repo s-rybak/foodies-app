@@ -1,9 +1,9 @@
 import styles from "./Subtitle.module.css";
-const Subtitle = () => {
+const Subtitle = ({ text }) => {
   return (
     <div className={styles.subtitleWrapper}>
       <p className={styles.subtitle}>
-        Reveal your culinary art, share your favorite recipe and create gastronomic masterpieces with us.
+        {text}
       </p>
     </div>
   );

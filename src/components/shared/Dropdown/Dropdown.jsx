@@ -6,7 +6,7 @@ const Dropdown = React.forwardRef(
   ({ options, placeholder, className, onChange, value }, ref) => (
     <Select
       ref={ref}
-      options=""
+      options={options}
       placeholder={placeholder}
       className={className}
       onChange={onChange}

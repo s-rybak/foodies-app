@@ -10,16 +10,8 @@ import Input from "../../components/shared/Input/Input";
 import IngredientSelector from "../../components/AddRecipe/IngredientSelector/IngredientSelector";
 import IconButton from "../../components/shared/IconButton/IconButton";
 import Button from "../../components/shared/Button/Button";
-//import FormTitleText from "../../components/AddRecipeForm/FormTiltle/FormTiltleText";
-//import { useGetCategoriesQuery } from "../../store/services/categoryService";
-//import { useGetIngredientsQuery } from "../../store/services/ingredientService";
-//import { useGetAreasQuery } from "../../store/services/areaService";
-//import { useCreateRecipeMutation } from "../../store/services/recipeService";
 
 import stylesInput from "../../components/AddRecipe/CustomInput.module.css";
-
-//import { setUserAddedRecipes } from "../../store/features/profileSlice";
-//import { selectRecipes } from "../../store/selectors/profileSelectors";
 
 import useAutoResizeTextarea from "../../utilities/hooks/useAutoResizeTextarea";
 //import { selectId } from "../../store/features/authSlice";
@@ -36,16 +28,17 @@ const AddRecipe = () => {
 
         <div className={styles.titleWrapper}>
           <MainTitle text="add recipe" />
-          <Subtitle />
+          <Subtitle text ="Reveal your culinary art, share your favorite recipe and create gastronomic masterpieces with us." />
         </div>
       </div>
-      <form onSubmit="" className={styles.form}>
+      <form onSubmit={ onSubmit } className={styles.form}>
         <div className={styles.formWrapper}>
-          <ImageUploader />
+          <ImageUploader register={register} />
 
           <div>
             <div className={styles.nameInputWrapper}>
               <Input
+                register={register}
                 type="text"
                 name="title"
                 placeholder="The name of the recipe"
@@ -57,18 +50,24 @@ const AddRecipe = () => {
             <div className={styles.recipeData}>
               <div className={styles.categoryAndTime}>
                 <div className={styles.recipeData}>
-                  <IngredientSelector time={time} setTime={setTime} />
+                  <IngredientSelector
+                    register={register}
+                    time={time}
+                    setTime={setTime}
+                    setValue={setValue}
+                    selectedIngredients={selectedIngredients}
+                    setSelectedIngredients={setSelectedIngredients}
+                    watch={watch}
+                  />
                   {/* TODO: add errors parser */}
                 </div>
               </div>
             </div>
             <div className={styles.recipeIncstructions}>
               <h2 className={styles.subheadear}>Recipe preparation</h2>
-              <div
-                className={`${styles.textareaWrapper} ${stylesInput.form__group} ${stylesInput.field}`}
-              >
+              <div className={`${styles.textareaWrapper} ${stylesInput.form__group} ${stylesInput.field}`}>
                 <textarea
-                  onInput=""
+                  onInput={handleWordCount}
                   id="instructions"
                   name="instructions"
                   placeholder="Enter recipe"
@@ -79,8 +78,7 @@ const AddRecipe = () => {
                   Enter recipe
                 </label>
                 <span className={styles.symbolCounter}>
-                  {/* TODO:add counter */}
-                  0/200
+                  {wordCount}/{maxWords}
                 </span>
                 {/* TODO: add errors parser */}
               </div>
@@ -89,7 +87,7 @@ const AddRecipe = () => {
               <IconButton
                 iconId="icon-trash"
                 type="button"
-                onClick=""
+                onClick={handleReset}
                 width="20"
                 height="20"
                 style={styles.trashBtn}

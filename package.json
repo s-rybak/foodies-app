@@ -5,12 +5,14 @@
   "homepage": "https://s-rybak.github.io/foodies-app/",
   "dependencies": {
     "@babel/core": "^7.25.2",
+    "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
+    "dotenv": "^16.4.5",
     "modern-normalize": "^3.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,7 +25,8 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "sass": "^1.78.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

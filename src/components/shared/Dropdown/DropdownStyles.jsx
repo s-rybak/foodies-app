@@ -67,6 +67,13 @@ const styles = {
     ...styles,
     padding: "10px 0px",
   }),
+  option: (styles, { isFocused, isSelected }) => ({
+    ...styles,
+    color: isFocused ? "var(--color-button)" : "var(--color-main)",
+    backgroundColor: isFocused ? "var(--color-gray)" : "var(--color-white)",
+    
+  }),
+
 };
 
 export default styles;
