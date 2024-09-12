@@ -12,8 +12,8 @@ import { Modal } from 'components/Modal';
 import Logout from 'components/Logout/Logout';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from 'store/users/userOperation';
-import { selectUser } from 'store/users/userSelectors';
+import { fetchUser } from '../../redux/users/userOperation';
+import { selectUser } from '../../redux/users/userSelectors';
 
 // const userData = {
 //   id: 'f8a2df06-eac5-49d1-8d13-47b21554ce7e',
@@ -25,10 +25,9 @@ const UserPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector(selectUser);
-
   const [activeTab, setActiveTab] = useState('my-recipes');
-  const [pageNumber, setPageNumber] = useState(1);
-  const [dataRecepi, setDataRecepi] = useState([
+  const [, setPageNumber] = useState(1);
+  const [dataRecepi] = useState([
     { id: '1', name: 'Recipe 1' },
     { id: '2', name: 'Recipe 2' },
   ]);

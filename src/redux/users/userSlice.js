@@ -5,7 +5,7 @@ import { fetchUser } from './userOperation.js';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: [],
+    user: {},
     loading: false,
     error: null,
   },
