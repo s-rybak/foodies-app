@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import css from "./RecipeList.module.css";
 import { RecipeCard } from "components/RecipeCard/RecipeCard";
 import recipeImg from "../../assets/img/recipes/recipe1.png";
@@ -51,6 +51,36 @@ const dummyListInfo = [
   },
 ];
 export const RecipeList = () => {
+  const [recipes, setRecipes] = useState([]);
+
+  const loadRecipes = async () => {
+    try {
+      const res = await fetch(
+        "https://foodies-api-hrrk.onrender.com/api/recipes?page=1&limit=10"
+      );
+
+      if (!res.ok) {
+        console.log("The request returned an error", res.error);
+      }
+
+      const data = await res.json();
+      console.log(data);
+
+      return data;
+    } catch (error) {
+      console.log("The request returned an error", error);
+    }
+  };
+
+  useEffect(() => {
+    const recipes = loadRecipes();
+    console.log(recipes);
+
+    setRecipes(recipes);
+  }, []);
+
+  console.log(recipes);
+
   return (
     <ul className={css.list}>
       {dummyListInfo.map((recipe) => (
