@@ -3,51 +3,51 @@ import RecipeMainInfoImage from "./RecipeMainInfoImage/RecipeMainInfoImage";
 import RecipeTags from "./RecipeTags/RecipeTags";
 import RecipeTitle from "./RecipeTitle/RecipeTitle";
 import RecipeAuthor from "./RecipeAuthor/RecipeAuthor";
-
-import fish_desktop_1x from "../../../assets/img/receip_temporary/fish_desktop_1x.webp";
-import fish_desktop_2x from "../../../assets/img/receip_temporary/fish_desktop_2x.webp";
-import fish_tablet_1x from "../../../assets/img/receip_temporary/fish_tablet_1x.webp";
-import fish_tablet_2x from "../../../assets/img/receip_temporary/fish_tablet_2x.webp";
-import fish_mobile_1x from "../../../assets/img/receip_temporary/fish_mobile_1x.webp";
-import fish_mobile_2x from "../../../assets/img/receip_temporary/fish_mobile_2x.webp";
-import author_photo_1x from "../../../assets/img/receip_temporary/author_photo_1x.webp";
-import author_photo_2x from "../../../assets/img/receip_temporary/author_photo_2x.webp";
 import Container from "components/UI/Container/Container";
+import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
+import RecipePreparation from "../RecipePreparation/RecipePreparation";
 
 import css from "./RecipeMainInfo.module.css";
-import RecipeIngredients from "../RecipeIngredients/RecipeIngredients";
 
-function RecipeMainInfo({ ingredients }) {
+function RecipeMainInfo({
+	image,
+	author,
+	title,
+	tags,
+	description,
+	preparation,
+	isFavorite,
+	ingredients,
+}) {
 	return (
 		<Container className={css.container}>
 			<RecipeMainInfoImage
-				desktopStandard={fish_desktop_1x}
-				desktopRetina={fish_desktop_2x}
-				tabletStandard={fish_tablet_1x}
-				tabletRetina={fish_tablet_2x}
-				mobileStandard={fish_mobile_1x}
-				mobileRetina={fish_mobile_2x}
-				altText="Fish"
+				desktopStandard={image.desktopStandard}
+				desktopRetina={image.desktopRetina}
+				tabletStandard={image.tabletStandard}
+				tabletRetina={image.tabletRetina}
+				mobileStandard={image.mobileStandard}
+				mobileRetina={image.mobileRetina}
+				altText={title}
 			/>
 
 			<div className={css.info}>
 				<div className={css.content}>
-					<RecipeTitle>Salmon Avocado Salad</RecipeTitle>
-					<RecipeTags tags={["Seafood", "40 min"]} />
-					<Text>
-						Is a healthy salad recipe that's bigon nutrients and flavor. A
-						moist, pan seared salmon is layered on top of spinach, avocado,
-						tomatoes, and red onions. Then drizzled with a homemade lemon
-						vinaigrette. Is a healthy salad recipe that's big on nutrients and
-						flavor.
-					</Text>
+					<RecipeTitle>{title}</RecipeTitle>
+					<RecipeTags tags={tags} />
+					<Text>{description}</Text>
 					<RecipeAuthor
-						authorPhotoStandard={author_photo_1x}
-						authorPhotoRetina={author_photo_2x}
-						authorName="Nadia"
+						authorId={author.id}
+						authorPhotoStandard={author.photo.standard}
+						authorPhotoRetina={author.photo.retina}
+						authorName={author.name}
 					/>
 				</div>
 				<RecipeIngredients ingredients={ingredients} />
+				<RecipePreparation
+					preparation={preparation}
+					isFavorite={isFavorite}
+				/>
 			</div>
 		</Container>
 	);
