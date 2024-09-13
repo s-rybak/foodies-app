@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   line-height: 0;
-  background-color: var(--color-main);
+  background-color: var(--color-button);
   border-radius: 30px;
   cursor: pointer;
 }
@@ -66,6 +66,7 @@
 }
 
 .link {
+  margin-right: 16px;
   color: var(--color-white);
   font-size: 12px;
   font-weight: 700;
@@ -79,6 +80,11 @@
   display: flex;
   align-items: center;
   background-color: var(--color-main);
+}
+
+.link_logout:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
 }
 
 .icon_logout {

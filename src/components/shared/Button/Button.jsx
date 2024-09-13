@@ -7,13 +7,13 @@ const Button = ({
   onClick = () => {},
   variant = "button",
   type = "button",
-  classname,
+  className,
   id,
 }) => {
   return (
     <button
       type={type}
-      className={cx(styles.button, styles[variant], classname)}
+      className={cx(styles.button, styles[variant], className)}
       onClick={onClick}
       id={id}
       disabled={disabled}
