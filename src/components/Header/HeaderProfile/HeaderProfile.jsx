@@ -67,7 +67,7 @@ const HeaderProfile = ({ isHome, onClick }) => {
         <CustomModal
           isOpen={toogleModal}
           onClose={handlerToogleModal}
-          customeStyles={styleModal.wrap_modal}
+          customStyles={styleModal.wrap_modal}
           btnStyle={styleModal.btn_close}
           width="28"
           height="28"
