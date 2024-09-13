@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/456.b9bd2e70.chunk.js","mappings":"oJAEe,SAASA,IACvB,OAAOC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,aACb,C","sources":["pages/AddRecipe/AddRecipe.jsx"],"sourcesContent":["// import style from './AddRecipe.module.css'\n\nexport default function AddRecipe() {\n\treturn <div>AddRecipe</div>;\n}\n"],"names":["AddRecipe","_jsx","children"],"sourceRoot":""}
