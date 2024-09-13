@@ -13,7 +13,7 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
       .addCase(signUpUser.fulfilled, (state, action) => {
         state.userData = action.payload.user;
@@ -23,13 +23,13 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.userData = action.payload.user;
       })
-      .addMatcher(isAnyOf(signUpUser.pending, signInUser.pending), state => {
+      .addMatcher(isAnyOf(signUpUser.pending, signInUser.pending), (state) => {
         state.isLoading = true;
         state.error = null;
       })
       .addMatcher(
         isAnyOf(signUpUser.fulfilled, signInUser.fulfilled),
-        state => {
+        (state) => {
           state.isLoading = false;
         }
       )
