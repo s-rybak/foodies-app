@@ -2,14 +2,9 @@ import Image from "components/UI/Image/Image";
 import style from "./UserInfo.module.css";
 import avatar from "assets/img/avatar";
 import emptyImages from "assets/img/empty";
-import { Link } from "react-router-dom";
 import { SvgIcon } from "components/UI";
 
-export default function UserInfo({
-  userInfo,
-  profileHeadButton,
-  uploadAvatar = true,
-}) {
+export default function UserInfo({ userInfo, uploadAvatar = true }) {
   const useAvatar = avatar[userInfo.avatar] ?? emptyImages["noImage"];
   const avatarEmpty = avatar[userInfo.avatar] ? false : true;
 
@@ -24,10 +19,12 @@ export default function UserInfo({
               avatarEmpty ? style["no-image"] : ""
             }`}
           />
-          <label className={style["upload-avatar"]}>
-            <input type="file" name="avatar" />
-            <SvgIcon name={"icon-plus"} />
-          </label>
+          {uploadAvatar ?? (
+            <label className={style["upload-avatar"]}>
+              <input type="file" name="avatar" />
+              <SvgIcon name={"icon-plus"} />
+            </label>
+          )}
         </div>
         <h3 className={style["user-login"]}>Nadia</h3>
         <ul className={style["profile-data"]}>
@@ -43,12 +40,6 @@ export default function UserInfo({
           ))}
         </ul>
       </div>
-      <Link
-        to={profileHeadButton.link}
-        className={style["profile-head-button"]}
-      >
-        {profileHeadButton.name}
-      </Link>
     </div>
   );
 }

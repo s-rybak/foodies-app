@@ -22,20 +22,17 @@ export default function ProfileInfo() {
     ],
   };
 
-  const profileHeadButton = {
-    name: "Follow",
-    link: "/",
-  };
+  const userLoginned = false;
 
   return (
     <Container>
       <PathInfo currentPage="Profile" />
-      <Title>Profile</Title>
+      {/* <Title>Profile</Title>
       <UnderTitle maxWidth={442}>
         Reveal your culinary art, share your favorite recipe and create
         gastronomic masterpieces with us.
-      </UnderTitle>
-      <UserInfo userInfo={userInfo} profileHeadButton={profileHeadButton} />
+      </UnderTitle> */}
+      <UserInfo userInfo={userInfo} uploadAvatar={userLoginned} />
     </Container>
   );
 }
