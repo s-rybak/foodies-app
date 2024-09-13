@@ -4,4 +4,4 @@ export const selectRecipeIsLoading = (state) => state.recipes.isLoading;
 
 export const selectRecipeIsError = (state) => state.recipes.isError;
 
-export const selectFavoriteRecipe = (state) => state.recipes.favoriteRecipe;
+export const selectFavoriteRecipes = (state) => state.recipes.favoriteRecipes;

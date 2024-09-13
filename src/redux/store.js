@@ -13,6 +13,12 @@ const authConfig = {
 	whitelist: ["token"],
 };
 
+const recipeConfig = {
+	key: "recipes",
+	storage,
+	whitelist: ["favoriteRecipes"],
+};
+
 /**
  * A store that holds the whole state tree of the application.
  */
@@ -20,7 +26,7 @@ const store = configureStore({
 	reducer: {
 		auth: persistReducer(authConfig, authReducer),
 		categories: categoriesReducer,
-		recipes: recipesReducer,
+		recipes: persistReducer(recipeConfig, recipesReducer),
 		testimonials: testimonialsReducer,
 	},
 	middleware: (getDefaultMiddleware) =>

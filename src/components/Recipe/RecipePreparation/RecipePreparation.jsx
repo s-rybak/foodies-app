@@ -2,19 +2,14 @@ import SectionTitle from "components/UI/SectionTitle/SectionTitle";
 import Text from "components/UI/Text/Text";
 
 import css from "./RecipePreparation.module.css";
-import ButtonOutline from "components/Buttons/ButtonOutline/ButtonOutline";
-import { useState } from "react";
+import RecipeFavoriteButton from "../RecipeFavoriteButton/RecipeFavoriteButton";
 
-function RecipePreparation({ preparation, recipeId }) {
-	const [isFavorite, setIsFavorite] = useState(false);
-
+function RecipePreparation({ instructions, recipeId }) {
 	return (
 		<div>
 			<SectionTitle className={css.title}>Recipe Preparation</SectionTitle>
-			<Text className={css.text}>{preparation}</Text>
-			<ButtonOutline className={css.button}>
-				{isFavorite ? "Remove from favorites" : "Add to favorites"}
-			</ButtonOutline>
+			<Text className={css.text}>{instructions}</Text>
+			<RecipeFavoriteButton recipeId={recipeId} />
 		</div>
 	);
 }

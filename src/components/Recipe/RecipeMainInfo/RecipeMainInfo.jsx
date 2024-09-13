@@ -10,46 +10,36 @@ import RecipePreparation from "../RecipePreparation/RecipePreparation";
 import css from "./RecipeMainInfo.module.css";
 
 function RecipeMainInfo({
-	image,
-	authorId,
-	authorPhotoStandard,
-	authorPhotoRetina,
-	authorName,
+	thumb,
 	title,
 	time,
 	category,
 	description,
-	preparation,
-	recipeId,
+	user,
 	ingredients,
+	instructions,
+	recipeId,
 }) {
 	return (
 		<Container className={css.container}>
 			<RecipeMainInfoImage
-				desktopStandard={image.desktopStandard}
-				desktopRetina={image.desktopRetina}
-				tabletStandard={image.tabletStandard}
-				tabletRetina={image.tabletRetina}
-				mobileStandard={image.mobileStandard}
-				mobileRetina={image.mobileRetina}
+				recipeImage={thumb}
 				altText={title}
 			/>
 
 			<div className={css.info}>
 				<div className={css.content}>
 					<RecipeTitle>{title}</RecipeTitle>
-					<RecipeTags tags={[category, time]} />
-					<Text>{description}</Text>
-					<RecipeAuthor
-						authorId={authorId}
-						authorPhotoStandard={authorPhotoStandard}
-						authorPhotoRetina={authorPhotoRetina}
-						authorName={authorName}
+					<RecipeTags
+						category={category}
+						time={time}
 					/>
+					<Text>{description}</Text>
+					<RecipeAuthor user={user} />
 				</div>
 				<RecipeIngredients ingredients={ingredients} />
 				<RecipePreparation
-					preparation={preparation}
+					instructions={instructions}
 					recipeId={recipeId}
 				/>
 			</div>
