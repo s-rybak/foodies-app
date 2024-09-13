@@ -1,0 +1,10 @@
+.select {
+  border-radius: 20px;
+  padding: 8px;
+  width: 330px;
+}
+
+.container {
+  display: flex;
+  gap: 1cm;
+}

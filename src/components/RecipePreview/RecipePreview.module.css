@@ -1,0 +1,133 @@
+.recipeCard {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+    max-width: 846px;
+    align-items: flex-start;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .recipeCard {
+        max-width: 704px;
+    }
+}
+
+.recipeImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-right: 16px;
+}
+
+@media (max-width: 375px) {
+    .recipeImage {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+.recipeDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    max-width: 610px;
+}
+
+@media (max-width: 768px) {
+    .recipeDetails {
+        max-width: 468px;
+    }
+}
+
+@media (max-width: 375px) {
+    .recipeDetails {
+        max-width: 166px;
+    }
+}
+
+.recipeTitle {
+    font-size: var(--font-size-twenty);
+    color: var(--color-main);
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bolder);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 375px) {
+    .recipeTitle {
+        font-size: var(--font-size-moderate);
+    }
+}
+
+.recipeDescription {
+    font-size: var(--font-size-moderate);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 10px;
+    max-width: 610px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+@media (max-width: 768px) {
+    .recipeDescription {
+        max-width: 468px;
+    }
+}
+
+@media (max-width: 375px) {
+    .recipeDescription {
+        font-size: var(--font-size-little);
+        color: var(--color-gray);
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+}
+
+.link {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.deleteIcon {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: #BFBEBE;
+}

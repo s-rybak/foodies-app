@@ -1,26 +1,61 @@
+import { Link } from "react-router-dom";
 import css from "./RecipeAuthor.module.css";
+import { useSelector } from "react-redux";
+import { selectAuthIsSignedIn } from "../../../../redux/auth/authSelectors";
+import SignInForm from "components/SignInForm/SignInForm";
+import CustomModal from "components/shared/CustomModal/CustomModal";
+import { useState } from "react";
 
-function RecipeAuthor({
-	authorPhotoStandard,
-	authorPhotoRetina,
-	authorName,
-	authorId,
-}) {
+import emptyImage from "../../../../assets/img/empty/no-image.png";
+
+function RecipeAuthor({ user }) {
+	const isSignedIn = useSelector(selectAuthIsSignedIn);
+	const [modalSignInOpen, setModalSignInOpen] = useState(false);
+
+	const openModal = () => {
+		setModalSignInOpen(true);
+	};
 	return (
-		<button className={css.button}>
-			<img
-				className={css.photo}
-				src={authorPhotoStandard || authorPhotoRetina}
-				srcSet={`${authorPhotoStandard} 1x, ${authorPhotoRetina} 2x`}
-				alt={authorName}
-				width={32}
-				height={32}
-			/>
-			<span className={css.labels}>
-				<span className={css.label}>Created by:</span>
-				<span className={css.name}>{authorName}</span>
-			</span>
-		</button>
+		<>
+			{isSignedIn ? (
+				<Link
+					className={css.button}
+					to={`/user/${user.id}`}>
+					<img
+						className={css.photo}
+						src={user.img || emptyImage}
+						alt={user.name}
+						width={32}
+						height={32}
+					/>
+					<span className={css.labels}>
+						<span className={css.label}>Created by:</span>
+						<span className={css.name}>{user.name}</span>
+					</span>
+				</Link>
+			) : (
+				<button
+					onClick={openModal}
+					className={css.button}>
+					<img
+						className={css.photo}
+						src={user.img || emptyImage}
+						alt={user.name}
+						width={32}
+						height={32}
+					/>
+					<span className={css.labels}>
+						<span className={css.label}>Created by:</span>
+						<span className={css.name}>{user.name}</span>
+					</span>
+				</button>
+			)}
+			<CustomModal
+				isOpen={modalSignInOpen}
+				onClose={() => setModalSignInOpen(false)}>
+				<SignInForm variant="sign-in" />
+			</CustomModal>
+		</>
 	);
 }
 
