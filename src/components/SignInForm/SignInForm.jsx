@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import icons from "assets/img/icons/icons.svg";
 
-import { selectAuthIsLoading, selectAuthError } from "../../redux/auth/authSelectors";
+import {
+  selectAuthIsLoading,
+  selectAuthError,
+} from "../../redux/auth/authSelectors";
 import { signInUser, signUpUser } from "./../../redux/auth/authOperations";
 import css from "./SignInForm.module.css";
 import { Error, Loader } from "components";
 
-const SignInForm = ({ variant }) => {
+const SignInForm = () => {
+  const { pathname } = useLocation();
+  const variant = pathname.includes("auth/sign-up") ? "sign-up" : "sign-in";
+
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAuthIsLoading);
   const error = useSelector(selectAuthError);
@@ -20,19 +26,19 @@ const SignInForm = ({ variant }) => {
     setShowPassword(false);
   }, [variant]);
 
-  const handleSignUp = event => {
+  const handleSignUp = (event) => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
     const email = event.currentTarget.elements.email.value;
     const password = event.currentTarget.elements.password.value;
 
     const formData = { name, email, password };
-    
+
     dispatch(signUpUser(formData));
     // TODO: clear form form and successful/error message
-  }
+  };
 
-  const handleSignIn = event => {
+  const handleSignIn = (event) => {
     event.preventDefault();
 
     const email = event.currentTarget.elements.email.value;
@@ -41,17 +47,20 @@ const SignInForm = ({ variant }) => {
     const formData = { email, password };
 
     dispatch(signInUser(formData));
-    
+
     // TODO: clear form form and close modal + maybe redirect to some page
     console.log("Submitted SignIn form for user logging in");
-  }
+  };
 
   return (
     <div className={css.signIn}>
       <h2 className={css.title}>
         {variant === "sign-in" ? "Sign in" : "Sign up"}
       </h2>
-      <form className={css.form} onSubmit={variant === "sign-in" ? handleSignIn : handleSignUp}>
+      <form
+        className={css.form}
+        onSubmit={variant === "sign-in" ? handleSignIn : handleSignUp}
+      >
         <div className={css.inputs}>
           {variant === "sign-up" && (
             <input
@@ -95,10 +104,20 @@ const SignInForm = ({ variant }) => {
           </button>
         </div>
 
-        {error && <div className={css["error-container"]}><Error error={error} /></div>}
+        {error && (
+          <div className={css["error-container"]}>
+            <Error error={error} />
+          </div>
+        )}
 
         <button type="submit" className={css.button}>
-          {isLoading ? <Loader /> : variant === "sign-in" ? "Sign in" : "Create"}
+          {isLoading ? (
+            <Loader />
+          ) : variant === "sign-in" ? (
+            "Sign in"
+          ) : (
+            "Create"
+          )}
         </button>
       </form>
 
@@ -106,12 +125,16 @@ const SignInForm = ({ variant }) => {
         {variant === "sign-in" ? (
           <>
             Don't have an account?{" "}
-            <Link to="/foodies-app/auth/sign-up">Create an account</Link>
+            <Link to="/auth/sign-up" replace={true}>
+              Create an account
+            </Link>
           </>
         ) : (
           <>
             I already have an account?{" "}
-            <Link to="/foodies-app/auth/sign-in">Sign in</Link>
+            <Link to="/auth/sign-in" replace={true}>
+              Sign in
+            </Link>
           </>
         )}
       </p>

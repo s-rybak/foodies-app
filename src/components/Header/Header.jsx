@@ -16,10 +16,14 @@ import SignInForm from "components/SignInForm/SignInForm";
 export default function Header() {
   const { pathname } = useLocation();
 
+  const modalSignInOpen = pathname.includes("/auth/sign-in");
+  const modalSignUpOpen = pathname.includes("/auth/sign-up");
+  // const modalLogoutOpen = pathname.includes("/auth/log-out");
+
   const isSignedIn = useSelector(selectAuthIsSignedIn);
 
-  const [modalSignInOpen, setModalSignInOpen] = useState(false);
-  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
+  /*   const [modalSignInOpen, setModalSignInOpen] = useState(false);
+  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);*/
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
 
   const isHome = pathname === "/" || pathname.split("/")[1] === "category";
@@ -40,24 +44,14 @@ export default function Header() {
           isHome={isHome}
         />
       ) : (
-        <Auth
-          isHomepage={isHome}
-          openSignIn={() => setModalSignInOpen(true)}
-          openSignUp={() => setModalSignUpOpen(true)}
-        />
+        <Auth isHomepage={isHome} />
       )}
 
-      <CustomModal
-        isOpen={modalSignInOpen}
-        onClose={() => setModalSignInOpen(false)}
-      >
-        <SignInForm variant="sign-in" />
+      <CustomModal isOpen={modalSignInOpen}>
+        <SignInForm />
       </CustomModal>
-      <CustomModal
-        isOpen={modalSignUpOpen}
-        onClose={() => setModalSignUpOpen(false)}
-      >
-        <SignInForm variant="sign-up" />
+      <CustomModal isOpen={modalSignUpOpen}>
+        <SignInForm />
       </CustomModal>
       <CustomModal
         isOpen={modalLogoutOpen}
