@@ -11,16 +11,8 @@ export const api = axios.create({
   headers: { "content-type": "application/json" },
 });
 
-export const setToken = (token) => {
+export const setToken = token => {
   api.defaults.headers.common.Authorization = "Bearer " + token;
-};
-
-export const areasApi = {
-  getAreas: () => api.get("/api/areas"),
-};
-
-export const ingredientsApi = {
-  getIngredients: () => api.get("/api/ingredients"),
 };
 
 export default api;

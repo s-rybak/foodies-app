@@ -41,9 +41,9 @@ const RecipeFilters = ({ changeHandler }) => {
   );
 };
 
-<div className={css.container}>
-  <IngredientsFilters />
-  <AreaFilters />
-</div>;
+// <div className={css.container}>
+//   <IngredientsFilters />
+//   <AreaFilters />
+// </div>; ???
 
 export default RecipeFilters;
