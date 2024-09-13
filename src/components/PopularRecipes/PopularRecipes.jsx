@@ -5,6 +5,7 @@ import RecipeCard from "./components/RecipeCard/RecipeCard";
 
 const PopularRecipes = () => {
   const [recipes] = useState([1, 2, 3, 4]);
+  // Покищо прописані тестові дані, далі заміняться
 
   return (
     <div className={style["popular-recipes"]}>
