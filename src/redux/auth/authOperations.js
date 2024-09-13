@@ -45,7 +45,7 @@ export const verifyUserEmail = createAsyncThunk(
   "auth/verifyUserEmail",
   async (verificationToken, thunkApi) => {
     try {
-      const { data } = await api.get(`/api/auth/verify/${verificationToken}`);
+      await api.get(`/api/auth/verify/${verificationToken}`);
     } catch (error) {
       if (error.status === 404) {
         return thunkApi.rejectWithValue(

@@ -6,7 +6,7 @@ import icons from "assets/img/icons/icons.svg";
 import css from "./SignInForm.module.css";
 
 import { signInUser, signUpUser } from "./../../redux/auth/authOperations";
-import { selectAuthIsLoading, selectAuthError, selectAuthIsSignedIn } from "../../redux/auth/authSelectors";
+import { selectAuthIsLoading, selectAuthError } from "../../redux/auth/authSelectors";
 import { resetAuthUserDataAndError } from "../../redux/auth/authSlice";
 import { Error, Loader } from "components";
 import { AnimatedIconText } from "components/AnimatedIcon/AnimatedIconText";
