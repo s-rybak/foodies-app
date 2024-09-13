@@ -13,7 +13,7 @@ import ingredientsReducer from "./ingredients/ingredientsSlice";
 const authConfig = {
     key: "auth",
     storage,
-    whitelist: ["token"],
+    whitelist: ["token","isSignedIn"],
 };
 
 const recipeConfig = {
