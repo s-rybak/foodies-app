@@ -9,7 +9,6 @@ import RecipeInfo from "components/Recipe/RecipeInfo/RecipeInfo";
 
 const RecipePage = () => {
   const { id } = useParams();
-
   return (
     <div className={style["recipe-page"]}>
       <Container>
