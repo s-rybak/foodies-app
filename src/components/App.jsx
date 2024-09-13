@@ -11,6 +11,7 @@ const Category = lazy(() => import("pages/Category/Category.jsx"));
 const Recipe = lazy(() => import("pages/Recipe/Recipe.jsx"));
 const UserPage = lazy(() => import('pages/UserPage/UserPage.jsx'));
 const NotFound = lazy(() => import("pages/NotFound/NotFound.jsx"));
+const AddRecipe = lazy(() => import("pages/AddRecipe/AddRecipe.jsx"));
 
 export const App = () => {
 
@@ -29,6 +30,7 @@ export const App = () => {
                     <Route path="/user/:id" element={<UserPage/>}/>
                     <Route path="/recipe/:recipeId" element={<Recipe/>}/>
                     <Route path="*" element={<NotFound/>}/>
+                    <Route path="/recipe/add" element={<AddRecipe />} />
                 </Route>
             </Routes>
         </BrowserRouter>

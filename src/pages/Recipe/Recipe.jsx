@@ -14,7 +14,7 @@ const RecipePage = () => {
       <Container>
         <PathInfo currentPage="Recipe name" />
         <RecipeInfo />
-        <PopularRecipes />{" "}
+        <PopularRecipes />
         {/* Відштохуючись від завдання Oleh-Cheliakh взяли шлях до компонента */}
       </Container>
     </div>

@@ -8,7 +8,7 @@ function RecipeIngredient({ image, name, amount }) {
 	return (
 		<div className={css.container}>
 			<RecipeIngredientImage
-				standardImage={image}
+				image={image}
 				altText={name}
 			/>
 			<div className={css.text}>

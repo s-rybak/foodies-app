@@ -1,7 +1,5 @@
-import style from './AddRecipe.module.css'
+// import style from './AddRecipe.module.css'
 
 export default function AddRecipe() {
-  return (
-    <div>AddRecipe</div>
-  )
+	return <div>AddRecipe</div>;
 }
