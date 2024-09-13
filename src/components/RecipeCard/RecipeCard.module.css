@@ -1,13 +1,11 @@
 .card {
   list-style: none;
-
-  max-width: 343px;
+  width: 100%;
 }
 
 .image {
   margin: 0 0 16px;
-
-  height: 230px;
+  height: 275px;
   width: 100%;
 
   object-fit: cover;
@@ -98,7 +96,6 @@
 
 @media (min-width: 768px) {
   .card {
-    max-width: 342px;
   }
 
   .image {
@@ -132,6 +129,5 @@
 
 @media screen and (min-width: 1440px) {
   .card {
-    width: 290px;
   }
 }

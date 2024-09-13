@@ -17,7 +17,7 @@ const dummyCardInfo = {
 };
 export const RecipeCard = () => {
   return (
-    <li className={css.card}>
+    <div className={css.card}>
       <img className={css.image} src={recipeImg} alt="Recipe photo" />
       <h3 className={css.title}>{dummyCardInfo.title}</h3>
       <p className={css.text}>{dummyCardInfo.text}</p>
@@ -43,6 +43,6 @@ export const RecipeCard = () => {
           </button>
         </div>
       </div>
-    </li>
+    </div>
   );
 };
