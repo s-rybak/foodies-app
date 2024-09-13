@@ -1,4 +1,3 @@
-import styles from './/UserInfo.module.css';
 import Image from "components/UI/Image/Image";
 import style from "./UserInfo.module.css";
 import emptyImages from "../../assets/img/empty";
