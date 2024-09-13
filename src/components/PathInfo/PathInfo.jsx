@@ -7,8 +7,10 @@ const PathInfo = ({ currentPage }) => {
     <div className={style["path-info"]}>
       <Link to="/" className={style["home-link"]}>
         Home
-      </Link>{" "}
-      / <span>{currentPage}</span>
+      </Link>
+      <span className={style["current-page"]}>{currentPage}</span>
+
+      <UserInfo userInfo={userInfo} />
     </div>
   );
 };

@@ -1,26 +1,19 @@
 // PopularRecipes.jsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./PopularRecipes.module.css";
+import RecipeCard from "./components/RecipeCard/RecipeCard";
 
 const PopularRecipes = () => {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/recipes/popular")
-      .then((response) => response.json())
-      .then((data) => setRecipes(data))
-      .catch((error) =>
-        console.error("Error fetching popular recipes:", error)
-      );
-  }, []);
+  const [recipes] = useState([1, 2, 3, 4]);
 
   return (
     <div className={style["popular-recipes"]}>
-      <h2>Popular Recipes</h2>
+      <h2 className={style["popular-title"]}>Popular Recipes</h2>
       <ul className={style["recipes-list"]}>
         {recipes.map((recipe) => (
           <li key={recipe.id} className={style["recipe-item"]}>
             <RecipeCard recipe={recipe} />
+            {/* Коли компонент буде існувати тоді він підключиться і буде працювати */}
           </li>
         ))}
       </ul>

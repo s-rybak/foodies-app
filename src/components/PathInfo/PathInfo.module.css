@@ -2,13 +2,33 @@
 .path-info {
   font-size: 1rem;
   margin: 20px 0;
+  position: relative;
 }
 
 .home-link {
   text-decoration: none;
-  color: BFBEBE;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-gray);
 }
 
 .home-link:hover {
   text-decoration: underline;
+}
+
+.home-link::after {
+  content: "/";
+  padding: 0 8px;
+}
+
+.current-page {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-main);
 }
