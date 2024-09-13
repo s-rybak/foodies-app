@@ -83,7 +83,7 @@ const SignInForm = ({ variant }) => {
 
       {!success && (
         <>
-          <form className={css.form} onSubmit={variant === "sign-in" ? handleSignIn : handleSignUp}>
+          <form className={css["signin-form"]} onSubmit={variant === "sign-in" ? handleSignIn : handleSignUp}>
             <div className={css.inputs}>
               {variant === "sign-up" && (
                 <input
