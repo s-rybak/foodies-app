@@ -1,5 +1,4 @@
-.signIn {
-}
+.signIn {}
 
 .title {
   margin: 0 0 32px;
@@ -11,22 +10,19 @@
   font-weight: 900;
 }
 
-.input {
-}
+.input {}
 
-.form {
-}
+.form {}
 
 .subtitle {
   font-size: 14px;
 }
 
-.subtitle > span {
+.subtitle>span {
   color: #000;
 }
 
-.form {
-}
+.form {}
 
 .inputs {
   margin: 0 0 32px;
@@ -71,8 +67,9 @@
   border: 1px solid #bfbebe;
   background-color: #bfbebe;
 
-  color: #fff;
+  transition: all 0.3s ease-in-out;
 
+  color: #fff;
   outline: none;
 }
 

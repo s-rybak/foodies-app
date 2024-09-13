@@ -77,6 +77,7 @@ const SignInForm = () => {
             placeholder="Email*"
             required
             className={css.input}
+            value="setid68728@barakal.com"
           />
           <input
             type={showPassword ? "text" : "password"}
@@ -86,6 +87,7 @@ const SignInForm = () => {
             title="Password should have a minimum length of 8 characters, contain at least one letter (either uppercase or lowercase), at least one digit, may include special characters like @, #, %, ^, $, _, !, %, *, ?, ), (, and &"
             required
             className={css.input}
+            value="sdfas1dfasdfasdfasdfasdfasd"
           />
           <button
             className={css.showPass}
