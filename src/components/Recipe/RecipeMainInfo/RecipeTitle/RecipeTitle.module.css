@@ -1,0 +1,14 @@
+.title {
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bolder);
+  text-transform: uppercase;
+  line-height: 1.33;
+}
+
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: var(--font-size-normal);
+    line-height: 1.167;
+  }
+}
