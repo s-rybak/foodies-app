@@ -2,7 +2,7 @@ import Button from "../shared/Button/Button.jsx";
 import IconButton from "../shared/IconButton/IconButton.jsx";
 import styles from "./FollowerCard.module.css";
 import SmallRecipePhoto from "../SmallRecipePhoto/SmallRecipePhoto.jsx";
-import useResponsiveValue  from "../../utilities/hooks/useResponsiveValue.js";
+import useResponsiveValue from "../../utilities/hooks/useResponsiveValue.js";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectId } from "../../redux/auth/authSlice.js";
@@ -38,11 +38,14 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
           <h5 className={styles.name}> {data.name.split(" ")[0]}</h5>
           <p className={styles.descr}>Own recipes: {data.totalRecipes}</p>
           <Button
-            disabled={data._id === 1} //asd
+            disabled={data._id === 1}
             text={btnText()}
             variant="follow_user"
+            className={styles.followBtn}
             onClick={() =>
-              btnText() === "follow" ? handleFollowUser(data._id) : handleUnfollowUser(data._id)
+              btnText() === "follow"
+                ? handleFollowUser(data._id)
+                : handleUnfollowUser(data._id)
             }
           />
         </div>
@@ -53,7 +56,10 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
             if (idx < recipeCardsQuantity) {
               return (
                 <li key={recipe._id}>
-                  <SmallRecipePhoto imgUrl={recipe.thumb} title={recipe.title} />
+                  <SmallRecipePhoto
+                    imgUrl={recipe.thumb}
+                    title={recipe.title}
+                  />
                 </li>
               );
             }

@@ -40,10 +40,26 @@
 
 .descr {
   font-size: 12px;
-  color: rgba(5, 5, 5, 0.6);
+  color: #BFBEBE;
   padding-bottom: 8px;
   line-height: 18px;
 }
+
+.followBtn {
+ background-color: #ffffff;
+ color: #BFBEBE;
+ border: 1px solid #BFBEBE;
+ outline: none;
+ cursor: pointer;
+ font-weight: 700;
+ line-height: 1.5;
+ padding: 14px;
+ font-size: 12px;
+ border-radius: 30px;
+ text-transform: uppercase;
+}
+
+
 
 .followerCardList:nth-last-child {
   border: none;
@@ -52,11 +68,13 @@
 .iconBtn {
   background-color: #ffffff;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #BFBEBE;
 }
 
 .icon {
   stroke: #050505;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50px;
 }
 
 .iconBtn:hover .icon {
