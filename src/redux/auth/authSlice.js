@@ -1,6 +1,11 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
-import { signInUser, signUpUser } from "./authOperations";
+import {
+  signUpUser,
+  resendVerificationEmail,
+  signInUser,
+  verifyUserEmail,
+} from "./authOperations";
 
 const initialState = {
   token: null,
@@ -14,32 +19,51 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setError(state, action) {
-      state.error = action.payload;
+    resetAuthUserDataAndError(state) {
+      state.userData = initialState.userData;
+      state.error = initialState.error;
     },
   },
   extraReducers: builder =>
     builder
       .addCase(signUpUser.fulfilled, (state, action) => {
-        state.userData = action.payload.user;
+        state.userData = { email: action.payload.user?.email };
       })
       .addCase(signInUser.fulfilled, (state, action) => {
         state.isSignedIn = true;
         state.token = action.payload.token;
         state.userData = action.payload.user;
       })
-      .addMatcher(isAnyOf(signUpUser.pending, signInUser.pending), state => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addMatcher(
-        isAnyOf(signUpUser.fulfilled, signInUser.fulfilled),
+        isAnyOf(
+          signUpUser.pending,
+          resendVerificationEmail.pending,
+          verifyUserEmail.pending,
+          signInUser.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          signUpUser.fulfilled,
+          resendVerificationEmail.fulfilled,
+          verifyUserEmail.fulfilled,
+          signInUser.fulfilled
+        ),
         state => {
           state.isLoading = false;
         }
       )
       .addMatcher(
-        isAnyOf(signUpUser.rejected, signInUser.rejected),
+        isAnyOf(
+          signUpUser.rejected,
+          resendVerificationEmail.rejected,
+          verifyUserEmail.rejected,
+          signInUser.rejected
+        ),
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;
@@ -47,6 +71,6 @@ const authSlice = createSlice({
       ),
 });
 
-export const { setError } = authSlice.actions;
+export const { resetAuthUserDataAndError } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

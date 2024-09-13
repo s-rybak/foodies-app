@@ -6,8 +6,8 @@ import icons from "assets/img/icons/icons.svg";
 import css from "./SignInForm.module.css";
 
 import { signInUser, signUpUser } from "./../../redux/auth/authOperations";
-import { selectAuthIsLoading, selectAuthError } from "../../redux/auth/authSelectors";
-import { setError } from "../../redux/auth/authSlice";
+import { selectAuthIsLoading, selectAuthError, selectAuthIsSignedIn } from "../../redux/auth/authSelectors";
+import { resetAuthUserDataAndError } from "../../redux/auth/authSlice";
 import { Error, Loader } from "components";
 import { AnimatedIconText } from "components/AnimatedIcon/AnimatedIconText";
 
@@ -20,11 +20,9 @@ const SignInForm = ({ variant }) => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
+    dispatch(resetAuthUserDataAndError());
     setShowPassword(false);
-    return () => {
-      dispatch(setError(null));
-    };
-  }, [variant, dispatch]);
+  }, [dispatch]);
 
   const handleSignUp = event => {
     event.preventDefault();
@@ -49,7 +47,7 @@ const SignInForm = ({ variant }) => {
     });
   }
 
-  const handleSignIn = event => {
+  const handleSignIn = async event => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -58,20 +56,12 @@ const SignInForm = ({ variant }) => {
 
     const formData = { email, password };
 
-    dispatch(signInUser(formData)).then((action) => {
-      if (signInUser.fulfilled.match(action)) {
-        setSuccess({
-          title: "Registration successful!",
-          message: `A verification email has been sent to your email address: ${email}. `
-            + "Please check your inbox and follow the instructions to confirm your email."
-        });
-        form.reset();
-      }
-    });
-    
-    // TODO: clear form form and close modal + maybe redirect to some page
-    console.log("Submitted SignIn form for user logging in");
-  }
+    const resultAction = await dispatch(signInUser(formData));
+
+    if (signInUser.fulfilled.match(resultAction)) {
+      form.reset();
+    }
+  };
 
   return (
     <div className={css.signIn}>
@@ -89,16 +79,18 @@ const SignInForm = ({ variant }) => {
                 <input
                   type="text"
                   name="name"
+                  autoComplete="name"
                   placeholder="Name*"
                   required
-                  minlength="3"
-                  maxlength="100"
+                  minLength="3"
+                  maxLength="100"
                   className={css.input}
                 />
               )}
               <input
                 type="email"
                 name="email"
+                autoComplete="email"
                 placeholder="Email*"
                 required
                 className={css.input}
@@ -106,6 +98,7 @@ const SignInForm = ({ variant }) => {
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
+                autoComplete="current-password"
                 placeholder="Password*"
                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=^[A-Za-z\d@#%^$_!%*?\(\)&]{8,}$).*"
                 title="Password should have a minimum length of 8 characters, contain at least one letter (either uppercase or lowercase), at least one digit, may include special characters like @, #, %, ^, $, _, !, %, *, ?, ), (, and &"
