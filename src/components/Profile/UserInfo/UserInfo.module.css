@@ -1,7 +1,7 @@
 .profile-head-holder {
   max-width: 400px;
   min-width: 300px;
-  margin-bottom: 40px;
+  /*margin-bottom: 40px;*/
 }
 .profile-head {
   border: 1px solid var(--color-gray);

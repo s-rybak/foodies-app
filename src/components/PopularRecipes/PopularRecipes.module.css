@@ -1,0 +1,19 @@
+.popular-recipes {
+  margin: 120px 0;
+}
+
+.recipes-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.popular-title {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-main);
+  margin-bottom: 40px;
+}
