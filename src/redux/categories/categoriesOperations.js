@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { categoriesApi } from "../../services/Api.js";
+import { api } from "services/Api";
 
 export const fetchCategories = createAsyncThunk(
   "getCategories",
   async (_, thunkAPI) => {
     try {
-      const res = await categoriesApi.getCategories();
+      const res = await api.get("/api/categories");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -18,7 +18,7 @@ export const fetchMoreCategories = createAsyncThunk(
   "getMoreCategories",
   async (value, thunkAPI) => {
     try {
-      const res = await categoriesApi.getMoreCategories(value);
+      const res = await api.get(`/api/categories?page=${value}`);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

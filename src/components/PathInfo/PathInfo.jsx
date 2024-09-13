@@ -9,8 +9,6 @@ const PathInfo = ({ currentPage }) => {
         Home
       </Link>
       <span className={style["current-page"]}>{currentPage}</span>
-
-      <UserInfo userInfo={userInfo} />
     </div>
   );
 };
