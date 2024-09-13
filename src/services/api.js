@@ -16,3 +16,4 @@ export const setToken = token => {
 };
 
 export default api;
+
