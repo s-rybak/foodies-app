@@ -48,7 +48,7 @@ export default function Header() {
       )}
 
       <CustomModal
-        isOpen={modalSignInOpen}
+        isOpen={!isSignedIn && modalSignInOpen}
         onClose={() => setModalSignInOpen(false)}
       >
         <SignInForm variant="sign-in" />
