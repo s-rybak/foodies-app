@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 6px;
   user-select: none;
+  margin-top: 32px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -14,6 +15,7 @@
 
 @media only screen and (min-width: 1440px) {
   .pagination-container {
+    margin-top: 60px;
     --count: 10;
   }
 }

@@ -27,7 +27,7 @@ const SignInForm = ({ variant }) => {
     const password = event.currentTarget.elements.password.value;
 
     const formData = { name, email, password };
-    
+
     dispatch(signUpUser(formData));
     // TODO: clear form form and successful/error message
   }
@@ -41,7 +41,7 @@ const SignInForm = ({ variant }) => {
     const formData = { email, password };
 
     dispatch(signInUser(formData));
-    
+
     // TODO: clear form form and close modal + maybe redirect to some page
     console.log("Submitted SignIn form for user logging in");
   }
