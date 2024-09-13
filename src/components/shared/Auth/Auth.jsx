@@ -10,7 +10,7 @@ const Auth = ({ isHomepage = true, openSignIn = () => {},
       <div className={styles.authContainer}>
         <Button
           text="SIGN IN"
-          classname={cx(
+          className={cx(
             styles.authButton,
             isHomepage ? styles.homeSignIn : styles.allSighIn
           )}
@@ -18,7 +18,7 @@ const Auth = ({ isHomepage = true, openSignIn = () => {},
         />
         <Button
           text="SIGN UP"
-          classname={cx(
+          className={cx(
             styles.authButton,
             isHomepage ? styles.homeSignUp : styles.allSighUp
           )}
