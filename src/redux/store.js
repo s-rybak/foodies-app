@@ -5,6 +5,8 @@ import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/authSlice";
 import testimonialsReducer from "./testimonials/testimonialsSlice";
 import userReducer from "./users/userSlice";
+import areasReducer from "./areas/areasSlice";
+import ingredientsReducer from "./ingredients/ingredientsSlice";
 
 const authConfig = {
   key: "auth",
@@ -20,8 +22,10 @@ const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     testimonials: testimonialsReducer,
     user: userReducer,
+    areas: areasReducer,
+    ingredients: ingredientsReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [PERSIST],
