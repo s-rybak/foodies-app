@@ -10,7 +10,7 @@ import { selectId } from "../../redux/auth/authSlice.js";
 const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
   const recipeCardsVisability = useResponsiveValue(768, false, 3);
   const recipeCardsQuantity = useResponsiveValue(1440, 3, 4);
-  const authUserId = useSelector(selectId);
+  // const authUserId = useSelector(selectId);
 
   const btnText = () => {
     if (tab === "followers") {
@@ -38,7 +38,7 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
           <h5 className={styles.name}> {data.name.split(" ")[0]}</h5>
           <p className={styles.descr}>Own recipes: {data.totalRecipes}</p>
           <Button
-            disabled={data._id === authUserId}
+            disabled={data._id === 1} //asd
             text={btnText()}
             variant="follow_user"
             onClick={() =>
@@ -71,4 +71,4 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
   );
 };
 
-export default FollowerCard; 
+export default FollowerCard;

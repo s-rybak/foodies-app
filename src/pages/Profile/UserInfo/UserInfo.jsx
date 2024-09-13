@@ -1,6 +1,7 @@
 import PathInfo from "components/PathInfo";
 import UserInfo from "components/Profile/UserInfo/UserInfo";
 import { Container, Title, UnderTitle } from "components/UI";
+import FollowerCardList from "../../../components/FollowerCard/FollowerCardList";
 
 export default function ProfileInfo() {
   const userInfo = {
@@ -36,6 +37,7 @@ export default function ProfileInfo() {
         gastronomic masterpieces with us.
       </UnderTitle>
       <UserInfo userInfo={userInfo} profileHeadButton={profileHeadButton} />
+      <FollowerCardList/>
     </Container>
   );
 }
