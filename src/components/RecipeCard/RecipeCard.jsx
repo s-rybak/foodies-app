@@ -18,14 +18,14 @@ const dummyCardInfo = {
 export const RecipeCard = () => {
   return (
     <div className={css.card}>
-      <img className={css.image} src={recipeImg} alt="Recipe photo" />
+      <img className={css.image} src={recipeImg} alt={dummyCardInfo.title} />
       <h3 className={css.title}>{dummyCardInfo.title}</h3>
       <p className={css.text}>{dummyCardInfo.text}</p>
 
       <div className={css.info}>
         <div className={css.userInfo}>
           <div className={css.avatarContainer}>
-            <img className={css.avatar} src={avatar} alt="User Photo" />
+            <img className={css.avatar} src={avatar} alt={dummyCardInfo.user.name} />
           </div>
           <h4 className={css.name}>{dummyCardInfo.user.name}</h4>
         </div>

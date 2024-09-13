@@ -2,8 +2,8 @@ import style from './Category.module.css'
 import { RecipeCard } from "components/RecipeCard/RecipeCard";
 import Hero from "../../components/Hero/Hero";
 import Pagination from "../../components/Pagination/Pagination";
-import {useEffect} from "react";
-import api from "../../services/api";
+//import {useEffect} from "react";
+//import api from "../../services/api";
 
 
 export default function Category() {
