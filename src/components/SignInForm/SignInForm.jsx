@@ -52,12 +52,22 @@ const SignInForm = ({ variant }) => {
   const handleSignIn = event => {
     event.preventDefault();
 
-    const email = event.currentTarget.elements.email.value;
-    const password = event.currentTarget.elements.password.value;
+    const form = event.currentTarget;
+    const email = form.elements.email.value;
+    const password = form.elements.password.value;
 
     const formData = { email, password };
 
-    dispatch(signInUser(formData));
+    dispatch(signInUser(formData)).then((action) => {
+      if (signInUser.fulfilled.match(action)) {
+        setSuccess({
+          title: "Registration successful!",
+          message: `A verification email has been sent to your email address: ${email}. `
+            + "Please check your inbox and follow the instructions to confirm your email."
+        });
+        form.reset();
+      }
+    });
     
     // TODO: clear form form and close modal + maybe redirect to some page
     console.log("Submitted SignIn form for user logging in");

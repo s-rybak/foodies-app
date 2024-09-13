@@ -1,26 +1,35 @@
-import cx from "classnames";
-import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import cx from "classnames";
 
+import styles from "./Header.module.css";
+
+import {
+  selectModalLogoutOpen,
+  selectModalSignInOpen,
+  selectModalSignUpOpen
+} from "../../redux/modals/modalSelectors";
+import {
+  setModalLogoutOpen,
+  setModalSignInOpen,
+  setModalSignUpOpen
+} from "../../redux/modals/modalSlice";
 import Auth from "../shared/Auth/Auth";
 import HeaderNav from "./HeaderNav/HeaderNav";
 import HeaderProfile from "./HeaderProfile/HeaderProfile";
 import CustomModal from "../shared/CustomModal/CustomModal";
 import Logout from "../Logout/Logout";
 import { selectAuthIsSignedIn } from "../../redux/auth/authSelectors";
-
-import styles from "./Header.module.css";
 import SignInForm from "components/SignInForm/SignInForm";
 
 export default function Header() {
-  const { pathname } = useLocation();
-
+  const dispatch = useDispatch();
   const isSignedIn = useSelector(selectAuthIsSignedIn);
-
-  const [modalSignInOpen, setModalSignInOpen] = useState(false);
-  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
-  const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+  const isModalSignedInOpen = useSelector(selectModalSignInOpen)
+  const isModalSignedUpOpen = useSelector(selectModalSignUpOpen)
+  const isModalLogoutOpen = useSelector(selectModalLogoutOpen)
+  
+  const { pathname } = useLocation();
 
   const isHome = pathname === "/" || pathname.split("/")[1] === "category";
 
@@ -36,32 +45,32 @@ export default function Header() {
       <HeaderNav isHome={isHome} />
       {isSignedIn ? (
         <HeaderProfile
-          onClick={() => setModalLogoutOpen(true)}
+          // onClick={() => dispatch(setModalLogoutOpen(true))}
           isHome={isHome}
         />
       ) : (
         <Auth
           isHomepage={isHome}
-          openSignIn={() => setModalSignInOpen(true)}
-          openSignUp={() => setModalSignUpOpen(true)}
+          openSignIn={() => dispatch(setModalSignInOpen(true))}
+          openSignUp={() => dispatch(setModalSignUpOpen(true))}
         />
       )}
 
       <CustomModal
-        isOpen={modalSignInOpen}
-        onClose={() => setModalSignInOpen(false)}
+        isOpen={isModalSignedInOpen}
+        onClose={() => dispatch(setModalSignInOpen(false))}
       >
         <SignInForm variant="sign-in" />
       </CustomModal>
       <CustomModal
-        isOpen={modalSignUpOpen}
-        onClose={() => setModalSignUpOpen(false)}
+        isOpen={isModalSignedUpOpen}
+        onClose={() => dispatch(setModalSignUpOpen(false))}
       >
         <SignInForm variant="sign-up" />
       </CustomModal>
       <CustomModal
-        isOpen={modalLogoutOpen}
-        onClose={() => setModalLogoutOpen(false)}
+        isOpen={isModalLogoutOpen}
+        onClose={() => dispatch(setModalLogoutOpen(false))}
       >
         <Logout setModalLogoutOpen={setModalLogoutOpen} />
       </CustomModal>

@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import { authReducer } from "./auth/authSlice";
 import testimonialsReducer from "./testimonials/testimonialsSlice";
+import { modalReducer } from "./modals/modalSlice";
 
 const authConfig = {
   key: "auth",
@@ -18,6 +19,7 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authConfig, authReducer),
     testimonials: testimonialsReducer,
+    modals: modalReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
