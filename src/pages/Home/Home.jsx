@@ -1,4 +1,4 @@
-// // import style from "./Home.module.css";
+// import style from "./Home.module.css";
 import Categories from "components/Categories/Categories";
 import Testimonials from "components/Testimonials/Testimonials";
 
