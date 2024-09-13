@@ -19,7 +19,7 @@ const store = configureStore({
     auth: persistReducer(authConfig, authReducer),
     testimonials: testimonialsReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [PERSIST],
