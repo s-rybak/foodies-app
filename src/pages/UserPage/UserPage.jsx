@@ -22,10 +22,7 @@ import {
   selectUser,
 } from '../../redux/users/userSelectors';
 import Pagination from 'components/Pagination/Pagination';
-import {
-  selectUserId,
-
-} from '../../redux/auth/authSelectors';
+import { selectUserId } from '../../redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
 import CustomModal from 'components/shared/CustomModal/CustomModal';
 
@@ -43,17 +40,16 @@ const UserPage = () => {
   const [activeTab, setActiveTab] = useState('my-recipes');
   const [, setPageNumber] = useState(1);
 
-  const [dataRecepi] = useState([
-    { id: '1', name: 'Recipe 1' },
-    { id: '2', name: 'Recipe 2' },
-  ]);
+  // const [dataRecepi] = useState([
+  //   { id: '1', name: 'Recipe 1' },
+  //   { id: '2', name: 'Recipe 2' },
+  // ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const isOwnProfile = loggedInUserId === user.id;
+
   const isFollowing = followingUsers.includes(user.id);
-
-
 
   useEffect(() => {
     dispatch(fetchUser(id));
@@ -77,12 +73,11 @@ const UserPage = () => {
 
   const handleFollowToggle = () => {
     if (isFollowing) {
-      dispatch(unfollowUser(user.id)); 
+      dispatch(unfollowUser(user.id));
     } else {
-      dispatch(followUser(user.id)); 
+      dispatch(followUser(user.id));
     }
   };
-
 
   if (loading) return <Loader />;
   if (error) return <div>Помилка: {error}</div>;
@@ -97,7 +92,7 @@ const UserPage = () => {
       </SubtitleComponent>
       <div className={styles.userWrapper}>
         <div className={styles.userInfoWrapper}>
-          <UserInfo user={user} />
+          <UserInfo user={user} isOwnProfile={isOwnProfile} />
           {isOwnProfile ? (
             <Button
               text='Log out'
@@ -114,14 +109,14 @@ const UserPage = () => {
         </div>
 
         <div className={styles.tabsWrapper}>
-          <TabsList isOwnProfile={true} onTabChange={handleTabChange} />
-          <ListItems activeTab={activeTab} data={dataRecepi} />
+          <TabsList isOwnProfile={isOwnProfile} onTabChange={handleTabChange} />
+          <ListItems activeTab={activeTab} userId={id} />
           <Pagination />
         </div>
       </div>
 
       {isModalOpen && (
-        <CustomModal isOpen={true} onClose={handleCloseModal}>
+        <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
           <Logout setModalLogoutOpen={handleCloseModal} />
         </CustomModal>
       )}

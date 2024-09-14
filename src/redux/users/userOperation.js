@@ -7,7 +7,6 @@ export const fetchUser = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await api.get(`/api/users/${id}`);
-      console.log('data in fetch', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -21,7 +20,7 @@ export const fetchFollowing = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const { data } = await api.get(`/api/users/${userId}/following`);
-      return data.usersFollowing;
+      return data.usersFollowing.users;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -34,7 +33,7 @@ export const fetchFollowers = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const { data } = await api.get(`/api/users/${userId}/followers`);
-      return data.usersFollowing;
+      return data.usersFollowers.users;
     } catch (error) {
       return rejectWithValue(error.message);
     }

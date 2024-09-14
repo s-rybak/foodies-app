@@ -6,7 +6,7 @@ import { SvgIcon } from 'components/UI';
 const BASE_URL = 'https://foodies-api-hrrk.onrender.com/';
 
 const UserInfo = ({ user, isOwnProfile }) => {
-  console.log('user in UserInfo', user);
+
   console.log('userAva', user.avatar);
 
   const avatarUrl = user.avatar

@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchFollowing, followUser, unfollowUser, fetchUser } from './userOperation';
+import {
+  fetchFollowing,
+  followUser,
+  unfollowUser,
+  fetchUser,
+} from './userOperation';
 
 const userSlice = createSlice({
   name: 'user',
@@ -26,15 +31,15 @@ const userSlice = createSlice({
       })
       // Додавання користувачів, за якими стежить авторизований користувач
       .addCase(fetchFollowing.fulfilled, (state, action) => {
-        state.followingUsers = action.payload;
+        state.followingUsers = action.payload.map(user => user.id);
       })
       .addCase(followUser.fulfilled, (state, action) => {
-        state.followingUsers.push(action.payload); // додаємо користувача в список
+        state.followingUsers.push(action.payload);
       })
       .addCase(unfollowUser.fulfilled, (state, action) => {
         state.followingUsers = state.followingUsers.filter(
           userId => userId !== action.payload
-        ); // видаляємо користувача зі списку
+        );
       });
   },
 });

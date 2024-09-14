@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRecipeById } from "./recipesOperations";
+import { getRecipeById, getUserRecipes } from "./recipesOperations";
 
 const initialState = {
 	selectedRecipe: null,
@@ -37,7 +37,19 @@ const recipeSlice = createSlice({
 			.addCase(getRecipeById.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.selectedRecipe = action.payload;
-			}),
+			})
+			.addCase(getUserRecipes.pending, (state) => {
+				state.isLoading = true;
+				state.isError = null;
+			  })
+			  .addCase(getUserRecipes.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = action.payload;
+			  })
+			  .addCase(getUserRecipes.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.recipes = action.payload.recipes; 
+			  }),
 });
 
 export const { toggleFavoriteRecipe } = recipeSlice.actions;
