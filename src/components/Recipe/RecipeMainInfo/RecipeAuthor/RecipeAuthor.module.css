@@ -8,6 +8,7 @@
 
 .photo {
   border-radius: var(--radius-medium);
+  object-fit: cover;
 }
 
 .labels {

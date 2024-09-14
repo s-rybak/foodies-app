@@ -8,16 +8,16 @@ import { Container } from "components/UI";
 import RecipeInfo from "components/Recipe/RecipeInfo/RecipeInfo";
 
 const RecipePage = () => {
-  // const { id } = useParams();
-  return (
-    <div className={style["recipe-page"]}>
-      <Container>
-        <PathInfo currentPage="Recipe name" />
-        <RecipeInfo />
-        <PopularRecipes />
-      </Container>
-    </div>
-  );
+	// const { id } = useParams();
+	return (
+		<div className={style["recipe-page"]}>
+			<Container>
+				<PathInfo currentPage="Recipe name" />
+				<RecipeInfo />
+				{/* <PopularRecipes /> */}
+			</Container>
+		</div>
+	);
 };
 
 export default RecipePage;

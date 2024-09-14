@@ -6,7 +6,7 @@ import SignInForm from "components/SignInForm/SignInForm";
 import CustomModal from "components/shared/CustomModal/CustomModal";
 import { useState } from "react";
 
-import emptyImage from "../../../../assets/img/empty/no-image.png";
+import emptyAvatar from "../../../../assets/img/empty/no-avatar.jpg";
 
 function RecipeAuthor({ user }) {
 	const isSignedIn = useSelector(selectAuthIsSignedIn);
@@ -23,7 +23,7 @@ function RecipeAuthor({ user }) {
 					to={`/user/${user.id}`}>
 					<img
 						className={css.photo}
-						src={user.img || emptyImage}
+						src={user.img || emptyAvatar}
 						alt={user.name}
 						width={32}
 						height={32}
@@ -39,7 +39,7 @@ function RecipeAuthor({ user }) {
 					className={css.button}>
 					<img
 						className={css.photo}
-						src={user.img || emptyImage}
+						src={user.img || emptyAvatar}
 						alt={user.name}
 						width={32}
 						height={32}

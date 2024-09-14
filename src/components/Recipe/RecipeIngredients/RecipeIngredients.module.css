@@ -8,16 +8,22 @@
   gap: 16px;
 }
 
-.item {
-  width: calc((100% - 16px) / 2);
+/* .item {
+  max-width: 210px;
 }
+
+@media screen and (min-width: 425px) {
+  .item {
+    width: calc((100% - 16px) / 2);
+  }
+} */
 
 @media screen and (min-width: 768px) {
   .list {
     gap: 20px;
   }
 
-  .item {
+  /* .item {
     width: calc((100% - 40px) / 3);
-  }
+  } */
 }

@@ -34,7 +34,7 @@ function RecipeInfo() {
 				<p>{error}</p>
 			) : recipeById ? (
 				<RecipeMainInfo
-					thumb={`${process.env.REACT_APP_BASE_URL}/${recipeById.thumb}`}
+					thumb={recipeById.thumb}
 					title={recipeById.title}
 					time={recipeById.time}
 					category={recipeById.category}
