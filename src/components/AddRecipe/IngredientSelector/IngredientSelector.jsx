@@ -11,9 +11,6 @@ import stylesInput from "../CustomInput.module.css";
 
 import { fetchCategories } from "../../../redux/categories/categoriesOperations";
 
-import { useFetchIngredients } from "../../../services/ingredientService"
-
-
 
 const categoriesData = fetchCategories();
 console.log(categoriesData);

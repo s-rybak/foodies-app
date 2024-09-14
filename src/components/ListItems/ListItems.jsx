@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipePreview from 'components/RecipePreview/RecipePreview';
-import UserCard from 'components/UserCard/UserCard';
 import styles from './ListItem.module.css';
+import FollowerCardList from 'components/FollowerCard/FollowerCardList';
 
 const ListItems = ({ activeTab, data }) => {
 
@@ -16,7 +16,7 @@ const ListItems = ({ activeTab, data }) => {
             ))
           : data.map(user => (
               <li key={user.id}>
-                <UserCard user={user} />
+                <FollowerCardList user={user} />
               </li>
             ))}
       </ul>
