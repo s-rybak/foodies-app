@@ -5,6 +5,7 @@ import {
   resendVerificationEmail,
   signInUser,
   verifyUserEmail,
+  refreshUser,
 } from "./authOperations";
 
 const initialState = {
@@ -19,27 +20,33 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    resetAuthUserDataAndError(state) {
-      state.userData = initialState.userData;
+    resetAuthError(state) {
       state.error = initialState.error;
     },
   },
   extraReducers: builder =>
     builder
-      .addCase(signUpUser.fulfilled, (state, action) => {
-        state.userData = { email: action.payload.user?.email };
-      })
       .addCase(signInUser.fulfilled, (state, action) => {
         state.isSignedIn = true;
         state.token = action.payload.token;
         state.userData = action.payload.user;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.isSignedIn = true;
+        state.userData = action.payload;
+      })
+      .addCase(refreshUser.rejected, state => {
+        state.token = initialState.token;
+        state.userData = initialState.userData;
+        state.isLoading = initialState.isLoading;
       })
       .addMatcher(
         isAnyOf(
           signUpUser.pending,
           resendVerificationEmail.pending,
           verifyUserEmail.pending,
-          signInUser.pending
+          signInUser.pending,
+          refreshUser.pending
         ),
         state => {
           state.isLoading = true;
@@ -51,7 +58,8 @@ const authSlice = createSlice({
           signUpUser.fulfilled,
           resendVerificationEmail.fulfilled,
           verifyUserEmail.fulfilled,
-          signInUser.fulfilled
+          signInUser.fulfilled,
+          refreshUser.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -71,6 +79,6 @@ const authSlice = createSlice({
       ),
 });
 
-export const { resetAuthUserDataAndError } = authSlice.actions;
+export const { resetAuthError } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

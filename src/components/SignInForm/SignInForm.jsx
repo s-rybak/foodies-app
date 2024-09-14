@@ -7,7 +7,8 @@ import css from "./SignInForm.module.css";
 
 import { signInUser, signUpUser } from "./../../redux/auth/authOperations";
 import { selectAuthIsLoading, selectAuthError } from "../../redux/auth/authSelectors";
-import { resetAuthUserDataAndError } from "../../redux/auth/authSlice";
+import { resetAuthError } from "../../redux/auth/authSlice";
+
 import { Error, Loader } from "components";
 import { AnimatedIconText } from "components/AnimatedIcon/AnimatedIconText";
 
@@ -20,8 +21,7 @@ const SignInForm = ({ variant }) => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    dispatch(resetAuthUserDataAndError());
-    setShowPassword(false);
+    dispatch(resetAuthError())
   }, [dispatch]);
 
   const handleSignUp = event => {
@@ -56,11 +56,7 @@ const SignInForm = ({ variant }) => {
 
     const formData = { email, password };
 
-    const resultAction = await dispatch(signInUser(formData));
-
-    if (signInUser.fulfilled.match(resultAction)) {
-      form.reset();
-    }
+    dispatch(signInUser(formData));
   };
 
   return (
@@ -124,7 +120,7 @@ const SignInForm = ({ variant }) => {
 
             {error && <div className={css["error-container"]}><Error error={error} /></div>}
 
-            <button type="submit" className={css.button}>
+            <button type="submit" className={css.button} disabled={isLoading}>
               {isLoading ? <Loader /> : variant === "sign-in" ? "Sign in" : "Create"}
             </button>
           </form>

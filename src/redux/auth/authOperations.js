@@ -86,3 +86,27 @@ export const signInUser = createAsyncThunk(
     }
   }
 );
+
+export const refreshUser = createAsyncThunk(
+  "auth/refreshUser",
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+    try {
+      setToken(token);
+      const { data } = await api.get("/api/users/current");
+      return data;
+    } catch (error) {
+      if (
+        error.status === 400 ||
+        error.status === 401 ||
+        error.status === 404
+      ) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
+    }
+  }
+);

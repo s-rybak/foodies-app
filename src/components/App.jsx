@@ -1,5 +1,8 @@
+import { lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy } from "react";
+import { useDispatch } from "react-redux";
+
+import { refreshUser } from "../redux/auth/authOperations";
 
 import SharedLayout from "layout/SharedLayout/SharedLayout.jsx";
 
@@ -10,6 +13,12 @@ const UserInfo = lazy(() => import("pages/Profile/UserInfo/UserInfo"));
 const NotFound = lazy(() => import("pages/NotFound/NotFound.jsx"));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <BrowserRouter basename="/foodies-app">
       <Routes>
