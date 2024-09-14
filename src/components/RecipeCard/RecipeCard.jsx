@@ -67,3 +67,5 @@ export const RecipeCard = ({recipe, clickToFavorite}) => {
     </div>
   );
 };
+
+export default RecipeCard;

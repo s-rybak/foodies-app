@@ -7,7 +7,7 @@ import CategoryList from "../../components/CategoryList/CategoryList";
 import RecipeList from "../../components/RecipeList/recipeList";
 import Pagination from "../../components/Pagination/Pagination";
 import RecipeFilters from "../../components/RecipeFilters/recipeFilters";
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import api from "../../services/api";
 import icons from "../../assets/img/icons/icons.svg";
 import {useLocation} from "react-router-dom";
@@ -37,6 +37,34 @@ export default function Home() {
   }
 
 
+  const handleChangeFilter = (selectedId, type) => {
+    type === 'ingredients' ? setIngredientId(selectedId) : setAreaId(selectedId);
+  };
+
+  const handlerChangeCategory = (category) => {
+    setCategory(category);
+  };
+
+  const isEmptyObject = (obj) => {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+  };
+
+  const handleSelectFavoriteRecipe = useCallback(async (recipesData) => {
+    const favoritesData = await fetchFavorites()
+    const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
+    setRecipes(matchedRecipes);
+  },[recipes])
+
+  const matchRecipeWithFavorites = (recipes, favorites = []) => {
+    return recipes.map(recipe => ({
+      ...recipe,
+      isFavorite: Array.isArray(favorites) && favorites.some(fav => {
+        return fav.recipeId === recipe.id
+      })
+    }));
+  };
+
+
 
   useEffect(() => {
     // Define an async function inside useEffect
@@ -56,35 +84,7 @@ export default function Home() {
       }
     };
     fetchRecipes();
-  }, [category, page, areaId, ingredientId]);
-
-
-  const handleChangeFilter = (selectedId, type) => {
-    type === 'ingredients' ? setIngredientId(selectedId) : setAreaId(selectedId);
-  };
-
-  const handlerChangeCategory = (category) => {
-    setCategory(category);
-  };
-
-  const isEmptyObject = (obj) => {
-    return Object.keys(obj).length === 0 && obj.constructor === Object;
-  };
-
-  const handleSelectFavoriteRecipe = async (recipesData) => {
-    const favoritesData = await fetchFavorites()
-    const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
-    setRecipes(matchedRecipes);
-  }
-
-  const matchRecipeWithFavorites = (recipes, favorites = []) => {
-    return recipes.map(recipe => ({
-      ...recipe,
-      isFavorite: Array.isArray(favorites) && favorites.some(fav => {
-        return fav.recipeId === recipe.id
-      })
-    }));
-  };
+  }, [category, page, areaId, ingredientId,handleSelectFavoriteRecipe]);
 
   return (
     <>

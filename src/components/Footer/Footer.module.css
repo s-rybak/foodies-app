@@ -1,24 +1,14 @@
-.container {
-  max-width: 375px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 40px;
-  padding-right: 16px;
-  padding-left: 16px;
-  border-bottom: 1px solid var(--color-gray);
 }
 
 .logo {
   color: var(--color-main);
   font-size: 20px;
   font-weight: 800;
-  line-height: 1.2;
   letter-spacing: -0.4px;
   text-transform: lowercase;
 }
@@ -29,84 +19,37 @@
   column-gap: 16px;
 }
 
-.item_social {
+.item_social_link {
   border-radius: 50px;
   border: 1px solid var(--color-gray);
   width: 36px;
   height: 36px;
-  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
 }
 
-.item_social:hover {
+.item_social_link:hover {
   background-color: var(--color-main);
   border: none;
+  color: var(--color-white);
 }
-
-.icon {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 18px;
-  height: 18px;
-  stroke: none;
-}
-
-.item_social:hover .icon,
-.item_social:focus .icon {
-  fill: var(--color-white);
-}
-
 .copy {
   padding-top: 40px;
   color: var(--color-gray);
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.43;
   letter-spacing: -0.28px;
   padding-bottom: 16px;
+  border-top: 1px solid var(--color-gray);
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .footer {
-    padding-right: 32px;
-    padding-left: 32px;
-  }
-
   .logo {
     font-size: 24px;
-    line-height: 1.16;
-    letter-spacing: -0.48px;
   }
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
-  .copy {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.32px;
-    padding-bottom: 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .footer {
-    padding-right: 80px;
-    padding-left: 80px;
-  }
-
   .copy {
     padding-bottom: 72px;
   }
