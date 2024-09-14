@@ -33,22 +33,11 @@ const UserPage = () => {
   const loggedInUserId = useSelector(selectUserId);
   const followingUsers = useSelector(selectFollowingUsers);
 
-  console.log('loggedInUserId', loggedInUserId);
-  console.log('id', id);
-  console.log('user', user);
-
   const [activeTab, setActiveTab] = useState('my-recipes');
   const [, setPageNumber] = useState(1);
 
-  // const [dataRecepi] = useState([
-  //   { id: '1', name: 'Recipe 1' },
-  //   { id: '2', name: 'Recipe 2' },
-  // ]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const isOwnProfile = loggedInUserId === user.id;
-
   const isFollowing = followingUsers.includes(user.id);
 
   useEffect(() => {
@@ -56,8 +45,15 @@ const UserPage = () => {
     dispatch(fetchFollowing(loggedInUserId));
   }, [id, dispatch, loggedInUserId]);
 
+  useEffect(() => {
+    if (isOwnProfile) {
+      setActiveTab('my-recipes');
+    } else {
+      setActiveTab('followers');
+    }
+  }, [isOwnProfile]);
   const handleOpenModal = () => {
-    console.log('click on logout');
+
     setIsModalOpen(true);
   };
 
@@ -96,13 +92,13 @@ const UserPage = () => {
           {isOwnProfile ? (
             <Button
               text='Log out'
-              classname={styles.userPageButton}
+              className={styles.userPageButton}
               onClick={handleOpenModal}
             />
           ) : (
             <Button
               text={isFollowing ? 'Following' : 'Follow'}
-              classname={styles.userPageButton}
+              className={styles.userPageButton}
               onClick={handleFollowToggle}
             />
           )}

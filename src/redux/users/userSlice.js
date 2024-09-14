@@ -4,6 +4,7 @@ import {
   followUser,
   unfollowUser,
   fetchUser,
+  fetchFollowers,
 } from './userOperation';
 
 const userSlice = createSlice({
@@ -11,6 +12,7 @@ const userSlice = createSlice({
   initialState: {
     user: {},
     followingUsers: [],
+    followers: [],
     loading: false,
     error: null,
   },
@@ -29,9 +31,12 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.loading = false;
       })
-      // Додавання користувачів, за якими стежить авторизований користувач
+
       .addCase(fetchFollowing.fulfilled, (state, action) => {
         state.followingUsers = action.payload.map(user => user.id);
+      })
+      .addCase(fetchFollowers.fulfilled, (state, action) => {
+        state.followers = action.payload.users;
       })
       .addCase(followUser.fulfilled, (state, action) => {
         state.followingUsers.push(action.payload);

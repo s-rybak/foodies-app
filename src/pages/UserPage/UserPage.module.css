@@ -6,7 +6,7 @@
   padding-right: 16px;
 }
 .userPageButton {
-  width: 100%;
+ width: 100%;
 }
 .userPageMainTitle {
   margin-top: 32px;
@@ -29,7 +29,6 @@
   .userPageButton {
     width: 394px;
     display: block;
-
   }
 }
 

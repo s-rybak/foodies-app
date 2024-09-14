@@ -33,7 +33,8 @@ export const fetchFollowers = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
     try {
       const { data } = await api.get(`/api/users/${userId}/followers`);
-      return data.usersFollowers.users;
+      console.log('data in fetchFollowers', data.followers.users);
+      return data.followers.users;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -65,15 +66,15 @@ export const unfollowUser = createAsyncThunk(
 );
 
 export const updloadAvatar = createAsyncThunk(
-    'user/uploadAvatar',
-    async (avatar, {rejectWithValue}) => {
-        try {
-            const formData = new FormData();
-            formData.append('avatar', avatar);
-            const {data} = await api.patch('/api/users/avatar', formData);
-            return data;
-        } catch (error) {
-            return rejectWithValue(error.message);
-        }
+  'user/uploadAvatar',
+  async (avatar, { rejectWithValue }) => {
+    try {
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+      const { data } = await api.patch('/api/users/avatar', formData);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
+  }
 );
