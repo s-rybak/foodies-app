@@ -1,0 +1,37 @@
+.iconBtn {
+  width: 48px;
+  height: 48px;
+  padding: 16px;
+  background-color: var(--color-white);
+  box-shadow: none;
+  border: 1px solid var(--color-gray);
+  cursor: pointer;
+}
+
+.icon {
+  stroke: var(--color-main);
+}
+
+.iconBtn:hover {
+  border: 1px solid var(--color-main);
+  background-color: var(--color-button);
+}
+.iconBtn:hover .icon {
+  stroke: var(--color-white);
+}
+.counterInput {
+  text-align: center;
+  border: none;
+  width: 50px;
+  text-align: center;
+  margin: 0;
+  font-size: 16px;
+  padding: 0;
+}
+
+@media (min-width: 765px) {
+  .iconBtn {
+    width: 56px;
+    height: 56px;
+  }
+}

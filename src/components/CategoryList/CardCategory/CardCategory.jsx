@@ -5,7 +5,7 @@ import images from "assets/img/categories";
 import { SvgIcon } from "components/UI";
 
 export default function CardCategory({ name }) {
-  console.log("images: ", images);
+  //console.log("images: ", images);
 
   return (
     <div className={style.card}>

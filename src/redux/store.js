@@ -14,7 +14,7 @@ import { modalReducer } from "./modals/modalSlice";
 const authConfig = {
     key: "auth",
     storage,
-    whitelist: ["token","isSignedIn"],
+    whitelist: ["token"],
 };
 
 const recipeConfig = {
