@@ -33,7 +33,7 @@ export default function ProfileInfo() {
         Reveal your culinary art, share your favorite recipe and create
         gastronomic masterpieces with us.
       </UnderTitle>
-      <UserInfo userInfo={userInfo} profileHeadButton={profileHeadButton} uploadAvatar={userLoginned} />
+      <UserInfo userInfo={userInfo}  uploadAvatar={userLoginned} />
       <FollowerCardList/>
     </Container>
   );
