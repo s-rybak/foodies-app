@@ -22,7 +22,7 @@ export const uploadAvatar = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append("avatar", avatar);
-      const { data } = await api.patch("/api/users/avatar", formData);
+      const { data } = await api.patch("/api/users/avatars", formData);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
