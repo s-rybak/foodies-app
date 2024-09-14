@@ -1,0 +1,20 @@
+.recipeCard {
+  width: 75px;
+  height: 75px;
+  border-radius: 15px;
+  background-color: #E0E0E0;
+  overflow: hidden;
+}
+
+.recipeImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .recipeCard {
+    width: 100px;
+    height: 100px;
+  }
+}

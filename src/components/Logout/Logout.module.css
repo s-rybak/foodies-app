@@ -3,12 +3,12 @@
   text-align: center;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 0;
-  margin-top: 32px;
+.logout-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 32px;
+  letter-spacing: -0.56px;
+  text-transform: uppercase;
 }
 
 .text {
@@ -19,36 +19,54 @@
   color: var(--color-gray);
   text-align: center;
 }
-.logout_title {
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 32px;
-  letter-spacing: -0.56px;
-  text-transform: uppercase;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin-top: 32px;
 }
-.cancelButton {
+
+.logout-button {
+  background-color: var(--color-button);
+}
+
+.logout-button:hover,
+.logout-button:focus {
+  background-color: var(--color-main);
+}
+
+.cancel-button {
   background-color: var(--color-white);
   color: var(--color-main);
   border: 1px solid var(--color-gray);
 }
+
+.cancel-button:hover,
+.cancel-button:focus {
+  border: 1px solid var(--color-main);
+}
+
 @media screen and (min-width: 768px) {
-  .logout_title {
+  .container {
+    width: 400px;
+  }
+
+  .logout-title {
     font-size: 32px;
     line-height: 40px;
     letter-spacing: -0.64px;
-  }
-
-  .container {
-    width: 401px;
-  }
-
-  .list {
-    margin-top: 40px;
   }
 
   .text {
     margin-top: 20px;
     font-size: 16px;
     line-height: 24px;
+    color: var(--color-button);
+  }
+
+  .list {
+    margin-top: 40px;
   }
 }

@@ -36,11 +36,32 @@
   background-color: var(--color-white);
 }
 
+.auth-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 122px;
+  height: 32px;
+}
+
+.loader-light {
+  color: var(--color-white);
+}
+
+.loader-dark {
+  color: var(--color-main);
+}
+
 @media screen and (min-width: 768px) {
   .authContainer {
     width: 210px;
   }
   .authContainer .authButton {
     padding: 14px 28px;
+  }
+
+  .auth-loader {
+    min-width: 148px;
+    height: 50px;
   }
 }

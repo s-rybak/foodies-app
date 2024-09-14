@@ -4,8 +4,15 @@
 
 .recipes-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
+}
+
+.recipe-item {
+  flex: 1 0 23%;
+  min-width: 300px;
+  max-width: 400px;
 }
 
 .popular-title {
