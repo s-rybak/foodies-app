@@ -3,44 +3,65 @@ import recipeImg from "../../assets/img/recipes/recipe1.png";
 import avatar from "../../assets/img/recipes/avatar1.png";
 import icons from "assets/img/icons/icons.svg";
 import css from "./RecipeCard.module.css";
+import {NavLink} from "react-router-dom";
+import api from "../../services/api";
 
-const dummyCardInfo = {
-  id: 1,
-  imgUrl: "",
-  title: "Tuna Nicoise",
-  text: "Heat oven to 200C/fan 180C/gas 6. Toss the potatoes with 2 tsp oil and some seasoning.",
-  user: {
-    id: 1,
-    imgUrl: "",
-    name: "Nadia",
-  },
-};
-export const RecipeCard = () => {
+export const RecipeCard = ({recipe, clickToFavorite}) => {
+
+  const handleAddToFavorite = async (id) => {
+     try {
+       await api.post(`/api/recipes/${id}/favorites`)
+       clickToFavorite()
+     } catch (e) {
+        console.log(e,'asd')
+     }
+  }
+
+  const handleRemoveFromFavorite = async (id) => {
+      try {
+        await api.delete(`/api/recipes/${id}/favorites`)
+        clickToFavorite()
+      } catch (e) {
+          console.log(e,'asd')
+      }
+  }
+
   return (
     <div className={css.card}>
-      <img className={css.image} src={recipeImg} alt={dummyCardInfo.title} />
-      <h3 className={css.title}>{dummyCardInfo.title}</h3>
-      <p className={css.text}>{dummyCardInfo.text}</p>
+      <img className={css.image} src={`${process.env.REACT_APP_BASE_URL}${recipe?.thumb}` || recipeImg} alt={recipe.title} />
+      <h3 className={css.title}>{recipe.title}</h3>
+      <p className={css.text}>{recipe.description}</p>
 
       <div className={css.info}>
         <div className={css.userInfo}>
           <div className={css.avatarContainer}>
-            <img className={css.avatar} src={avatar} alt={dummyCardInfo.user.name} />
+            <img className={css.avatar} src={recipe.user.avatar || avatar} alt={recipe.user.name} />
           </div>
-          <h4 className={css.name}>{dummyCardInfo.user.name}</h4>
+          <h4 className={css.name}>{recipe.user.name}</h4>
         </div>
 
         <div className={css.buttons}>
-          <button className={css.btn} type="button">
-            <svg className={css.icon}>
-              <use href={`${icons}#icon-heart-outline`}></use>
-            </svg>
-          </button>
-          <button className={css.btn} type="button">
+
+          {
+            recipe.isFavorite ? (
+              <button className={css.btn} type="button" onClick={() => handleRemoveFromFavorite(recipe.id)}>
+                <svg className={css.icon}>
+                  <use href={`${icons}#icon-heart`}></use>
+                </svg>
+              </button>
+            ): (
+              <button className={css.btn} type="button" onClick={() => handleAddToFavorite(recipe.id)}>
+                <svg className={css.icon}>
+                  <use href={`${icons}#icon-heart-outline`}></use>
+                </svg>
+              </button>
+            )
+          }
+          <NavLink to={`recipe/${recipe.id}`} className={css.btn} type="button">
             <svg className={css.icon}>
               <use href={`${icons}#icon-arrow-up-right`}></use>
             </svg>
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>
