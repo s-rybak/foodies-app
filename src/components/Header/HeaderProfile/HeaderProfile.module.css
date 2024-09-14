@@ -1,5 +1,7 @@
 .wrap {
-  position: relative;
+  position: absolute;
+  right: 16px;
+  top: 19px;
   display: flex;
   align-items: center;
   padding-top: 3px;
@@ -92,6 +94,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .wrap {
+    right: 32px;
+    top: 20px;
+  }
+
   .profileImg {
     width: 50px;
     height: 50px;
@@ -110,5 +117,11 @@
   .wrap_profile_modal {
     width: 148px;
     top: 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrap {
+    right: 60px;
   }
 }

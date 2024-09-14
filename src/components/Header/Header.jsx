@@ -33,7 +33,9 @@ export default function Header() {
       >
         Foodies
       </NavLink>
+
       <HeaderNav isHome={isHome} />
+
       {isSignedIn ? (
         <HeaderProfile
           onClick={() => setModalLogoutOpen(true)}
