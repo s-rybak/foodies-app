@@ -9,6 +9,7 @@ import testimonialsReducer from "./testimonials/testimonialsSlice";
 import userReducer from "./users/userSlice";
 import areasReducer from "./areas/areasSlice";
 import ingredientsReducer from "./ingredients/ingredientsSlice";
+import { modalReducer } from "./modals/modalSlice";
 
 const authConfig = {
     key: "auth",
@@ -34,6 +35,7 @@ const store = configureStore({
         user: userReducer,
         areas: areasReducer,
         ingredients: ingredientsReducer,
+        modals: modalReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
