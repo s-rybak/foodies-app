@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import yupSchema from "../../components/AddRecipe/helpers/yupSchema";
+import { toast } from "react-toastify";
 import styles from "./AddRecipe.module.css";
-
 import PathInfo from "../../components/PathInfo/PathInfo";
 
 import MainTitle from "../../components/shared/MainTitle/MainTitle";
@@ -10,15 +13,58 @@ import Input from "../../components/shared/Input/Input";
 import IngredientSelector from "../../components/AddRecipe/IngredientSelector/IngredientSelector";
 import IconButton from "../../components/shared/IconButton/IconButton";
 import Button from "../../components/shared/Button/Button";
-
 import stylesInput from "../../components/AddRecipe/CustomInput.module.css";
-
 import useAutoResizeTextarea from "../../utilities/hooks/useAutoResizeTextarea";
-//import { selectId } from "../../store/features/authSlice";
-
 const AddRecipe = () => {
+  const {
+    register,
+    setValue,
+    watch,
+    reset,
+  } = useForm({
+    resolver: yupResolver(yupSchema),
+    defaultValues: {
+      selectedIngredients: [],
+    },
+  });
+
   const [time, setTime] = useState(10);
+  const [wordCount, setWordCount] = useState(0);
+  const maxWords = 200;
+
+  const handleWordCount = (event) => {
+    const value = event.target.value;
+    const words = value
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0);
+    if (words.length <= maxWords) {
+      setWordCount(words.length);
+    } else {
+      const limitedText = words.slice(0, maxWords).join(" ");
+      event.target.value = limitedText;
+      setWordCount(maxWords);
+      toast.error(`max length ${maxWords} words`);
+    }
+  };
   useAutoResizeTextarea(styles.textarea);
+
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
+
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("thumb", data.thumb);
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("category", data.category);
+    formData.append("time", time.toString());
+    formData.append("instructions", data.instructions);
+  };
+
+   const handleReset = () => {
+    reset();
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.titleAndCrumpsWraper}>

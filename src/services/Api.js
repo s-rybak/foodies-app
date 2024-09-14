@@ -21,3 +21,8 @@ export const categoriesApi = {
   getMoreCategories: (value) =>
     apiInstance.get(`/api/categories?page=${value}`),
 };
+export const ingredientsApi = {
+  getIngredients: () => apiInstance.get("/api/ingredients"),
+  getMoreIngredients: (value) =>
+    apiInstance.get(`/api/ingredients?page=${value}`),
+};
