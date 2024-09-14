@@ -1,24 +1,35 @@
-import Image from "components/UI/Image/Image";
-import style from "./UserInfo.module.css";
-import emptyImages from "../../assets/img/empty";
-import { SvgIcon } from "components/UI";
+import Image from 'components/UI/Image/Image';
+import style from './UserInfo.module.css';
+import emptyImages from '../../assets/img/empty';
+import { SvgIcon } from 'components/UI';
 
-const UserInfo = ({ user }) => {
+const BASE_URL = 'https://foodies-api-hrrk.onrender.com/';
+
+const UserInfo = ({ user, isOwnProfile }) => {
+  console.log('user in UserInfo', user);
+  console.log('userAva', user.avatar);
+
+  const avatarUrl = user.avatar
+    ? `${BASE_URL}${user.avatar}`
+    : emptyImages.noImage;
+
   return (
     <div className={style['profile-head-holder']}>
       <div className={style['profile-head']}>
         <div className={style['profile-img-holder']}>
           <Image
-            src={user.avatar ? emptyImages.noImage : user.avatar}
+            src={avatarUrl}
             alt=''
             className={`${style['user-avatar']} ${
               emptyImages ? style['no-image'] : ''
             }`}
           />
-          <label className={style['upload-avatar']}>
-            <input type='file' name='avatar' />
-            <SvgIcon name={'icon-plus'} />
-          </label>
+          {isOwnProfile && (
+            <label className={style['upload-avatar']}>
+              <input type='file' name='avatar' />
+              <SvgIcon name={'icon-plus'} />
+            </label>
+          )}
         </div>
         <h3 className={style['user-login']}>{user.name}</h3>
         <ul className={style['profile-data']}>
@@ -32,29 +43,33 @@ const UserInfo = ({ user }) => {
               {user.createRecipeCount}
             </span>
           </li>
-          <li className={style['profile-data-li']}>
-            <span className={style['profile-data-li-name']}>Favorites:</span>
-            <span className={style['profile-data-li-value']}>
-              {user.countFavouriteRecipe}
-            </span>
-          </li>
+          {isOwnProfile && (
+            <li className={style['profile-data-li']}>
+              <span className={style['profile-data-li-name']}>Favorites:</span>
+              <span className={style['profile-data-li-value']}>
+                {user.countFavouriteRecipe}
+              </span>
+            </li>
+          )}
+
           <li className={style['profile-data-li']}>
             <span className={style['profile-data-li-name']}>Followers:</span>
             <span className={style['profile-data-li-value']}>
               {user.followersUserCount}
             </span>
           </li>
-          <li className={style['profile-data-li']}>
-            <span className={style['profile-data-li-name']}>Following:</span>
-            <span className={style['profile-data-li-value']}>
-              {user.followingUsersCount}
-            </span>
-          </li>
+          {isOwnProfile && (
+            <li className={style['profile-data-li']}>
+              <span className={style['profile-data-li-name']}>Following:</span>
+              <span className={style['profile-data-li-value']}>
+                {user.followingUsersCount}
+              </span>
+            </li>
+          )}
         </ul>
       </div>
     </div>
   );
-
 };
 
 export default UserInfo;

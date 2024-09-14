@@ -1,17 +1,22 @@
-import { useState } from "react";
-import cx from "classnames";
-import IconButton from "../../shared/IconButton/IconButton";
-import styles from "./HeaderProfile.module.css";
-import HeaderProfileMenu from "./HeaderProfileMenu";
-import CustomModal from "../../shared/CustomModal/CustomModal";
-import HeaderModal from "../HeaderModal/HeaderModal";
-import styleModal from "../HeaderModal/HeaderModal.module.css";
+import { useState } from 'react';
+import cx from 'classnames';
+import IconButton from '../../shared/IconButton/IconButton';
+import styles from './HeaderProfile.module.css';
+import HeaderProfileMenu from './HeaderProfileMenu';
+import CustomModal from '../../shared/CustomModal/CustomModal';
+import HeaderModal from '../HeaderModal/HeaderModal';
+import styleModal from '../HeaderModal/HeaderModal.module.css';
+import { useSelector } from 'react-redux';
+import { selectAuthUserData } from '../../../redux/auth/authSelectors';
 
 const HeaderProfile = ({ isHome, onClick }) => {
   const [toogleOpen, setToogleOpen] = useState(false);
   const [toogleModal, setToogleModal] = useState(false);
-  const avatarURL = '';
-  const name = 'test name';
+
+  const loggedInUserData = useSelector(selectAuthUserData);
+
+  // const avatarURL = '';
+  const nameTest = 'test name';
 
   const handlerOpenProfile = () => {
     setToogleOpen(!toogleOpen);
@@ -24,27 +29,33 @@ const HeaderProfile = ({ isHome, onClick }) => {
   return (
     <div className={styles.wrap}>
       <div className={styles.profile} onClick={handlerOpenProfile}>
-        <img className={styles.profileImg} src={avatarURL} alt={name} />
-        <p className={styles.profileName}>{name}</p>
+        <img
+          className={styles.profileImg}
+          src={loggedInUserData?.avatarURL || ''}
+          alt={loggedInUserData?.name || nameTest}
+        />
+        <p className={styles.profileName}>
+          {loggedInUserData?.name || nameTest}
+        </p>
         <IconButton
           style={cx(styles.btn_arrow, toogleOpen && styles.btn_arrow_open)}
-          iconId="icon-chevron-down"
-          width="18"
-          height="18"
-          stroke="#fff"
+          iconId='icon-chevron-down'
+          width='18'
+          height='18'
+          stroke='#fff'
         />
       </div>
       {toogleOpen && (
-        <HeaderProfileMenu onClick={onClick} onClose={handlerOpenProfile}/>
+        <HeaderProfileMenu onClick={onClick} onClose={handlerOpenProfile} />
       )}
 
       <IconButton
         style={styles.btn_menu}
         styleSVG={styles.icon_arrow}
-        iconId="icon-mobile-menu"
-        width="28"
-        height="28"
-        stroke={isHome ? "#fff" : "#000"}
+        iconId='icon-mobile-menu'
+        width='28'
+        height='28'
+        stroke={isHome ? '#fff' : '#000'}
         onClick={handlerToogleModal}
       />
       {toogleModal && (
@@ -53,9 +64,9 @@ const HeaderProfile = ({ isHome, onClick }) => {
           onClose={handlerToogleModal}
           customeStyles={styleModal.wrap_modal}
           btnStyle={styleModal.btn_close}
-          width="28"
-          height="28"
-          stroke="#fff"
+          width='28'
+          height='28'
+          stroke='#fff'
         >
           <HeaderModal handlerToogleModal={handlerToogleModal} />
         </CustomModal>

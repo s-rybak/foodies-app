@@ -30,6 +30,10 @@
   letter-spacing: -0.24px;
   text-transform: uppercase;
   margin-right: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 90px;
 }
 
 .btn_arrow {
@@ -72,7 +76,6 @@
   line-height: 1.5;
   letter-spacing: -0.24px;
   text-transform: uppercase;
-  cursor: pointer;
 }
 
 .link_logout {
@@ -104,5 +107,8 @@
   .wrap_profile_modal {
     width: 148px;
     top: 60px;
+  }
+  .profileName {
+    max-width: 200px;
   }
 }

@@ -14,3 +14,53 @@ export const fetchUser = createAsyncThunk(
     }
   }
 );
+
+//  a list of users followed by the authorized user
+export const fetchFollowing = createAsyncThunk(
+  'user/fetchFollowing',
+  async (userId, { rejectWithValue }) => {
+    try {
+      const { data } = await api.get(`/api/users/${userId}/following`);
+      return data.usersFollowing;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+//  a list of users who follow the user
+export const fetchFollowers = createAsyncThunk(
+  'user/fetchFollowers',
+  async (userId, { rejectWithValue }) => {
+    try {
+      const { data } = await api.get(`/api/users/${userId}/followers`);
+      return data.usersFollowing;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+//   follow Of the user
+export const followUser = createAsyncThunk(
+  'user/followUser',
+  async (userId, { rejectWithValue }) => {
+    try {
+      await api.post(`/api/users/${userId}/follow`);
+      return userId;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+//   unfollow Of the user
+export const unfollowUser = createAsyncThunk(
+  'user/unfollowUser',
+  async (userId, { rejectWithValue }) => {
+    try {
+      await api.delete(`/api/users/${userId}/follow`);
+      return userId;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

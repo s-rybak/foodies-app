@@ -8,37 +8,65 @@ import UserInfo from 'components/UserInfo/UserInfo';
 import TabsList from 'components/TabsList/TabsList';
 import ListItems from 'components/ListItems/ListItems';
 
-import { Modal } from 'components/Modal';
 import Logout from 'components/Logout/Logout';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../redux/users/userOperation';
-import { selectUser } from '../../redux/users/userSelectors';
+import {
+  fetchFollowing,
+  fetchUser,
+  followUser,
+  unfollowUser,
+} from '../../redux/users/userOperation';
+import {
+  selectFollowingUsers,
+  selectUser,
+} from '../../redux/users/userSelectors';
 import Pagination from 'components/Pagination/Pagination';
+import {
+  selectUserId,
+
+} from '../../redux/auth/authSelectors';
+import Loader from 'components/Loader/Loader';
+import CustomModal from 'components/shared/CustomModal/CustomModal';
 
 const UserPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector(selectUser);
+  const loggedInUserId = useSelector(selectUserId);
+  const followingUsers = useSelector(selectFollowingUsers);
+
+  console.log('loggedInUserId', loggedInUserId);
+  console.log('id', id);
+  console.log('user', user);
+
   const [activeTab, setActiveTab] = useState('my-recipes');
   const [, setPageNumber] = useState(1);
+
   const [dataRecepi] = useState([
     { id: '1', name: 'Recipe 1' },
     { id: '2', name: 'Recipe 2' },
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isOwnProfile = user.id === id;
+
+  const isOwnProfile = loggedInUserId === user.id;
+  const isFollowing = followingUsers.includes(user.id);
+
+
 
   useEffect(() => {
     dispatch(fetchUser(id));
-  }, [id, dispatch]);
+    dispatch(fetchFollowing(loggedInUserId));
+  }, [id, dispatch, loggedInUserId]);
 
   const handleOpenModal = () => {
+    console.log('click on logout');
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
+    console.log('click on close');
     setIsModalOpen(false);
   };
 
@@ -47,7 +75,16 @@ const UserPage = () => {
     setPageNumber(1);
   };
 
-  if (loading) return <div>Завантаження...</div>;
+  const handleFollowToggle = () => {
+    if (isFollowing) {
+      dispatch(unfollowUser(user.id)); 
+    } else {
+      dispatch(followUser(user.id)); 
+    }
+  };
+
+
+  if (loading) return <Loader />;
   if (error) return <div>Помилка: {error}</div>;
 
   return (
@@ -69,9 +106,9 @@ const UserPage = () => {
             />
           ) : (
             <Button
-              text='Follow'
+              text={isFollowing ? 'Following' : 'Follow'}
               classname={styles.userPageButton}
-              // onClick={}
+              onClick={handleFollowToggle}
             />
           )}
         </div>
@@ -84,9 +121,9 @@ const UserPage = () => {
       </div>
 
       {isModalOpen && (
-        <Modal>
+        <CustomModal isOpen={true} onClose={handleCloseModal}>
           <Logout setModalLogoutOpen={handleCloseModal} />
-        </Modal>
+        </CustomModal>
       )}
     </div>
   );
