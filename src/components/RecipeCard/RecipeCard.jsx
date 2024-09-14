@@ -25,7 +25,11 @@ export const RecipeCard = () => {
       <div className={css.info}>
         <div className={css.userInfo}>
           <div className={css.avatarContainer}>
-            <img className={css.avatar} src={avatar} alt={dummyCardInfo.user.name} />
+            <img
+              className={css.avatar}
+              src={avatar}
+              alt={dummyCardInfo.user.name}
+            />
           </div>
           <h4 className={css.name}>{dummyCardInfo.user.name}</h4>
         </div>
@@ -46,3 +50,5 @@ export const RecipeCard = () => {
     </div>
   );
 };
+
+export default RecipeCard;
