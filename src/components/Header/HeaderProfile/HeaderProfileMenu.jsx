@@ -9,7 +9,7 @@ const HeaderProfileMenu = ({ onClick, onClose }) => {
   const id = useSelector(selectUserId);
   return (
     <div className={styles.wrap_profile_modal}>
-      <NavLink to={`/users/${id}`} className={styles.link} onClick={onClose}>
+      <NavLink to={`/user/${id}`} className={styles.link} onClick={onClose}>
         Profile
       </NavLink>
       <button
