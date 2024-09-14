@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchUser } from './userOperation.js';
+import { fetchUser, uploadAvatar } from "./userOperation.js";
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     user: {},
     loading: false,
     error: null,
   },
 
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.pending, state => {
+      .addCase(fetchUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
@@ -22,7 +22,9 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.error = action.payload;
-        state.loading = false;
+      })
+      .addCase(uploadAvatar.fulfilled, (state, action) => {
+        state.user.avatar = action.payload.avatar; // Оновлюємо аватарку
       });
   },
 });
