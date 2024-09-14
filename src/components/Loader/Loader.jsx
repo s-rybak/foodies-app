@@ -1,7 +1,7 @@
 //import s from "./Loader.module.css"
 
-export default function Loader() {
+export default function Loader({className}) {
   return (
-    <div>Loading...</div>
+    <div className={className}>Loading...</div>
   )
 }

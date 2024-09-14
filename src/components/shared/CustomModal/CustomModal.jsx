@@ -7,7 +7,7 @@ export const CustomModal = ({
   isOpen,
   onClose,
   children,
-  customeStyles = "",
+  customStyles = "",
   btnStyle = "",
   width = "24",
   height = "24",
@@ -16,7 +16,7 @@ export const CustomModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      className={cx(styles.content, customeStyles)}
+      className={cx(styles.content, customStyles)}
       overlayClassName={styles.overlay}
       ariaHideApp={false}
       closeTimeoutMS={250}

@@ -1,32 +1,37 @@
+import { useSelector } from "react-redux";
 import cx from "classnames";
-import Button from "../Button/Button";
+import { selectAuthIsLoading } from "../../../redux/auth/authSelectors";
 
+import Button from "../Button/Button";
 import styles from "./Auth.module.css";
+import { Loader } from "components";
 
 const Auth = ({ isHomepage = true, openSignIn = () => {},
-	openSignUp = () => {} }) => {
+  openSignUp = () => { } }) => {
+  const isAuthLoading = useSelector(selectAuthIsLoading);
+  
   return (
-    <>
-      <div className={styles.authContainer}>
-        <Button
-          text="SIGN IN"
-          classname={cx(
-            styles.authButton,
-            isHomepage ? styles.homeSignIn : styles.allSighIn
-          )}
-          onClick={openSignIn}
-        />
-        <Button
-          text="SIGN UP"
-          classname={cx(
-            styles.authButton,
-            isHomepage ? styles.homeSignUp : styles.allSighUp
-          )}
-					onClick={openSignUp}
-        />
-      </div>
-    </>
+    isAuthLoading
+      ? <Loader className={cx(styles["auth-loader"], isHomepage ? styles["loader-light"] : styles["loader-dark"])} />
+      : <div className={styles.authContainer}>
+          <Button
+            text="SIGN IN"
+            className={cx(
+              styles.authButton,
+              isHomepage ? styles.homeSignIn : styles.allSighIn
+            )}
+            onClick={openSignIn}
+          />
+          <Button
+            text="SIGN UP"
+            className={cx(
+              styles.authButton,
+              isHomepage ? styles.homeSignUp : styles.allSighUp
+            )}
+            onClick={openSignUp}
+          />
+        </div>
   );
-};
+}
 
 export default Auth;

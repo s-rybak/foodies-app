@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-gray);
+  border-radius: 30px;
+}
+
+.input::placeholder {
+  color: var(--color-gray);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+}
+
+.container {
+  position: relative;
+}
+
+.btn {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.notEmpty {
+  border: 1px solid var(--color-main);
+}

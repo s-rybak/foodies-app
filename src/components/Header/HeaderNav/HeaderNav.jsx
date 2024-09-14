@@ -16,7 +16,7 @@ const HeaderNav = ({isHome}) => {
         </NavLink>
         </li>
         <li>
-          <NavLink>
+          <NavLink  to="/recipe/add">
             <Button
               text="Add recipe"
               classname={cx(styles.navigationButton, isHome && styles.navigationButton_inactive)}
