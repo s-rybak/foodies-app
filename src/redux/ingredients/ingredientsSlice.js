@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import {
-  fetchCategories,
-  fetchMoreCategories,
-} from "./categoriesOperations.js";
+import { fetchIngredients } from "./ingredientsOperations.js";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -14,33 +11,23 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const categoriesSlice = createSlice({
-  name: "categories",
+const ingredientsSlice = createSlice({
+  name: "ingredients",
   initialState: {
-    categories: {
-      total: 0,
-      result: [],
-    },
+    ingredients: [],
     isLoading: false,
     error: null,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategories.pending, handlePending)
-      .addCase(fetchCategories.fulfilled, (state, action) => {
+      .addCase(fetchIngredients.pending, handlePending)
+      .addCase(fetchIngredients.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.categories = action.payload;
+        state.ingredients = action.payload;
       })
-      .addCase(fetchCategories.rejected, handleRejected)
-      .addCase(fetchMoreCategories.pending, handlePending)
-      .addCase(fetchMoreCategories.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.categories.result.push(...action.payload.result);
-      })
-      .addCase(fetchMoreCategories.rejected, handleRejected);
+      .addCase(fetchIngredients.rejected, handleRejected);
   },
 });
 
-export default categoriesSlice.reducer;
+export default ingredientsSlice.reducer;

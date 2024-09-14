@@ -1,14 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./PathInfo.module.css";
+import style from "./PathInfo.module.css";
 
 const PathInfo = ({ currentPage }) => {
   return (
-    <div className={styles.pathinfo}>
-      <Link to="/" className={styles.homeLink}>
+    <div className={style["path-info"]}>
+      <Link to="/" className={style["home-link"]}>
         Home
       </Link>
-      <span className={styles.slash}>/</span>
-      <span className={styles.currentPage}>{currentPage}</span>
+      <span className={style["current-page"]}>{currentPage}</span>
     </div>
   );
 };

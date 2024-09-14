@@ -1,0 +1,13 @@
+.title {
+  margin-bottom: 20px;
+}
+
+.text {
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    margin-bottom: 40px;
+  }
+}

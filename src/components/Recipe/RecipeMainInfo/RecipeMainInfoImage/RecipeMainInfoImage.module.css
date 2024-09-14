@@ -1,0 +1,6 @@
+.image {
+  width: 100%;
+  border-radius: var(--radius-medium);
+  max-height: 400px;
+  object-fit: contain;
+}

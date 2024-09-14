@@ -8,7 +8,7 @@ const Button = ({
   onClick = () => {},
   variant = "button",
   type = "button",
-  classname,
+  className,
   id,
   iconId,
   iconWidth = "20",
@@ -19,7 +19,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={cx(styles.button, styles[variant], classname)}
+      className={cx(styles.button, styles[variant], className)}
       onClick={onClick}
       id={id}
       disabled={disabled}

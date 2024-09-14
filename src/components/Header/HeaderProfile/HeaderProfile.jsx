@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import cx from "classnames";
+
+import emptyImages from "assets/img/empty";
+
+import { selectAuthUserData } from "../../../redux/auth/authSelectors";
 import IconButton from "../../shared/IconButton/IconButton";
 import styles from "./HeaderProfile.module.css";
 import HeaderProfileMenu from "./HeaderProfileMenu";
@@ -7,11 +12,16 @@ import CustomModal from "../../shared/CustomModal/CustomModal";
 import HeaderModal from "../HeaderModal/HeaderModal";
 import styleModal from "../HeaderModal/HeaderModal.module.css";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+
 const HeaderProfile = ({ isHome, onClick }) => {
+  const userData = useSelector(selectAuthUserData);
+
   const [toogleOpen, setToogleOpen] = useState(false);
   const [toogleModal, setToogleModal] = useState(false);
-  const avatarURL = '';
-  const name = 'test name';
+
+  const avatarURL = userData?.avatarURL ? BASE_URL + userData.avatarURL : emptyImages.noAvatar;
+  const name = userData?.name || "User";
 
   const handlerOpenProfile = () => {
     setToogleOpen(!toogleOpen);
@@ -34,6 +44,7 @@ const HeaderProfile = ({ isHome, onClick }) => {
           stroke="#fff"
         />
       </div>
+
       {toogleOpen && (
         <HeaderProfileMenu onClick={onClick} onClose={handlerOpenProfile}/>
       )}
@@ -47,6 +58,7 @@ const HeaderProfile = ({ isHome, onClick }) => {
         stroke={isHome ? "#fff" : "#000"}
         onClick={handlerToogleModal}
       />
+
       {toogleModal && (
         <CustomModal
           isOpen={toogleModal}

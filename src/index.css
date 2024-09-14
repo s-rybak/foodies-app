@@ -4,13 +4,15 @@
   /* FONTS */
   --font-family: "Mulish", sans-serif;
 
-  --font-size-normal: 24px;
-  --font-size-small: 12px;
-  --font-size-little: 14px;
-  --font-size-moderate: 16px;
-  --font-size-large: 40px;
-  --font-size-extra-large: 70px;
   --font-size-gigantic: 90px;
+  --font-size-extra-large: 70px;
+  --font-size-large: 40px;
+  --font-size-normal: 24px;
+  --font-size-twenty: 20px;
+  --font-size-medium: 18px;
+  --font-size-moderate: 16px;
+  --font-size-little: 14px;
+  --font-size-small: 12px;
 
   --font-weight-bolder: 800;
   --font-weight-bold: 700;
@@ -27,6 +29,8 @@
   --color-gray: #bfbebe;
   --color-white: #fff;
   --color-button: #1a1a1a;
+  --color-success: #73af55;
+  --color-error: #d06079;
 
   /* BREAKPOINTS */
   --mobile: 375px;
@@ -35,9 +39,11 @@
 
   /* BORDER RADIUS */
   --radius-circle: 50%;
-  --radius-medium: 30px;
-  --radius-small: 10px;
   --radius-large: 60px;
+  --radius-medium: 30px;
+  --radius-little: 20px;
+  --radius-pitty: 15px;
+  --radius-small: 10px;
 
   /* TRANSITION */
   --transition-time: 250ms;
@@ -73,6 +79,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
 button {
   cursor: pointer;
   padding: 0;
@@ -80,7 +91,7 @@ button {
 }
 
 img {
-  display: block;
+  display: inline-block;
   max-width: 100%;
   height: auto;
 }

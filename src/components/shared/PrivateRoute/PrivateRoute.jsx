@@ -1,7 +1,11 @@
-import { Navigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {selectAuthIsSignedIn} from "../../../redux/auth/authSelectors";
 
-export const PrivateRoute = ({ component: Component }) => {
-    //TODO: check users token
-  return true ? <Component /> : <Navigate to="/" />;
+export const PrivateRoute = ({component: Component}) => {
+
+    const isAuth = useSelector(selectAuthIsSignedIn);
+    console.log(isAuth);
+    return isAuth ? <Component/> : <Navigate to="/"/>;
 };
 export default PrivateRoute;
