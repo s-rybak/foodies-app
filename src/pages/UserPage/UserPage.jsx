@@ -7,19 +7,14 @@ import styles from './UserPage.module.css';
 import UserInfo from 'components/UserInfo/UserInfo';
 import TabsList from 'components/TabsList/TabsList';
 import ListItems from 'components/ListItems/ListItems';
-import ListPagination from 'components/ListPagination/ListPagination';
+
 import { Modal } from 'components/Modal';
 import Logout from 'components/Logout/Logout';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../../redux/users/userOperation';
 import { selectUser } from '../../redux/users/userSelectors';
-
-// const userData = {
-//   id: 'f8a2df06-eac5-49d1-8d13-47b21554ce7e',
-//   email: 'gol06rrzi7@vvatxiy.com',
-//   avatarURL: null,
-// };
+import Pagination from 'components/Pagination/Pagination';
 
 const UserPage = () => {
   const { id } = useParams();
@@ -84,7 +79,7 @@ const UserPage = () => {
         <div className={styles.tabsWrapper}>
           <TabsList isOwnProfile={true} onTabChange={handleTabChange} />
           <ListItems activeTab={activeTab} data={dataRecepi} />
-          <ListPagination />
+          <Pagination />
         </div>
       </div>
 
