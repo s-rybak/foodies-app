@@ -4,8 +4,19 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-height: 432px;
-    padding-bottom: 120px;
+    margin: 64px 0 ;
+}
+
+@media screen and (min-width: 768px) {
+    .testimonials {
+        margin: 100px 0;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .testimonials {
+        margin: 120px 0;
+    }
 }
 
 .testimonial_message{
@@ -27,6 +38,7 @@
 
 .testimonial_text {
     font-size: var(--font-size-moderate);
+    margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {
@@ -51,7 +63,6 @@
     margin: 0 auto 20px;
     padding: 20px;
     background-color: var(--color-white);
-    min-height: 300px;
     min-height: 300px;
 }
 
