@@ -1,12 +1,11 @@
 import css from "./RecipeIngredientImage.module.css";
 
-function RecipeIngredientImage({ standardImage, retinaImage, altText }) {
+function RecipeIngredientImage({ image, altText }) {
 	return (
 		<picture className={css.container}>
 			<img
 				className={css.image}
-				src={standardImage || retinaImage}
-				srcSet={`${standardImage} 1x, ${retinaImage || standardImage} 2x`}
+				src={image}
 				width={55}
 				height={55}
 				loading="lazy"

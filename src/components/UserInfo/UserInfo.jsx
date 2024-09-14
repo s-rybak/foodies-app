@@ -1,8 +1,7 @@
-import styles from './/UserInfo.module.css';
-import Image from 'components/UI/Image/Image';
-import style from './UserInfo.module.css';
-import emptyImages from '../../assets/img/empty';
-import { SvgIcon } from 'components/UI';
+import Image from "components/UI/Image/Image";
+import style from "./UserInfo.module.css";
+import emptyImages from "../../assets/img/empty";
+import { SvgIcon } from "components/UI";
 
 const UserInfo = ({ user }) => {
   return (
@@ -55,6 +54,7 @@ const UserInfo = ({ user }) => {
       </div>
     </div>
   );
+
 };
 
 export default UserInfo;
