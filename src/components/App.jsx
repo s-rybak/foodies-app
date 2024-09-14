@@ -9,7 +9,7 @@ import PrivateRoute from "./shared/PrivateRoute/PrivateRoute";
 const Home = lazy(() => import("pages/Home/Home.jsx"));
 const Category = lazy(() => import("pages/Category/Category.jsx"));
 const Recipe = lazy(() => import("pages/Recipe/Recipe.jsx"));
-const UserPage = lazy(() => import('pages/UserPage/UserPage.jsx'));
+const UserPage = lazy(() => import("pages/UserPage/UserPage.jsx"));
 const NotFound = lazy(() => import("pages/NotFound/NotFound.jsx"));
 const AddRecipe = lazy(() => import("pages/AddRecipe/AddRecipe.jsx"));
 
