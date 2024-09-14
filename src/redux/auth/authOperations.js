@@ -13,14 +13,43 @@ export const signUpUser = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.status === 400) {
-        return thunkApi.rejectWithValue(
-          "There is something wrong with the provided data: " +
-            (error.response.data.message || "Invalid input.")
-        );
+        return thunkApi.rejectWithValue(error.response.data.message);
       }
       if (error.status === 409) {
         return thunkApi.rejectWithValue(
-          "It seems that this email is already in use. Please log in or use another email."
+          "It seems that this email is already in use. Please sign in to your account or use another email."
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
+    }
+  }
+);
+
+export const resendVerificationEmail = createAsyncThunk(
+  "auth/resendVerification",
+  async (email, thunkApi) => {
+    try {
+      await api.post("/api/auth/verify", { email });
+    } catch (error) {
+      if (error.status === 400 || error.status === 404) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
+    }
+  }
+);
+
+export const verifyUserEmail = createAsyncThunk(
+  "auth/verifyUserEmail",
+  async (verificationToken, thunkApi) => {
+    try {
+      await api.get(`/api/auth/verify/${verificationToken}`);
+    } catch (error) {
+      if (error.status === 404) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
         );
       }
       return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
@@ -36,7 +65,48 @@ export const signInUser = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
-      thunkApi.rejectWithValue(error.message);
+      if (
+        error.status === 401 &&
+        error.response.data.message === "Email is not verified"
+      ) {
+        thunkApi.dispatch(resendVerificationEmail(formData.email));
+        return thunkApi.rejectWithValue(
+          "Email is not verified. A verification email has been resent to your email address. Please check your inbox and follow the instructions to confirm your email."
+        );
+      } else if (
+        error.status === 400 ||
+        error.status === 401 ||
+        error.status === 404
+      ) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  "auth/refreshUser",
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const token = state.auth.token;
+    try {
+      setToken(token);
+      const { data } = await api.get("/api/users/current");
+      return data;
+    } catch (error) {
+      if (
+        error.status === 400 ||
+        error.status === 401 ||
+        error.status === 404
+      ) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
     }
   }
 );
