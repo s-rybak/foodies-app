@@ -1,5 +1,7 @@
 .wrap {
-  position: relative;
+  position: absolute;
+  right: 16px;
+  top: 19px;
   display: flex;
   align-items: center;
   padding-top: 3px;
@@ -10,7 +12,7 @@
   display: flex;
   align-items: center;
   line-height: 0;
-  background-color: var(--color-main);
+  background-color: var(--color-button);
   border-radius: 30px;
   cursor: pointer;
 }
@@ -70,6 +72,7 @@
 }
 
 .link {
+  margin-right: 16px;
   color: var(--color-white);
   font-size: 12px;
   font-weight: 700;
@@ -84,11 +87,21 @@
   background-color: var(--color-main);
 }
 
+.link_logout:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
 .icon_logout {
   margin-left: 2px;
 }
 
 @media screen and (min-width: 768px) {
+  .wrap {
+    right: 32px;
+    top: 20px;
+  }
+
   .profileImg {
     width: 50px;
     height: 50px;
@@ -110,5 +123,11 @@
   }
   .profileName {
     max-width: 200px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrap {
+    right: 60px;
   }
 }

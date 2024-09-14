@@ -1,11 +1,23 @@
+
 .card {
-  max-width: 325px;
-  min-height: 370px;
   width: 100%;
+  min-height: 370px;
   border-radius: 30px;
   overflow: hidden;
   background-color: #eee;
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 342px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .card {
+    width: 325px;
+  }
 }
 
 .cardImg {

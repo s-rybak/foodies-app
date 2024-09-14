@@ -6,5 +6,6 @@
 
 .container {
   display: flex;
-  gap: 1cm;
+  flex-wrap: wrap;
+  gap: 14px;
 }

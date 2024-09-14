@@ -1,3 +1,20 @@
-.container {
-  display: flex;
+
+.recipes-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 32px;
+  column-gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .recipes-list {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .recipes-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

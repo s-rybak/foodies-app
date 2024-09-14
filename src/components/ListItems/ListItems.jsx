@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import RecipePreview from 'components/RecipePreview/RecipePreview';
-import UserCard from 'components/UserCard/UserCard';
 import styles from './ListItem.module.css';
+import FollowerCardList from 'components/FollowerCard/FollowerCardList';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserRecipes } from '../../redux/recipes/recipesSelectors';
 import { getUserRecipes } from '../../redux/recipes/recipesOperations';
@@ -35,7 +35,7 @@ const ListItems = ({ activeTab, userId }) => {
             ))
           : followers.map(user => (
               <li key={user.id}>
-                <UserCard user={user} />
+                <FollowerCardList user={user} />
               </li>
             ))}
       </ul>

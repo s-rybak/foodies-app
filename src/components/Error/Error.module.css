@@ -1,5 +1,5 @@
 .error {
-  color: #d9534f;
+  color: var(--color-error);
   font-size: 14px;
   font-weight: bold;
 }

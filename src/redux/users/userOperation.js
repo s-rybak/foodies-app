@@ -63,3 +63,17 @@ export const unfollowUser = createAsyncThunk(
     }
   }
 );
+
+export const updloadAvatar = createAsyncThunk(
+    'user/uploadAvatar',
+    async (avatar, {rejectWithValue}) => {
+        try {
+            const formData = new FormData();
+            formData.append('avatar', avatar);
+            const {data} = await api.patch('/api/users/avatar', formData);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
