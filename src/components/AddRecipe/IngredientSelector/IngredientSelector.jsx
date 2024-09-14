@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Dropdown from "../../shared/Dropdown/Dropdown";
 import Input from "../../shared/Input/Input";
@@ -9,14 +10,15 @@ import TimeCounter from "../TimeCounter/TimeCounter"
 import styles from "./IngredientSelector.module.css";
 import stylesInput from "../CustomInput.module.css";
 
+import { selectCategories } from "../../../redux/categories/categoriesSelectors";
 import { fetchCategories } from "../../../redux/categories/categoriesOperations";
 
-import { useFetchIngredients } from "../../../services/ingredientService"
+//import { useFetchIngredients } from "../../../services/ingredientService"
 
 
 
-const categoriesData = fetchCategories();
-console.log(categoriesData);
+// const categoriesData = fetchCategories();
+// console.log(categoriesData);
 
 const IngredientSelector = ({
   register,
@@ -29,7 +31,14 @@ const IngredientSelector = ({
 }) => {
   const [isIngredientListVisible, setIsIngredientListVisible] = useState(false);
 
-
+  const dispatch = useDispatch();
+  const categoriesData = useSelector(selectCategories);
+  useEffect(() => {
+      dispatch(fetchCategories());
+  }, [dispatch]);
+  
+  console.log(categoriesData)
+  
   const ingredients = [
     { value: "cabbage", label: "Cabbage" },
     { value: "cucamber", label: "Cucamber" },
@@ -98,9 +107,7 @@ const IngredientSelector = ({
         <label htmlFor="description" className={stylesInput.form__label}>
           Enter the description of the dish
         </label>
-              <span className={styles.symbolCounter}>
-                  {/* TODO:add counter */}
-                  0/200</span>
+        <span className={styles.symbolCounter}>{watch("description")?.length || 0}/200</span>
       </div>
       {/* TODO: Add errors */}
       <div className={styles.selectors_time_wrapp}>
@@ -183,7 +190,7 @@ const IngredientSelector = ({
         onClick={ addIngredient }
         iconId="icon-plus"
         iconStyle={styles.addBtnIcon}
-        classname={styles.buttonAdd}
+        className={styles.buttonAdd}
       />
     </div>
   );
