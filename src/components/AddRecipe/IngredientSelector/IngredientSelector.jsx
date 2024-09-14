@@ -5,11 +5,18 @@ import Input from "../../shared/Input/Input";
 import Button from "../../shared/Button/Button";
 import IconButton from "../../../components/shared/IconButton/IconButton";
 import TimeCounter from "../TimeCounter/TimeCounter"
-//import useAutoResizeTextarea from "../../../utilities/hooks/useAutoResizeTextarea";;
 
 import styles from "./IngredientSelector.module.css";
 import stylesInput from "../CustomInput.module.css";
 
+import { fetchCategories } from "../../../redux/categories/categoriesOperations";
+
+import { useFetchIngredients } from "../../../services/ingredientService"
+
+
+
+const categoriesData = fetchCategories();
+console.log(categoriesData);
 
 const IngredientSelector = ({
   register,
@@ -21,6 +28,8 @@ const IngredientSelector = ({
   setSelectedIngredients,
 }) => {
   const [isIngredientListVisible, setIsIngredientListVisible] = useState(false);
+
+
   const ingredients = [
     { value: "cabbage", label: "Cabbage" },
     { value: "cucamber", label: "Cucamber" },

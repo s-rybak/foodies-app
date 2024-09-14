@@ -20,6 +20,7 @@ const AddRecipe = () => {
     register,
     setValue,
     watch,
+    formState: { errors },
     reset,
   } = useForm({
     resolver: yupResolver(yupSchema),
@@ -31,6 +32,7 @@ const AddRecipe = () => {
   const [time, setTime] = useState(10);
   const [wordCount, setWordCount] = useState(0);
   const maxWords = 200;
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleWordCount = (event) => {
     const value = event.target.value;
@@ -79,7 +81,14 @@ const AddRecipe = () => {
       </div>
       <form onSubmit={ onSubmit } className={styles.form}>
         <div className={styles.formWrapper}>
-          <ImageUploader register={register} />
+          <ImageUploader
+            register={register}
+            setValue={setValue}
+            imagePreview={imagePreview}
+            setImagePreview={setImagePreview}
+            watch={watch}
+            errors={errors}
+          />
 
           <div>
             <div className={styles.nameInputWrapper}>
