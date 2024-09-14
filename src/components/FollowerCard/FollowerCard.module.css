@@ -1,0 +1,131 @@
+.cardWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.1);
+}
+
+.photoWrapper {
+  border-radius: 100px;
+  background-color: #e0e0e0;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  padding: 14px 23px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.smallProfilePhoto {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.followerData {
+  display: flex;
+  gap: 16px;
+  min-width: 224px;
+}
+
+.name {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  padding-bottom: 4px;
+}
+
+.descr {
+  font-size: 12px;
+  color: #BFBEBE;
+  padding-bottom: 8px;
+  line-height: 18px;
+}
+
+.followBtn {
+ background-color: #ffffff;
+ color: #BFBEBE;
+ border: 1px solid #BFBEBE;
+ outline: none;
+ cursor: pointer;
+ font-weight: 700;
+ line-height: 1.5;
+ padding: 14px;
+ font-size: 12px;
+ border-radius: 30px;
+ text-transform: uppercase;
+}
+
+
+
+.followerCardList:nth-last-child {
+  border: none;
+}
+
+.iconBtn {
+  background-color: #ffffff;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #BFBEBE;
+}
+
+.icon {
+  stroke: #050505;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50px;
+}
+
+.iconBtn:hover .icon {
+  stroke: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .smallProfilePhoto {
+    width: 85px;
+    height: 85px;
+  }
+
+  .photoWrapper {
+    width: 85px;
+    height: 85px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .descr {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .recipesList {
+    display: flex;
+    gap: 12px;
+    margin-right: auto;
+    margin-left: 28px;
+  }
+
+  .recipeCard {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .recipesList {
+    display: flex;
+    gap: 12px;
+    margin-right: auto;
+    margin-left: 40px;
+  }
+
+  .link-wrapper {
+    margin-left: 40px;
+  }
+}
