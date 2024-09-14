@@ -123,6 +123,13 @@ export default function Home() {
               <div>
                 <div className={style['recipes-list']}>
                   <RecipeList recipes={recipes} addFavorite={handleSelectFavoriteRecipe}/>
+                  {
+                    recipes.length === 0 && (
+                      <div className={style['no-recipes']}>
+                        <p>No recipes found</p>
+                      </div>
+                    )
+                  }
                 </div>
                 <Pagination total={total} limit={12}/>
               </div>
