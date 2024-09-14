@@ -41,7 +41,7 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
             disabled={data._id === 1}
             text={btnText()}
             variant="follow_user"
-            className={styles.followBtn}
+            classname={styles.followBtn}
             onClick={() =>
               btnText() === "follow"
                 ? handleFollowUser(data._id)
