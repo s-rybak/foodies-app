@@ -28,14 +28,7 @@ export default function Home() {
     const queryParams = getQueryParams(location.search);
     const page = queryParams.get("page") || 1;
 
-    const fetchFavorites = async () => {
-        try {
-            const favorites = await api.get(`/api/recipes/favorites`);
-            return favorites.data
-        } catch (error) {
-            console.error("Error fetching favorites:", error);
-        }
-    }
+
 
 
     const handleChangeFilter = (selectedId, type) => {
@@ -59,22 +52,7 @@ export default function Home() {
         return Object.keys(obj).length === 0 && obj.constructor === Object;
     };
 
-    const handleSelectFavoriteRecipe = useCallback(
-        async (recipesData) => {
-            const favoritesData = await fetchFavorites()
-            const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData.favoriteRecipes);
-            setRecipes(matchedRecipes);
-        },[recipes]
-    )
 
-    const matchRecipeWithFavorites = (recipes, favorites = []) => {
-        return recipes.map(recipe => ({
-            ...recipe,
-            isFavorite: Array.isArray(favorites) && favorites.some(fav => {
-                return fav.recipeId === recipe.id
-            })
-        }));
-    };
 
     useEffect(() => {
         // Define an async function inside useEffect
@@ -86,7 +64,7 @@ export default function Home() {
                     + (ingredientId ? `&ingredient=${ingredientId}` : '');
 
                 const response = await api.get(url);
-                await handleSelectFavoriteRecipe(response.data.recipes)
+                setRecipes(response.data.recipes)
                 setTotal(response.data.total);
 
             } catch (error) {
@@ -95,7 +73,7 @@ export default function Home() {
             }
         };
         fetchRecipes();
-    }, [handleSelectFavoriteRecipe, category, page, areaId, ingredientId]);
+    }, [category, page, areaId, ingredientId]);
 
     return (
         <>
@@ -139,7 +117,7 @@ export default function Home() {
                             </div>
                             <div>
                                 <div className={style['recipes-list']}>
-                                    <RecipeList recipes={recipes} addFavorite={handleSelectFavoriteRecipe}/>
+                                    <RecipeList recipes={recipes} />
                                     {
                                         recipes.length === 0 && (
                                             <div className={style['no-recipes']}>

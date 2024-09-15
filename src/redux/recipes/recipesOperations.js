@@ -90,7 +90,7 @@ export const getFavoriteRecipes = createAsyncThunk(
 	async (_, thunkApi) => {
 		try {
 			const { data } = await api.get("api/recipes/favorites?page=1&limit=100");
-			return data;
+			return data.favoriteRecipes;
 		} catch (error) {
 			return thunkApi.rejectWithValue(error.message);
 		}
