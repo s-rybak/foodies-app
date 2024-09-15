@@ -62,7 +62,7 @@ const UserPage = () => {
     setIsModalOpen(false);
   };
 
-  const handleTabChange = tab => {
+  const handleTabChange = (tab) => {
     setActiveTab(tab);
     setPageNumber(1);
   };
@@ -80,8 +80,8 @@ const UserPage = () => {
 
   return (
     <div className={styles.userPageWrapper}>
-      <PathInfo currentPage='profile' />
-      <MainTitle text='Profile' addStyle={styles.userPageMainTitle} />
+      <PathInfo currentPage="profile" />
+      <MainTitle text="Profile" addStyle={styles.userPageMainTitle} />
       <SubtitleComponent className={styles.userPageSubtitle}>
         Reveal your culinary art, share your favorite recipe and create
         gastronomic masterpieces with us.

@@ -1,14 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchFollowing,
-  followUser,
-  unfollowUser,
-  fetchUser,
-  fetchFollowers,
-} from './userOperation';
+import { createSlice } from "@reduxjs/toolkit";
+
+import { fetchUser, uploadAvatar } from "./userOperation.js";
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     user: {},
     followingUsers: [],
@@ -16,10 +11,10 @@ const userSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
-  extraReducers: builder => {
+
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.pending, state => {
+      .addCase(fetchUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
@@ -29,22 +24,9 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.error = action.payload;
-        state.loading = false;
       })
-
-      .addCase(fetchFollowing.fulfilled, (state, action) => {
-        state.followingUsers = action.payload.map(user => user.id);
-      })
-      .addCase(fetchFollowers.fulfilled, (state, action) => {
-        state.followers = action.payload.users;
-      })
-      .addCase(followUser.fulfilled, (state, action) => {
-        state.followingUsers.push(action.payload);
-      })
-      .addCase(unfollowUser.fulfilled, (state, action) => {
-        state.followingUsers = state.followingUsers.filter(
-          userId => userId !== action.payload
-        );
+      .addCase(uploadAvatar.fulfilled, (state, action) => {
+        state.user.avatar = action.payload.avatar; // Оновлюємо аватарку
       });
   },
 });

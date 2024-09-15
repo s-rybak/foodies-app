@@ -20,8 +20,10 @@ export default function UserInfo({ userInfo, uploadAvatar = true }) {
             }`}
           />
           {uploadAvatar ?? (
-            <label className={style["upload-avatar"]}>
-              <input type="file" name="avatar" />
+            <label
+              className={style["upload-avatar"]}
+            >
+              <input type="file" name="avatar" accept="image/*" />
               <SvgIcon name={"icon-plus"} />
             </label>
           )}
