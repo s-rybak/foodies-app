@@ -6,6 +6,7 @@ import {
 	getFavoriteRecipes,
 	addFavoriteRecipe,
 	removeFromFavoriteRecipe,
+	getPopularRecipes,
 } from "./recipesOperations";
 
 const initialState = {
@@ -15,6 +16,9 @@ const initialState = {
 	isErrorFavorite: null,
 	isLoading: false,
 	isError: null,
+	popularRecipes: [],
+	isLoadingPopular: false,
+	isErrorPopular: null,
 	recipeCreate: {
 		lastCreatedRecipe: null,
 		isLoading: false,
@@ -101,6 +105,18 @@ const recipeSlice = createSlice({
 			.addCase(deleteRecipe.rejected, (state, action) => {
 				state.recipeDelete.isLoading = false;
 				state.recipeDelete.isError = action.payload;
+			})
+			.addCase(getPopularRecipes.pending, (state, action) => {
+				state.isLoadingPopular = true;
+				state.isErrorPopular = null;
+			})
+			.addCase(getPopularRecipes.rejected, (state, action) => {
+				state.isLoadingPopular = false;
+				state.isErrorPopular = action.payload;
+			})
+			.addCase(getPopularRecipes.fulfilled, (state, action) => {
+				state.isLoadingPopular = true;
+				state.popularRecipes = action.payload;
 			}),
 });
 

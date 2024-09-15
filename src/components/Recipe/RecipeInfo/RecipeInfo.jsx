@@ -1,4 +1,5 @@
 import RecipeMainInfo from "../RecipeMainInfo/RecipeMainInfo";
+import css from "./RecipeInfo.module.css";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +10,7 @@ import {
 	selectRecipe,
 } from "../../../redux/recipes/recipesSelectors";
 import { useLocation } from "react-router-dom";
-import { Loader } from "components";
+import AnimationLoader from "../../Loader/AnimationLoader";
 
 function RecipeInfo() {
 	const isLoading = useSelector(selectRecipeIsLoading);
@@ -29,7 +30,7 @@ function RecipeInfo() {
 	return (
 		<>
 			{isLoading ? (
-				<Loader />
+				<AnimationLoader className={css.loader} />
 			) : error ? (
 				<p>{error}</p>
 			) : recipeById ? (

@@ -35,6 +35,10 @@
   letter-spacing: -0.2px;
 
   font-weight: 500;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .info {
@@ -95,8 +99,7 @@
 }
 
 @media (min-width: 768px) {
-  .card {
-  }
+  .card {}
 
   .image {
     height: 275px;
@@ -128,6 +131,5 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .card {
-  }
+  .card {}
 }

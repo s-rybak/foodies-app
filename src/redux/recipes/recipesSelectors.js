@@ -25,3 +25,9 @@ export const selectRecipeDeleteIsLoading = (state) =>
 
 export const selectRecipeDeleteIsError = (state) =>
 	state.recipes.recipeDelete.isError;
+
+export const selectPopularRecipes = (state) => state.recipes.popularRecipes;
+
+export const selectIsLoadingPopular = (state) => state.recipes.isLoadingPopular;
+
+export const selectIsErrorPopular = (state) => state.recipes.isErrorPopular;

@@ -6,6 +6,10 @@
   max-width: 150px;
 }
 
+.button:hover {
+  text-decoration: none;
+}
+
 .photo {
   border-radius: var(--radius-medium);
   object-fit: cover;
