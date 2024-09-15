@@ -7,26 +7,30 @@
 
 /* Стилі для select */
 .select {
-  border-radius: 20px;
+  border-radius: 30px; /* Закруглені кути */
   padding: 8px;
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  position: relative;
   padding-right: 40px; /* Додатковий відступ для стрілки */
+  border: 1px solid #ccc; /* Додати рамку для кращого вигляду */
+  background-color: #fff; /* Колір фону */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Додає невелике тіньове оформлення */
+  outline: none; /* Видаляє зовнішній контур при фокусі */
+  cursor: pointer; /* Додає курсор-покажчик */
 }
 
 /* Стрілка за допомогою псевдоелемента */
 .select-wrapper:after {
   content: "";
   position: absolute;
-  right: 15px;
-  top: 30%;
-  transform: rotate(90deg);
-  transition: transform 1s;
-  width: 16px;
-  height: 16px;
+  right: 18px;
+  top: 50%; /* Центрувати стрілку */
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.3s; /* Швидше обертання стрілки */
+  width: 10px;
+  height: 10px;
   background: url("../../assets/img/icons/arrow_best.svg");
   background-size: contain; /* Масштабувати SVG */
   background-repeat: no-repeat; /* Не повторювати SVG */
@@ -34,13 +38,12 @@
 }
 
 .select-wrapper:focus-within:after {
-  transform: rotate(270deg);
+  transform: translateY(-50%) rotate(270deg); /* Плавне обертання стрілки */
 }
 
-/*
+/* Виправлення для контейнера */
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
 }
-*/
