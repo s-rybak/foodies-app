@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './RecipePreview.module.css';
 import { Link } from 'react-router-dom';
 import Icon from '../shared/Icon/Icon';
-import axios from 'axios';
+import api from '../../services/api'
+import {getFavorites} from "../../redux/recipes/recipesOperations";
 
 const deleteRecipe = async id => {
   try {
-    await axios.delete(`/api/recipes/${id}`);
+    await api.delete(`/api/recipes/${id}`);
   } catch (error) {
     console.error('Error deleting recipe:', error);
     throw error;

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { selectAuthIsSignedIn } from "../../redux/auth/authSelectors";
 import RecipeCardFavoriteButton from "./RecipeCardFavoriteButton/RecipeCardFavoriteButton";
 
-export const RecipeCard = ({ recipe }) => {
+export const RecipeCard = ({ recipe, isFavorite }) => {
 	const isSignIn = useSelector(selectAuthIsSignedIn);
 	return (
 		<div className={css.card}>
@@ -34,7 +34,7 @@ export const RecipeCard = ({ recipe }) => {
 				</div>
 
 				<div className={css.buttons}>
-					{isSignIn ? <RecipeCardFavoriteButton /> : <></>}
+					{isSignIn ? <RecipeCardFavoriteButton idRecipe={recipe.id} favorite={isFavorite}/> : <></>}
 
 					<NavLink
 						to={`recipe/${recipe.id}`}

@@ -64,7 +64,9 @@ const ListItems = ({ activeTab, userId }) => {
             <>
               {recipes.recipes.map(recipe => (
                 <li key={recipe.id}>
-                  <RecipePreview recipe={recipe} />
+                  <RecipePreview recipe={recipe} onDelete={(id)=>{
+                    dispatch(getUserRecipes({ limit: 9, page: page }));
+                  }}  />
                 </li>
               ))}
               <Pagination total={recipes.total} limit={9} />
@@ -80,7 +82,9 @@ const ListItems = ({ activeTab, userId }) => {
             <>
               {myFavorites.favoriteRecipes.map(recipe => (
                 <li key={recipe.recipeId}>
-                  <RecipePreview recipe={recipe.recipe} />
+                  <RecipePreview recipe={recipe.recipe} onDelete={(id)=>{
+                    dispatch(getUserRecipes({ limit: 9, page: page }));
+                  }} />
                 </li>
               ))}
               <Pagination total={myFavorites.total} limit={9} />
