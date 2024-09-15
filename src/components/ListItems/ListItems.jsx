@@ -1,10 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import RecipePreview from 'components/RecipePreview/RecipePreview';
 import styles from './ListItem.module.css';
 import FollowerCardList from 'components/FollowerCard/FollowerCardList';
 import { useDispatch, useSelector } from 'react-redux';
-import {selectMyFavorites, selectUserRecipes} from '../../redux/recipes/recipesSelectors';
-import {getFavorites, getUserRecipes} from '../../redux/recipes/recipesOperations';
+import {
+  selectMyFavorites,
+  selectUserRecipes,
+} from '../../redux/recipes/recipesSelectors';
+import {
+  getFavorites,
+  getUserRecipes,
+} from '../../redux/recipes/recipesOperations';
 import {
   selectFollowers,
   selectFollowingUsers,
@@ -14,8 +20,8 @@ import {
   fetchFollowing,
 } from '../../redux/users/userOperation';
 import SubtitleComponent from 'components/Subtitles/SubtitleComponent/SubtitleComponent';
-import Pagination from "../Pagination/Pagination";
-import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
+import Pagination from '../Pagination/Pagination';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 const ListItems = ({ activeTab, userId }) => {
   const dispatch = useDispatch();
@@ -39,31 +45,28 @@ const ListItems = ({ activeTab, userId }) => {
 
   useEffect(() => {
     if (activeTab === 'my-recipes') {
-      dispatch(getUserRecipes({ limit: 9, page: page }))
+      dispatch(getUserRecipes({ limit: 9, page: page }));
     } else if (activeTab === 'followers') {
-      dispatch(fetchFollowers({userId, limit: 9, page: page }));
+      dispatch(fetchFollowers({ userId, limit: 9, page: page }));
     } else if (activeTab === 'following') {
-      dispatch(fetchFollowing({userId,  limit: 9, page: page }));
+      dispatch(fetchFollowing({ userId, limit: 9, page: page }));
     } else if (activeTab === 'my-favorites') {
       dispatch(getFavorites({ limit: 9, page: page }));
     }
-  }, [dispatch, activeTab, userId, page ]);
+  }, [dispatch, activeTab, userId, page]);
 
   return (
     <div className={styles.litsItemWrapper}>
       <ul>
-        {activeTab === 'my-recipes' ||
-        activeTab === 'recipes' ? (
-          recipes.recipes ? (
+        {activeTab === 'my-recipes' || activeTab === 'recipes' ? (
+          recipes.recipes?.length > 0 ? (
             <>
-              {
-                recipes.recipes.map(recipe => (
-                  <li key={recipe.id}>
-                    <RecipePreview recipe={recipe} />
-                  </li>
-                ))
-              }
-              <Pagination total={recipes.total} limit={9}/>
+              {recipes.recipes.map(recipe => (
+                <li key={recipe.id}>
+                  <RecipePreview recipe={recipe} />
+                </li>
+              ))}
+              <Pagination total={recipes.total} limit={9} />
             </>
           ) : (
             <SubtitleComponent>
@@ -71,29 +74,29 @@ const ListItems = ({ activeTab, userId }) => {
               recipes and add your favorites for easy access in the future.
             </SubtitleComponent>
           )
-          ) : activeTab === 'my-favorites' ? (
-          myFavorites.favoriteRecipes ? (
+        ) : activeTab === 'my-favorites' ? (
+          myFavorites.favoriteRecipes?.length > 0 ? (
             <>
-              {
-                myFavorites.favoriteRecipes.map(recipe => (
-                  <li key={recipe.recipeId}>
-                    <RecipePreview recipe={recipe.recipe} />
-                  </li>
-                ))
-              }
-              <Pagination total={myFavorites.total} limit={9}/>
+              {myFavorites.favoriteRecipes.map(recipe => (
+                <li key={recipe.recipeId}>
+                  <RecipePreview recipe={recipe.recipe} />
+                </li>
+              ))}
+              <Pagination total={myFavorites.total} limit={9} />
             </>
           ) : (
             <SubtitleComponent>
-              Nothing has been added to your recipes list yet. Please browse our
-              recipes and add your favorites for easy access in the future.
+              Nothing has been added to your favorite recipes list yet. Please
+              browse our recipes and add your favorites for easy access in the
+              future.
             </SubtitleComponent>
           )
         ) : activeTab === 'followers' ? (
-          followers.users ? (
+          followers.users?.length > 0 ? (
             <>
               <FollowerCardList data={followers.users} />
-              <Pagination total={followers.followersCount} limit={9}/></>
+              <Pagination total={followers.followersCount} limit={9} />
+            </>
           ) : (
             <SubtitleComponent>
               There are currently no followers on your account. Please engage
@@ -102,10 +105,10 @@ const ListItems = ({ activeTab, userId }) => {
             </SubtitleComponent>
           )
         ) : activeTab === 'following' ? (
-          followingUsers.users ? (
+          followingUsers.users?.length > 0 ? (
             <>
               <FollowerCardList data={followingUsers.users} />
-              <Pagination total={followingUsers.followingCount} limit={9}/>
+              <Pagination total={followingUsers.followingCount} limit={9} />
             </>
           ) : (
             <SubtitleComponent>

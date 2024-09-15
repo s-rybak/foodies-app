@@ -47,7 +47,7 @@ const userSlice = createSlice({
         state.followers = action.payload;
       })
       .addCase(followUser.fulfilled, (state, action) => {
-        state.followingUsers.push(action.payload);
+        // state.followingUsers = action.payloa;
       })
       .addCase(unfollowUser.fulfilled, (state, action) => {
         state.followingUsers = state.followingUsers.filter(

@@ -4,14 +4,13 @@ import styles from './FollowerCard.module.css';
 import SmallRecipePhoto from '../SmallRecipePhoto/SmallRecipePhoto.jsx';
 import useResponsiveValue from '../../utilities/hooks/useResponsiveValue.js';
 import { NavLink } from 'react-router-dom';
-//import { useSelector } from "react-redux";
-//import { selectId } from "../../redux/auth/authSlice.js";
+
 
 const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
   const recipeCardsVisability = useResponsiveValue(768, false, 3);
   const recipeCardsQuantity = useResponsiveValue(1440, 3, 4);
   // const authUserId = useSelector(selectId);
-  // console.log('data in rfollowersCard', data)
+  console.log('data in rfollowersCard', data)
 
   const btnText = () => {
     if (tab === 'followers') {
