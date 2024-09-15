@@ -79,7 +79,8 @@ const recipeSlice = createSlice({
             })
             .addCase(getFavoriteRecipes.fulfilled, (state, action) => {
                 state.isLoadingFavorite = false;
-                state.favoriteRecipes = action.payload.favoriteRecipes;
+                console.log()
+                state.favoriteRecipes = action.payload;
             })
             .addCase(addFavoriteRecipe.pending, (state, action) => {
                 state.isLoadingFavorite = true;
