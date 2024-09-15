@@ -8,27 +8,24 @@ export const Verify = () => {
   const { token } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [success, setSuccess] = useState(null)
+  const [success, setSuccess] = useState(null);
 
   if (token) {
     dispatch(verifyUserEmail(token))
-    .then((action) => {
-      if (verifyUserEmail.fulfilled.match(action)) {
-        setSuccess({
-          title: "Verficiation successful!",
-          message: `Your email has been verified!`
-        });
-      }
-    }).then(() => {
-      setTimeout(() => {
-        navigate('/auth/')
-      }, 3000)
-    });
+      .then((action) => {
+        if (verifyUserEmail.fulfilled.match(action)) {
+          setSuccess({
+            title: "Verficiation successful!",
+            message: `Your email has been verified!`,
+          });
+        }
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/auth/sign-in");
+        }, 3000);
+      });
   }
 
-
-
-  return <>
-    {success && <AnimatedIconText.Success {...success} />}
-  </>;
+  return <>{success && <AnimatedIconText.Success {...success} />}</>;
 };
