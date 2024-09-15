@@ -19,7 +19,12 @@ const ListItems = ({ activeTab, userId }) => {
   const dispatch = useDispatch();
   const recipes = useSelector(selectUserRecipes) || [];
   const followers = useSelector(selectFollowers) || [];
+  console.log('followers', followers);
+
   const followingUsers = useSelector(selectFollowingUsers) || [];
+  console.log('following', followingUsers);
+
+
 
   useEffect(() => {
     dispatch(getUserRecipes({ limit: 10, page: 1 }));
@@ -53,11 +58,7 @@ const ListItems = ({ activeTab, userId }) => {
           )
         ) : activeTab === 'followers' ? (
           followers.length > 0 ? (
-            followers.map(user => (
-              <li key={user.id}>
-                <FollowerCardList user={user} />
-              </li>
-            ))
+            <FollowerCardList data={followers} />
           ) : (
             <SubtitleComponent>
               There are currently no followers on your account. Please engage
@@ -67,11 +68,7 @@ const ListItems = ({ activeTab, userId }) => {
           )
         ) : activeTab === 'following' ? (
           followingUsers.length > 0 ? (
-            followingUsers.map(user => (
-              <li key={user.id}>
-                <FollowerCardList user={user} />
-              </li>
-            ))
+            <FollowerCardList data={followingUsers} />
           ) : (
             <SubtitleComponent>
               Your account currently has no subscriptions to other users. Learn

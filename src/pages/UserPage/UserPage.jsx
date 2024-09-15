@@ -28,8 +28,10 @@ import CustomModal from 'components/shared/CustomModal/CustomModal';
 
 const UserPage = () => {
   const { id } = useParams();
+
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector(selectUser);
+
   const loggedInUserId = useSelector(selectUserId);
   const followingUsers = useSelector(selectFollowingUsers);
 
@@ -53,16 +55,14 @@ const UserPage = () => {
     }
   }, [isOwnProfile]);
   const handleOpenModal = () => {
-
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    console.log('click on close');
     setIsModalOpen(false);
   };
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = tab => {
     setActiveTab(tab);
     setPageNumber(1);
   };
@@ -80,8 +80,8 @@ const UserPage = () => {
 
   return (
     <div className={styles.userPageWrapper}>
-      <PathInfo currentPage="profile" />
-      <MainTitle text="Profile" addStyle={styles.userPageMainTitle} />
+      <PathInfo currentPage='profile' />
+      <MainTitle text='Profile' addStyle={styles.userPageMainTitle} />
       <SubtitleComponent className={styles.userPageSubtitle}>
         Reveal your culinary art, share your favorite recipe and create
         gastronomic masterpieces with us.
@@ -92,13 +92,13 @@ const UserPage = () => {
           {isOwnProfile ? (
             <Button
               text='Log out'
-              className={styles.userPageButton}
+              classname={styles.userPageButton}
               onClick={handleOpenModal}
             />
           ) : (
             <Button
               text={isFollowing ? 'Following' : 'Follow'}
-              className={styles.userPageButton}
+              classname={styles.userPageButton}
               onClick={handleFollowToggle}
             />
           )}
