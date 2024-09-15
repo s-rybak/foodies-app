@@ -59,11 +59,13 @@ export default function Home() {
         return Object.keys(obj).length === 0 && obj.constructor === Object;
     };
 
-    const handleSelectFavoriteRecipe = useCallback(async (recipesData) => {
-        const favoritesData = await fetchFavorites()
-        const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
-        setRecipes(matchedRecipes);
-    },[recipes]);
+    const handleSelectFavoriteRecipe = useCallback(
+        async (recipesData) => {
+            const favoritesData = await fetchFavorites()
+            const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
+            setRecipes(matchedRecipes);
+        },[setRecipes,recipes]
+    )
 
     const matchRecipeWithFavorites = (recipes, favorites = []) => {
         return recipes.map(recipe => ({

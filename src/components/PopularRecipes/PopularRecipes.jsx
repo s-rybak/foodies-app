@@ -2,19 +2,14 @@ import style from "./PopularRecipes.module.css";
 import { RecipeCard } from "../RecipeCard/RecipeCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
-	selectIsErrorPopular,
-	selectIsLoadingPopular,
 	selectPopularRecipes,
 } from "../../redux/recipes/recipesSelectors";
 import { useEffect } from "react";
 import { getPopularRecipes } from "../../redux/recipes/recipesOperations";
-import AnimationLoader from "../Loader/AnimationLoader";
 
 const PopularRecipes = () => {
 	const dispatch = useDispatch();
 	const PopularRecipes = useSelector(selectPopularRecipes);
-	const isLoadingPopular = useSelector(selectIsLoadingPopular);
-	const isErrorPopular = useSelector(selectIsErrorPopular);
 
 	useEffect(() => {
 		dispatch(getPopularRecipes(4));

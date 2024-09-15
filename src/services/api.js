@@ -6,13 +6,17 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
  * Axios instance with default common settings.
  */
 export const api = axios.create({
-    baseURL: BASE_URL,
-    timeout: 10000,
-    headers: { "content-type": "application/json" },
+  baseURL: BASE_URL,
+  timeout: 10000,
+  headers: { "content-type": "application/json" },
 });
 
 export const setToken = token => {
-    api.defaults.headers.common.Authorization = "Bearer " + token;
+  api.defaults.headers.common.Authorization = "Bearer " + token;
+};
+
+export const clearToken = () => {
+  delete api.defaults.headers.common.Authorization;
 };
 
 export default api;
