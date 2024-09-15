@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import api, { setToken } from "services/api";
+import api, { setToken, clearToken } from "services/api";
 
 const defaultErrorMessage =
   "An unexpected error occurred. Please try again later.";
@@ -105,6 +105,23 @@ export const refreshUser = createAsyncThunk(
         error.status === 401 ||
         error.status === 404
       ) {
+        return thunkApi.rejectWithValue(
+          "An error occurred: " + error.response.data.message
+        );
+      }
+      return thunkApi.rejectWithValue(error.message || defaultErrorMessage);
+    }
+  }
+);
+
+export const logoutUser = createAsyncThunk(
+  "auth/logoutUser",
+  async (_, thunkApi) => {
+    try {
+      await api.post("/api/auth/logout");
+      clearToken();
+    } catch (error) {
+      if (error.status === 401 || error.status === 404) {
         return thunkApi.rejectWithValue(
           "An error occurred: " + error.response.data.message
         );
