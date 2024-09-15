@@ -15,53 +15,49 @@ import styleModal from "../HeaderModal/HeaderModal.module.css";
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
 const HeaderProfile = ({ isHome, onClick }) => {
-  const userData = useSelector(selectAuthUserData);
+	const userData = useSelector(selectAuthUserData);
 
-  const [toogleOpen, setToogleOpen] = useState(false);
-  const [toogleModal, setToogleModal] = useState(false);
-  const loggedInUserData = useSelector(selectAuthUserData);
-  const avatarURL = userData?.avatarURL ? BASE_URL + userData.avatarURL : emptyImages.noAvatar;
-  const name = userData?.name || "User";
-  const nameTest = 'test name';
-  const handlerOpenProfile = () => {
-    setToogleOpen(!toogleOpen);
-  };
+	const [toogleOpen, setToogleOpen] = useState(false);
+	const [toogleModal, setToogleModal] = useState(false);
 
-  const handlerToogleModal = () => {
-    setToogleModal(!toogleModal);
-  };
+	const avatarURL = userData?.avatar
+		? userData.avatar
+		: emptyImages.noAvatar;
+	const name = userData?.name || "User";
+
+	const handlerOpenProfile = () => {
+		setToogleOpen(!toogleOpen);
+	};
+
+	const handlerToogleModal = () => {
+		setToogleModal(!toogleModal);
+	};
 
   return (
     <div className={styles.wrap}>
       <div className={styles.profile} onClick={handlerOpenProfile}>
-        <img
-          className={styles.profileImg}
-          src={loggedInUserData?.avatarURL || ''}
-          alt={loggedInUserData?.name || nameTest}
-        />
-        <p className={styles.profileName}>
-          {loggedInUserData?.name || nameTest}
-        </p>
+        <img className={styles.profileImg} src={avatarURL} alt={name} />
+        <p className={styles.profileName}>{name}</p>
         <IconButton
           style={cx(styles.btn_arrow, toogleOpen && styles.btn_arrow_open)}
-          iconId='icon-chevron-down'
-          width='18'
-          height='18'
-          stroke='#fff'
+          iconId="icon-chevron-down"
+          width="18"
+          height="18"
+          stroke="#fff"
         />
       </div>
 
       {toogleOpen && (
-        <HeaderProfileMenu onClick={onClick} onClose={handlerOpenProfile} />
+        <HeaderProfileMenu onClick={onClick} onClose={handlerOpenProfile}/>
       )}
 
       <IconButton
         style={styles.btn_menu}
         styleSVG={styles.icon_arrow}
-        iconId='icon-mobile-menu'
-        width='28'
-        height='28'
-        stroke={isHome ? '#fff' : '#000'}
+        iconId="icon-mobile-menu"
+        width="28"
+        height="28"
+        stroke={isHome ? "#fff" : "#000"}
         onClick={handlerToogleModal}
       />
 
@@ -71,9 +67,9 @@ const HeaderProfile = ({ isHome, onClick }) => {
           onClose={handlerToogleModal}
           customeStyles={styleModal.wrap_modal}
           btnStyle={styleModal.btn_close}
-          width='28'
-          height='28'
-          stroke='#fff'
+          width="28"
+          height="28"
+          stroke="#fff"
         >
           <HeaderModal handlerToogleModal={handlerToogleModal} />
         </CustomModal>

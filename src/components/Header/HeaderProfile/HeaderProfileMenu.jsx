@@ -1,12 +1,14 @@
-import { useSelector } from 'react-redux';
-import Icon from '../../shared/Icon/Icon';
-import styles from './HeaderProfile.module.css';
-import cx from 'classnames';
-import { NavLink } from 'react-router-dom';
-import { selectUserId } from '../../../redux/auth/authSelectors';
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import cx from "classnames";
+
+import { selectAuthUserId } from "../../../redux/auth/authSelectors";
+
+import Icon from "../../shared/Icon/Icon";
+import styles from "./HeaderProfile.module.css";
 
 const HeaderProfileMenu = ({ onClick, onClose }) => {
-  const id = useSelector(selectUserId);
+  const id = useSelector(selectAuthUserId);
   return (
     <div className={styles.wrap_profile_modal}>
       <NavLink to={`/user/${id}`} className={styles.link} onClick={onClose}>

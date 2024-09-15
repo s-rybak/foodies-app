@@ -7,17 +7,18 @@ import CategoryList from "../../components/CategoryList/CategoryList";
 import RecipeList from "../../components/RecipeList/recipeList";
 import Pagination from "../../components/Pagination/Pagination";
 import RecipeFilters from "../../components/RecipeFilters/recipeFilters";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import api from "../../services/api";
 import icons from "../../assets/img/icons/icons.svg";
 import {useLocation} from "react-router-dom";
 
 export default function Home() {
+  const categoriesListElement = useRef(null);
   const [recipes, setRecipes] = useState([]);
   const [total, setTotal] = useState(0);
   const [category, setCategory] = useState({});
-  const [ingredientId, setIngredientId] = useState('274df206-e919-4ba7-af37-fcd9ce558b63');
-  const [areaId, setAreaId] = useState('64b9c362-3043-4bf5-b9bc-1cd90ff029e5');
+  const [ingredientId, setIngredientId] = useState('');
+  const [areaId, setAreaId] = useState('');
   const location = useLocation();
 
   const getQueryParams = (search) => {
@@ -43,17 +44,27 @@ export default function Home() {
 
   const handlerChangeCategory = (category) => {
     setCategory(category);
+
+
+
+    if (categoriesListElement.current) {
+      setTimeout(() => {
+        if (categoriesListElement.current) {
+          categoriesListElement.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
   };
 
   const isEmptyObject = (obj) => {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
   };
 
-  const handleSelectFavoriteRecipe = useCallback(async (recipesData) => {
+  const handleSelectFavoriteRecipe = async (recipesData) => {
     const favoritesData = await fetchFavorites()
     const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
     setRecipes(matchedRecipes);
-  },[recipes])
+  }
 
   const matchRecipeWithFavorites = (recipes, favorites = []) => {
     return recipes.map(recipe => ({
@@ -64,38 +75,42 @@ export default function Home() {
     }));
   };
 
-
-
   useEffect(() => {
     // Define an async function inside useEffect
     if (!category.id) return;
     const fetchRecipes = async () => {
       try {
-        const response = await api.get(`/api/recipes?page=${page}&limit=10&category=${category.id}&area=${areaId}&ingredient=${ingredientId}`);
+        const url = `/api/recipes?page=${page}&limit=6&category=${category.id}`
+          + (areaId ? `&area=${areaId}` : '')
+          + (ingredientId ? `&ingredient=${ingredientId}` : '');
 
+        const response = await api.get(url);
         await handleSelectFavoriteRecipe(response.data.recipes)
-
         setTotal(response.data.total);
 
-
-
       } catch (error) {
-        console.error("Error fetching recipes:", error);
+        setRecipes([])
+        setTotal(0)
       }
     };
     fetchRecipes();
-  }, [category, page, areaId, ingredientId,handleSelectFavoriteRecipe]);
+  }, [category, page, areaId, ingredientId]);
 
   return (
     <>
       <Hero />
       <Container>
-        {!isEmptyObject(category) && <button className={style.btn} onClick={() => setCategory({})}>
+        {!isEmptyObject(category) && <button className={style.btn} onClick={() => {
+          setCategory({})
+          setIngredientId('')
+          setAreaId('')
+        }}>
           <svg className={style.icon}>
             <use href={`${icons}#icon-arrow-up-right`}></use>
           </svg>
           back
         </button>}
+        <div ref={categoriesListElement}></div>
         <Title>{
           isEmptyObject(category) ? 'Categories' : category.name
         }</Title>
@@ -106,19 +121,20 @@ export default function Home() {
                 `Discover a limitless world of culinary possibilities and enjoy
           exquisite recipes that combine taste, style and the warm atmosphere of
           the kitchen.`
-            ) : (
+              ) : (
                 'Go on a taste journey, where every sip is a sophisticated creative chord, and every dessert is an expression of the most refined gastronomic desires.'
               )
           }
 
         </UnderTitle>
+
         {
           isEmptyObject(category) ? (
-            <CategoryList handleSelect={handlerChangeCategory} />
+            <CategoryList handleSelect={handlerChangeCategory}/>
           ) : (
             <div className={style["recipes-category"]}>
               <div>
-                <RecipeFilters  changeHandler={handleChangeFilter}/>
+                <RecipeFilters changeHandler={handleChangeFilter}/>
               </div>
               <div>
                 <div className={style['recipes-list']}>
@@ -131,7 +147,7 @@ export default function Home() {
                     )
                   }
                 </div>
-                <Pagination total={total} limit={12}/>
+                <Pagination total={total} limit={6}/>
               </div>
             </div>
           )

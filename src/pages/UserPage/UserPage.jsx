@@ -22,7 +22,7 @@ import {
   selectUser,
 } from '../../redux/users/userSelectors';
 import Pagination from 'components/Pagination/Pagination';
-import { selectUserId } from '../../redux/auth/authSelectors';
+import {selectAuthUserId} from '../../redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
 import CustomModal from 'components/shared/CustomModal/CustomModal';
 
@@ -32,7 +32,7 @@ const UserPage = () => {
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector(selectUser);
 
-  const loggedInUserId = useSelector(selectUserId);
+  const loggedInUserId = useSelector(selectAuthUserId);
   const followingUsers = useSelector(selectFollowingUsers);
 
   const [activeTab, setActiveTab] = useState('my-recipes');

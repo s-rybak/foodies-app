@@ -1,0 +1,9 @@
+.loader {
+  display: block;
+  margin: 0 auto;
+  border-color: var(--color-white);
+}
+
+.loader::after {
+  border-color: var(--color-main);
+}
