@@ -28,13 +28,13 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
-  if (isLoading) return <p>Загрузка...</p>;
-  if (error) return <p>{error}</p>;
+  if (isLoading) return <></>;
+  if (error) return <></>;
 
   return (
     <div className={styles.testimonials}>
-      <p className={styles.testimonial_text}>Отзывы наших клиентов</p>
-      <h2>Отзывы</h2>
+      <p className={styles.testimonial_text}>What our customer say</p>
+      <h2>Testimonials</h2>
       <div className={styles.container_icon}>
         <Icon iconId={"icon-testimoals"} customStyle={styles.icon} stroke="" />
       </div>

@@ -1,10 +1,10 @@
 import css from "./LinkOutline.module.css";
 import { Link } from "react-router-dom";
 
-function LinkOutline({ className, children }) {
+function LinkOutline({ className, path, children }) {
 	return (
 		<Link
-			to="/recipe"
+			to={path}
 			className={`${className} ${css.link}`}>
 			{children}
 		</Link>

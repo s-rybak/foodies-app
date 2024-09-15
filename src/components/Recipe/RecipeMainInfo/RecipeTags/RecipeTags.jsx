@@ -1,15 +1,15 @@
-import { nanoid } from "@reduxjs/toolkit";
 import css from "./RecipeTags.module.css";
 import RecipeTag from "./RecipeTag/RecipeTag";
 
-function RecipeTags({ tags }) {
+function RecipeTags({ category, time }) {
 	return (
 		<ul className={css.list}>
-			{tags.map((tag) => (
-				<li key={nanoid()}>
-					<RecipeTag>{tag}</RecipeTag>
-				</li>
-			))}
+			<li>
+				<RecipeTag>{category.name}</RecipeTag>
+			</li>
+			<li>
+				<RecipeTag>{`${time} min`}</RecipeTag>
+			</li>
 		</ul>
 	);
 }
