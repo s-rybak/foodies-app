@@ -39,13 +39,13 @@ const ListItems = ({ activeTab, userId }) => {
 
   useEffect(() => {
     if (activeTab === 'my-recipes') {
-      dispatch(getUserRecipes({ limit: 2, page: page }))
+      dispatch(getUserRecipes({ limit: 9, page: page }))
     } else if (activeTab === 'followers') {
-      dispatch(fetchFollowers({userId, limit: 2, page: page }));
+      dispatch(fetchFollowers({userId, limit: 9, page: page }));
     } else if (activeTab === 'following') {
-      dispatch(fetchFollowing({userId,  limit: 2, page: page }));
+      dispatch(fetchFollowing({userId,  limit: 9, page: page }));
     } else if (activeTab === 'my-favorites') {
-      dispatch(getFavorites({ limit: 2, page: page }));
+      dispatch(getFavorites({ limit: 9, page: page }));
     }
   }, [dispatch, activeTab, userId, page ]);
 
@@ -63,7 +63,7 @@ const ListItems = ({ activeTab, userId }) => {
                   </li>
                 ))
               }
-              <Pagination total={recipes.total} limit={2}/>
+              <Pagination total={recipes.total} limit={9}/>
             </>
           ) : (
             <SubtitleComponent>
@@ -81,7 +81,7 @@ const ListItems = ({ activeTab, userId }) => {
                   </li>
                 ))
               }
-              <Pagination total={myFavorites.total} limit={2}/>
+              <Pagination total={myFavorites.total} limit={9}/>
             </>
           ) : (
             <SubtitleComponent>
@@ -93,7 +93,7 @@ const ListItems = ({ activeTab, userId }) => {
           followers.users ? (
             <>
               <FollowerCardList data={followers.users} />
-              <Pagination total={followers.followersCount} limit={2}/></>
+              <Pagination total={followers.followersCount} limit={9}/></>
           ) : (
             <SubtitleComponent>
               There are currently no followers on your account. Please engage
@@ -105,7 +105,7 @@ const ListItems = ({ activeTab, userId }) => {
           followingUsers.users ? (
             <>
               <FollowerCardList data={followingUsers.users} />
-              <Pagination total={followingUsers.followingCount} limit={2}/>
+              <Pagination total={followingUsers.followingCount} limit={9}/>
             </>
           ) : (
             <SubtitleComponent>
