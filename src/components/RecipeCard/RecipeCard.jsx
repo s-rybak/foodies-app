@@ -28,14 +28,14 @@ export const RecipeCard = ({recipe, clickToFavorite}) => {
 
   return (
     <div className={css.card}>
-      <img className={css.image} src={`${process.env.REACT_APP_BASE_URL}${recipe?.thumb}` || recipeImg} alt={recipe.title} />
+      <img className={css.image} src={recipe?.thumb || `${process.env.REACT_APP_BASE_URL}${recipeImg}`} alt={recipe.title} />
       <h3 className={css.title}>{recipe.title}</h3>
       <p className={css.text}>{recipe.description}</p>
 
       <div className={css.info}>
         <div className={css.userInfo}>
           <div className={css.avatarContainer}>
-            <img className={css.avatar} src={recipe.user.avatar || avatar} alt={recipe.user.name} />
+            <img className={css.avatar} src={recipe.user.avatar ? `${process.env.REACT_APP_BASE_URL}${recipe.user.avatar}` : avatar} alt={recipe.user.name} />
           </div>
           <h4 className={css.name}>{recipe.user.name}</h4>
         </div>

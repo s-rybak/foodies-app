@@ -34,7 +34,7 @@ import Starter2x from "./Starter.@2x.webp";
 const images = {
   Beef: [Beef, Beef2x],
   Breakfast: [Breakfast, Breakfast2x],
-  Desserts: [Desserts, Desserts2x],
+  Dessert: [Desserts, Desserts2x],
   Goat: [Goat, Goat2x],
   Lamb: [Lamb, Lamb2x],
   Miscellaneous: [Miscellaneous, Miscellaneous2x],

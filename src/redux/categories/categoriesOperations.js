@@ -4,9 +4,9 @@ import api from "../../services/api.js";
 
 export const fetchCategories = createAsyncThunk(
 	"getCategories",
-	async (_, thunkAPI) => {
+	async ({limit = 100}, thunkAPI) => {
 		try {
-			const res = await api.get("/api/categories");
+			const res = await api.get(`/api/categories?limit=${limit}`);
 			return res.data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);

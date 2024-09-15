@@ -14,12 +14,12 @@ const CategoryList = ({handleSelect}) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchCategories({limit: 20}));
   }, [dispatch]);
 
   const { categories } = useSelector(selectCategories);
 
-
+  console.log(categories)
 
   return (
     <div className={style["category-list"]}>
