@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import RecipePreview from 'components/RecipePreview/RecipePreview';
 import styles from './ListItem.module.css';
 import FollowerCardList from 'components/FollowerCard/FollowerCardList';
@@ -21,7 +21,7 @@ import {
 } from '../../redux/users/userOperation';
 import SubtitleComponent from 'components/Subtitles/SubtitleComponent/SubtitleComponent';
 import Pagination from '../Pagination/Pagination';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const ListItems = ({ activeTab, userId }) => {
   const dispatch = useDispatch();
@@ -31,17 +31,18 @@ const ListItems = ({ activeTab, userId }) => {
   const followingUsers = useSelector(selectFollowingUsers) || [];
   const location = useLocation();
 
-  const getPageFromUrl = () => {
+  const getPageFromUrl = useCallback(() => {
     const searchParams = new URLSearchParams(location.search);
     return searchParams.get('page') || 1; // по умолчанию ставим 1, если page не задан
-  };
+  }, [location.search]);
+
   const [page, setPage] = useState(getPageFromUrl());
 
   useEffect(() => {
     // Когда URL меняется, обновляем состояние
     const currentPage = getPageFromUrl();
     setPage(currentPage);
-  }, [location.search]);
+  }, [getPageFromUrl,location.search]);
 
   useEffect(() => {
     if (activeTab === 'my-recipes') {

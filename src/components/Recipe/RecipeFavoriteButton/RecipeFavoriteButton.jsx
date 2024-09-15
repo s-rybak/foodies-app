@@ -42,7 +42,7 @@ function RecipeFavoriteButton({ recipeId }) {
 
 	useEffect(() => {
 		if (
-			favoriteRecipes.findIndex((recipe) => recipe.recipeId === recipeId) === -1
+			favoriteRecipes && favoriteRecipes.findIndex((recipe) => recipe.recipeId === recipeId) === -1
 		) {
 			setIsFavorite(false);
 			return;

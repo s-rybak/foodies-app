@@ -16,7 +16,7 @@ export const IngredientsFilters = ({ changeHandler }) => {
     dispatch(fetchIngredients());
   }, [dispatch]);
 
-  const { ingredients } = useSelector(selectIngredients);
+  const ingredients = useSelector(selectIngredients);
 
   const ingredientOptions = ingredients.map(({ id, name }) => ({
     value: id,
@@ -40,7 +40,7 @@ export const AreaFilters = ({ changeHandler }) => {
     dispatch(fetchAreas());
   }, [dispatch]);
 
-  const { areas } = useSelector(selectAreas);
+  const areas = useSelector(selectAreas);
 
   const areaOptions = areas.map(({ id, name }) => ({
     value: id,

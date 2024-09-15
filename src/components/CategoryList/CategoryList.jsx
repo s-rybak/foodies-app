@@ -15,7 +15,7 @@ const CategoryList = ({handleSelect}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [categories,dispatch]);
+  }, [dispatch]);
 
   return (
     <div className={style["category-list"]}>
