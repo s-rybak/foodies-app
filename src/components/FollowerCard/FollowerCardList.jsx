@@ -1,21 +1,33 @@
 import FollowerCard from './FollowerCard.jsx';
 import styles from './FollowerCard.module.css';
+import {followUser, unfollowUser} from "../../redux/users/userOperation";
+import {useDispatch} from "react-redux";
 
-const FollowerCardList = ({ data }) => {
+const FollowerCardList = ({data}) => {
 
-  return (
-    <ul className={styles.followerCardList}>
-      {data.map(el => (
-        <FollowerCard
-          key={el.id}
-          data={el}
-          tab={'followers'}
-          handleFollowUser={id => console.log(`Follow user with ID: ${id}`)}
-          handleUnfollowUser={id => console.log(`Unfollow user with ID: ${id}`)}
-        />
-      ))}
-    </ul>
-  );
+    const dispatch = useDispatch();
+
+    const handleFollowUser = (id) => {
+        dispatch(followUser(id));
+    }
+
+    const handleUnfollowUser = (id) => {
+        dispatch(unfollowUser(id));
+    }
+
+    return (
+        <ul className={styles.followerCardList}>
+            {data.map(el => (
+                <FollowerCard
+                    key={el.id}
+                    data={el}
+                    tab={'followers'}
+                    handleFollowUser={handleFollowUser}
+                    handleUnfollowUser={handleUnfollowUser}
+                />
+            ))}
+        </ul>
+    );
 };
 
 export default FollowerCardList;

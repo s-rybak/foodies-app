@@ -8,7 +8,6 @@ import {
 } from "../../../redux/recipes/recipesOperations";
 import css from "./RecipeCardFavoriteButton.module.css";
 import icons from "assets/img/icons/icons.svg";
-import {fetchCategories} from "../../../redux/categories/categoriesOperations";
 
 function RecipeCardFavoriteButton({ idRecipe, favorite }) {
 	const [isFavorite, setIsFavorite] = useState(favorite);

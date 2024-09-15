@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import yupSchema from "../../components/AddRecipe/helpers/yupSchema";
 import { toast } from "react-toastify";
@@ -40,7 +41,7 @@ const AddRecipe = () => {
       selectedIngredients: [],
     },
   });
-
+  const navigate = useNavigate();
   const [time, setTime] = useState(10);
   const [wordCount, setWordCount] = useState(0);
   const maxWords = 200;
@@ -98,24 +99,37 @@ const AddRecipe = () => {
 
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const onSubmit = async (data) => {
-    
-      dispatch(createRecipe({
-        title: data.title,
-        instructions: data.instructions,
-        description: data.description,
-        time: time.toString(),
-        categoryId: data.category,
-        areaId: data.area,
-        thumb: data.thumb,
-        ingredients: selectedIngredients.map((ingredient) => ({
-          id: ingredient.id,
-          measure: ingredient.measure,
-        })),
-      }))
-  };
+    try {
+        const response = await dispatch(createRecipe({
+            title: data.title,
+            instructions: data.instructions,
+            description: data.description,
+            time: time.toString(),
+            categoryId: data.category,
+            areaId: data.area,
+            thumb: data.thumb,
+            ingredients: selectedIngredients.map((ingredient) => ({
+                id: ingredient.id,
+                measure: ingredient.measure,
+            })),
+        }));
+
+        if (response.payload) {
+          const createdRecipeName = response.payload.title;
+          toast.success(`Recipe added: ${createdRecipeName}`);
+          navigate(`/user/${response.payload.user.id}`);
+          reset();
+        } else {
+           toast.error('Failed to create recipe: No payload in response');
+        }
+    } catch (error) {
+      toast.error(`Error creating recipe ${error} words`);
+    }
+};
 
    const handleReset = () => {
     reset();
+    setTime(10);
     setImagePreview(null);
     setSelectedIngredients([]);
   };
