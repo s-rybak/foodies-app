@@ -22,14 +22,14 @@ export const Logout = ({ setModalLogoutOpen }) => {
                         type="submit"
                         text="Log out"
                         variant={'log_follow'}
-                        className={styles["logout-button"]}
+                        classname={styles["logout-button"]}
                     />
                     <Button
                         type="button"
                         text="Cancel"
                         variant={'log_cancel'}
                         onClick={() => setModalLogoutOpen(false)}
-                        className={styles["cancel-button"]}
+                        classname={styles["cancel-button"]}
                     />
                 </ul>
             </form>

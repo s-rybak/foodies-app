@@ -4,8 +4,8 @@ import styles from "./FollowerCard.module.css";
 import SmallRecipePhoto from "../SmallRecipePhoto/SmallRecipePhoto.jsx";
 import useResponsiveValue from "../../utilities/hooks/useResponsiveValue.js";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectId } from "../../redux/auth/authSlice.js";
+//import { useSelector } from "react-redux";
+//import { selectId } from "../../redux/auth/authSlice.js";
 
 const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
   const recipeCardsVisability = useResponsiveValue(768, false, 3);
@@ -63,6 +63,7 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
                 </li>
               );
             }
+            return null;
           })}
         </ul>
       )}

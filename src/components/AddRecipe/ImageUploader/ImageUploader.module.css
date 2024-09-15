@@ -1,0 +1,113 @@
+input[type="file"] {
+  display: none;
+}
+
+.errorMsg {
+  font-size: 12px;
+  line-height: calc(18 / 12);
+  color: red;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 16px;
+}
+
+.uploadBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 343px;
+  height: 318px;
+  position: relative;
+  border: 1px dashed rgba(5, 5, 5, 0.2);
+  border-radius: 30px;
+}
+
+.uploadAnotherSpan {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(20 / 14);
+  letter-spacing: -0.28px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  text-transform: none;
+  margin: 0;
+}
+
+.customUploadBtn {
+  display: inline-block;
+  cursor: pointer;
+  align-items: center;
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(20 / 14);
+  letter-spacing: -0.28px;
+  text-decoration: underline;
+}
+
+.imagePreview {
+  max-width: 343px;
+  max-height: 318px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 765px) {
+  .customUploadBtn {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: calc(24 / 16);
+    letter-spacing: -0.32px;
+    text-decoration: underline;
+  }
+
+  .uploadBox {
+    width: 704px;
+    height: 400px;
+    margin: 0;
+  }
+
+  .uploadAnotherSpan {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+    letter-spacing: -0.32px;
+  }
+
+  .wrapper {
+    gap: 20px;
+  }
+
+  .btnWrapper {
+    gap: 16px;
+  }
+
+  .photoIcon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .uploadBox {
+    width: 551px;
+    height: 400px;
+  }
+}
