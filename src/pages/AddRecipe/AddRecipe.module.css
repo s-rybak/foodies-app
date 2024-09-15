@@ -12,6 +12,7 @@
   font-style: normal;
   font-weight: 800;
   text-transform: uppercase;
+  margin-top: 40px;
 }
 
 .breaCrumbs {
@@ -132,6 +133,7 @@ label {
   top: 0;
   right: 0;
   font-size: 14px;
+  color: var(--color-gray);
 }
 
 .recipeData {

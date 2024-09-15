@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Dropdown from "../../shared/Dropdown/Dropdown";
 import Input from "../../shared/Input/Input";
 import Button from "../../shared/Button/Button";
@@ -9,59 +8,31 @@ import TimeCounter from "../TimeCounter/TimeCounter"
 import styles from "./IngredientSelector.module.css";
 import stylesInput from "../CustomInput.module.css";
 
-import { fetchCategories } from "../../../redux/categories/categoriesOperations";
-
-
-const categoriesData = fetchCategories();
-console.log(categoriesData);
-
 const IngredientSelector = ({
   register,
+  ingredients,
+  categories,
+  areas,
   time,
   setTime,
   setValue,
   watch,
   selectedIngredients,
   setSelectedIngredients,
+  errors,
 }) => {
   const [isIngredientListVisible, setIsIngredientListVisible] = useState(false);
-
-
-  const ingredients = [
-    { value: "cabbage", label: "Cabbage" },
-    { value: "cucamber", label: "Cucamber" },
-    { value: "tomato", label: "Tomato" },
-    { value: "corn", label: "Corn" },
-    { value: "radish", label: "Radish" },
-    { value: "parsley", label: "Parsley" },
-  ];
-  const categories = [
-    { value: "beef", label: "Beef" },
-    { value: "breakfast", label: "Breakfast" },
-    { value: "desserts", label: "Desserts" },
-    { value: "lamb", label: "Lamb" },
-    { value: "miscellaneous", label: "Miscellaneous" },
-    { value: "pasta", label: "Pasta" },
-    { value: "pork", label: "Pork" },
-    { value: "seafood", label: "Seafood" },
-    { value: "side", label: "Side" },
-    { value: "starter", label: "Starter" },
-  ];
   const ingredient = watch("ingredient");
   const measure = watch("measure");
 
   const addIngredient = () => {
-    console.log(ingredient);
-    console.log(measure);
     if (ingredient && measure) {
-      //const selectedIngredient = ingredients.find((item) => item.value === ingredient.value);
-
       setSelectedIngredients([
         ...selectedIngredients,
         {
           id: ingredient.value,
           measure,
-          //imageUrl: selectedIngredient.img,
+          imageUrl: ingredient.img,
           label: ingredient.label,
         },
       ]);
@@ -73,13 +44,12 @@ const IngredientSelector = ({
 
   
   const removeIngredient = (index) => {
-    //setSelectedIngredients(selectedIngredients.filter((_, i) => i !== index));
-    // if (selectedIngredients.length <= 1) {
-    //   setIsIngredientListVisible(false);
-    // }
+    setSelectedIngredients(selectedIngredients.filter((_, i) => i !== index));
+    if (selectedIngredients.length <= 1) {
+      setIsIngredientListVisible(false);
+    }
   };
 
-  //useAutoResizeTextarea(styles.textarea);
   return (
     <div className={styles.container}>
       <div className={`${stylesInput.form__group} ${stylesInput.field}`}>
@@ -95,11 +65,9 @@ const IngredientSelector = ({
         <label htmlFor="description" className={stylesInput.form__label}>
           Enter the description of the dish
         </label>
-              <span className={styles.symbolCounter}>
-                  {/* TODO:add counter */}
-                  0/200</span>
+        <span className={styles.symbolCounter}>{watch("description")?.length || 0}/200</span>
       </div>
-      {/* TODO: Add errors */}
+      {errors.description && <p className={styles.errorMsg}>{errors.description.message}</p>}
       <div className={styles.selectors_time_wrapp}>
         <div className={styles.categoryAndTime}>
           {/* TODO: Add loader? */}
@@ -109,13 +77,29 @@ const IngredientSelector = ({
                   {...register("category")}
                   options={ categories }
                   placeholder="Select a category"
-                  onChange=""
-                />
+                  onChange={(selectedOption) => setValue("category", selectedOption.value)}
+            />
+            {errors.category && <p className={styles.errorMsg}>{errors.category.message}</p>}
             </div>
         </div>
         <div>
           <TimeCounter time={time} setTime={setTime} />
-          {/* TODO: Add errors */}
+          {errors.time && <p className={styles.errorMsg}>{errors.time.message}</p>}
+        </div>
+      </div>
+      <div className={styles.area}>
+        <div className={styles.area}>
+          {/* TODO: Add loader? */}
+            <div>
+                <label>Area</label>
+                <Dropdown
+                  {...register("area")}
+                  options={ areas }
+                  placeholder="Select an area"
+                  onChange={(selectedOption) => setValue("area", selectedOption.value)}
+            />
+            {errors.area && <p className={styles.errorMsg}>{errors.area.message}</p>}
+            </div>
         </div>
       </div>
       <div className={styles.ingredientAndQuantity}>
@@ -129,7 +113,7 @@ const IngredientSelector = ({
               className={styles.select}
               onChange={(selectedOption) => setValue("ingredient", selectedOption)}
             />
-            {/* TODO: Add errors */}
+            {errors.ingredient && <p className={styles.errorMsg}>{errors.ingredient.message}</p>}
           </div>
 
         <div className={`${stylesInput.form__group} ${stylesInput.field}`}>
@@ -144,9 +128,17 @@ const IngredientSelector = ({
           <label className={stylesInput.form__label} htmlFor="measure">
             Enter quantity
           </label>
-          {/* TODO: Add errors */}
+          {errors.measure && <p className={styles.errorMsg}>{errors.measure.message}</p>}
         </div>
       </div>
+      <Button
+        text="Add ingredient"
+        type="button"
+        onClick={ addIngredient }
+        iconId="icon-plus"
+        iconStyle={styles.addBtnIcon}
+        classname={styles.buttonAdd}
+      />
       {isIngredientListVisible && (
         <ul className={styles.list}>
           {selectedIngredients.map((ingredient, index) => (
@@ -162,7 +154,7 @@ const IngredientSelector = ({
               </div>
               <div className={styles.textWrapper}>
                 <p>{ingredient.label}</p>
-                <p>{ingredient.measure}</p>
+                <p className={styles.ingredientMeasure}>{ingredient.measure}</p>
               </div>
               <IconButton
                 iconId="icon-close-btn"
@@ -174,14 +166,7 @@ const IngredientSelector = ({
           ))}
         </ul>
       )}
-      <Button
-        text="Add ingredient"
-        type="button"
-        onClick={ addIngredient }
-        iconId="icon-plus"
-        iconStyle={styles.addBtnIcon}
-        classname={styles.buttonAdd}
-      />
+      
     </div>
   );
 };

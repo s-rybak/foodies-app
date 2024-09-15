@@ -1,1 +1,1 @@
-export const selectIngredients = (state) => state.ingredients;
+export const selectIngredients = (state) => state.ingredients.ingredients;

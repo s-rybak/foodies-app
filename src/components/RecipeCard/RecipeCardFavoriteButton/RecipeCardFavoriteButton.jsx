@@ -23,7 +23,7 @@ function RecipeCardFavoriteButton({ idRecipe }) {
 			return;
 		}
 		setIsFavorite(true);
-	}, []);
+	}, [favoriteRecipes,idRecipe,setIsFavorite]);
 
 	const handleAddToFavorite = async (id) => {
 		dispatch(addFavoriteRecipe(idRecipe));
