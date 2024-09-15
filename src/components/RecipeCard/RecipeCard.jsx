@@ -15,7 +15,7 @@ export const RecipeCard = ({ recipe }) => {
 		<div className={css.card}>
 			<img
 				className={css.image}
-				src={`${recipe?.thumb}` || noImage}
+				src={recipe?.thumb ? `${recipe.thumb.startsWith("http") ? recipe.thumb : process.env.REACT_APP_BASE_URL + recipe.thumb}` : noImage}
 				alt={recipe.title}
 			/>
 			<h3 className={css.title}>{recipe.title}</h3>
@@ -26,7 +26,7 @@ export const RecipeCard = ({ recipe }) => {
 					<div className={css.avatarContainer}>
 						<img
 							className={css.avatar}
-							src={recipe.user.avatar || noAvatar}
+							src={recipe.user.avatar ? `${recipe.user.avatar.startsWith("http") ? recipe.user.avatar : process.env.REACT_APP_BASE_URL+recipe.user.avatar }` : noAvatar}
 							alt={recipe.user.name}
 						/>
 					</div>

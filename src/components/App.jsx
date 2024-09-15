@@ -5,6 +5,7 @@ import { refreshUser } from "../redux/auth/authOperations";
 
 import SharedLayout from "layout/SharedLayout/SharedLayout.jsx";
 import PrivateRoute from "./shared/PrivateRoute/PrivateRoute";
+import { Verify } from "pages/Verify/Verify";
 
 const Home = lazy(() => import("pages/Home/Home.jsx"));
 const Category = lazy(() => import("pages/Category/Category.jsx"));
@@ -29,6 +30,7 @@ export const App = () => {
           <Route path="/user/:id" element={<UserPage/>} />
           <Route path="/recipe/:recipeId" element={<Recipe />} />
           <Route path="/recipe/add" element={<PrivateRoute component={AddRecipe} />} />
+          <Route path="/auth/verify/:token" element={<Verify />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

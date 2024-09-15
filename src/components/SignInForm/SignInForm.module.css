@@ -41,6 +41,7 @@
   gap: 14px;
 }
 
+
 .input {
   padding: 14px;
 
@@ -49,6 +50,10 @@
 
   transition: border-color 0.3s;
   outline: none;
+}
+
+.input.password-field {
+  padding-right: 48px;
 }
 
 .input::placeholder {
@@ -136,6 +141,10 @@
 
     transition: border-color 0.3s;
     outline: none;
+  }
+
+  .input.password-field {
+    padding-right: 56px;
   }
 
   .input::placeholder {

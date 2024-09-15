@@ -21,7 +21,7 @@ export default function CardCategory({ category, handleSelect }) {
         </button>
         <button
           onClick={() => handleSelect(category)}
-          className={`${style.iconbutton} ${style.button}`}
+          className={`${style.iconbutton}`}
         >
           <SvgIcon name="icon-arrow-up-right" />
         </button>
