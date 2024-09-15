@@ -31,12 +31,26 @@ import Side2x from "./Side@2x.jpg";
 import Starter from "./Starter.webp";
 import Starter2x from "./Starter.@2x.webp";
 
+import Vegan from "./Vegan.png";
+import Vegan2x from "./Vegan2x.png";
+
+import Vegetarian from "./Vegetarian.png";
+import Vegetarian2x from "./Vegetarian2x.png";
+
+import Soup from "./Soup.webp";
+import Soup2x from "./Soup.webp";
+
+
 const images = {
+  Vegan: [Vegan, Vegan2x],
+  Vegetarian: [Vegetarian, Vegetarian2x],
+  Soup: [Soup, Soup2x],
   Beef: [Beef, Beef2x],
   Breakfast: [Breakfast, Breakfast2x],
-  Desserts: [Desserts, Desserts2x],
+  Dessert: [Desserts, Desserts2x],
   Goat: [Goat, Goat2x],
   Lamb: [Lamb, Lamb2x],
+  Chicken: [Lamb, Lamb2x],
   Miscellaneous: [Miscellaneous, Miscellaneous2x],
   Pasta: [Pasta, Pasta2x],
   Pork: [Pork, Pork2x],
