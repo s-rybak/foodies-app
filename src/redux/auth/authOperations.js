@@ -94,7 +94,7 @@ export const refreshUser = createAsyncThunk(
     const token = state.auth.token;
     try {
       setToken(token);
-      const { data } = await api.get("/api/users/current");
+      const { data } = await api.get("/api/auth/current");
       return data;
     } catch (error) {
       if (
