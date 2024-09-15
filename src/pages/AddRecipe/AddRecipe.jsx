@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import yupSchema from "../../components/AddRecipe/helpers/yupSchema";
 import { toast } from "react-toastify";
@@ -15,6 +16,16 @@ import IconButton from "../../components/shared/IconButton/IconButton";
 import Button from "../../components/shared/Button/Button";
 import stylesInput from "../../components/AddRecipe/CustomInput.module.css";
 import useAutoResizeTextarea from "../../utilities/hooks/useAutoResizeTextarea";
+
+import { selectCategories } from "../../redux/categories/categoriesSelectors";
+import { fetchCategories } from "../../redux/categories/categoriesOperations";
+import { selectIngredients } from "../../redux/ingredients/ingredientsSelectors";
+import { fetchIngredients } from "../../redux/ingredients/ingredientsOperations";
+import { selectAreas } from "../../redux/areas/areasSelectors";
+import { fetchAreas } from "../../redux/areas/areasOperations";
+
+import { createRecipe } from "../../redux/recipes/recipesOperations";
+
 const AddRecipe = () => {
   const {
     register,
@@ -22,6 +33,7 @@ const AddRecipe = () => {
     watch,
     formState: { errors },
     reset,
+    handleSubmit,
   } = useForm({
     resolver: yupResolver(yupSchema),
     defaultValues: {
@@ -33,6 +45,39 @@ const AddRecipe = () => {
   const [wordCount, setWordCount] = useState(0);
   const maxWords = 200;
   const [imagePreview, setImagePreview] = useState(null);
+
+  const dispatch = useDispatch();
+  const categoriesData = useSelector(selectCategories);
+  useEffect(() => {
+      dispatch(fetchCategories());
+  }, [dispatch]);
+    
+  const categories = categoriesData.map(item => ({
+    value: item.id,
+    label: item.name,
+  }));
+
+  const ingredientsData = useSelector(selectIngredients);
+  useEffect(() => {
+      dispatch(fetchIngredients());
+  }, [dispatch]);
+  
+  
+  const ingredients = ingredientsData.map(item => ({
+    value: item.id,
+    label: item.name,
+    img: item.img,
+  }));
+
+  const areasData = useSelector(selectAreas);
+    useEffect(() => {
+      dispatch(fetchAreas());
+  }, [dispatch]);
+    
+  const areas = areasData.map(item => ({
+    value: item.id,
+    label: item.name,
+  }));
 
   const handleWordCount = (event) => {
     const value = event.target.value;
@@ -54,17 +99,28 @@ const AddRecipe = () => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("thumb", data.thumb);
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("category", data.category);
-    formData.append("time", time.toString());
-    formData.append("instructions", data.instructions);
+    console.log(data);
+
+      dispatch(createRecipe({
+        title: data.title,
+        instructions: data.instructions,
+        description: data.description,
+        time: time.toString(),
+        category: data.category,
+        area: data.area,
+        thumb: data.thumb,
+        ingredients: selectedIngredients.map((ingredient) => ({
+          id: ingredient.id,
+          measure: ingredient.measure,
+        })),
+      }))
+
   };
 
    const handleReset = () => {
     reset();
+    setImagePreview(null);
+    setSelectedIngredients([]);
   };
 
   return (
@@ -79,7 +135,7 @@ const AddRecipe = () => {
           <Subtitle text ="Reveal your culinary art, share your favorite recipe and create gastronomic masterpieces with us." />
         </div>
       </div>
-      <form onSubmit={ onSubmit } className={styles.form}>
+      <form onSubmit={handleSubmit(onSubmit)}  className={styles.form}>
         <div className={styles.formWrapper}>
           <ImageUploader
             register={register}
@@ -107,12 +163,16 @@ const AddRecipe = () => {
                 <div className={styles.recipeData}>
                   <IngredientSelector
                     register={register}
+                    ingredients={ingredients}
+                    categories={categories}
+                    areas={areas}
                     time={time}
                     setTime={setTime}
                     setValue={setValue}
                     selectedIngredients={selectedIngredients}
                     setSelectedIngredients={setSelectedIngredients}
                     watch={watch}
+                    errors={errors}
                   />
                   {/* TODO: add errors parser */}
                 </div>
@@ -122,6 +182,7 @@ const AddRecipe = () => {
               <h2 className={styles.subheadear}>Recipe preparation</h2>
               <div className={`${styles.textareaWrapper} ${stylesInput.form__group} ${stylesInput.field}`}>
                 <textarea
+                  {...register("instructions")}
                   onInput={handleWordCount}
                   id="instructions"
                   name="instructions"

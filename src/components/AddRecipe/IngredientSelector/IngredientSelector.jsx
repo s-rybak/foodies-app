@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+
 
 import Dropdown from "../../shared/Dropdown/Dropdown";
 import Input from "../../shared/Input/Input";
@@ -10,61 +10,22 @@ import TimeCounter from "../TimeCounter/TimeCounter"
 import styles from "./IngredientSelector.module.css";
 import stylesInput from "../CustomInput.module.css";
 
-import { selectCategories } from "../../../redux/categories/categoriesSelectors";
-import { fetchCategories } from "../../../redux/categories/categoriesOperations";
-import { selectIngredients } from "../../../redux/ingredients/ingredientsSelectors";
-import { fetchIngredients } from "../../../redux/ingredients/ingredientsOperations";
-import { selectAreas } from "../../../redux/areas/areasSelectors";
-import { fetchAreas } from "../../../redux/areas/areasOperations";
+
 
 const IngredientSelector = ({
   register,
+  ingredients,
+  categories,
+  areas,
   time,
   setTime,
   setValue,
   watch,
   selectedIngredients,
   setSelectedIngredients,
+  errors,
 }) => {
   const [isIngredientListVisible, setIsIngredientListVisible] = useState(false);
-
-  const dispatch = useDispatch();
-  const categoriesData = useSelector(selectCategories);
-  console.log(categoriesData);
-  useEffect(() => {
-      dispatch(fetchCategories());
-  }, [dispatch]);
-  
-  
-  const categories = categoriesData.map(item => ({
-    value: item.id,
-    label: item.name,
-  }));
-
-  const ingredientsData = useSelector(selectIngredients);
-  console.log(ingredientsData);
-  useEffect(() => {
-      dispatch(fetchIngredients());
-  }, [dispatch]);
-  
-  
-  const ingredients = ingredientsData.map(item => ({
-    value: item.id,
-    label: item.name,
-    img: item.img,
-  }));
-
-  const areasData = useSelector(selectAreas);
-  console.log(areasData);
-  useEffect(() => {
-      dispatch(fetchAreas());
-  }, [dispatch]);
-    
-  const areas = areasData.map(item => ({
-    value: item.id,
-    label: item.name,
-  }));
-
   const ingredient = watch("ingredient");
   const measure = watch("measure");
 
@@ -120,8 +81,9 @@ const IngredientSelector = ({
                   {...register("category")}
                   options={ categories }
                   placeholder="Select a category"
-                  onChange=""
-                />
+                  onChange={(selectedOption) => setValue("category", selectedOption.label)}
+            />
+            {errors.category && <p className={styles.errorMsg}>{errors.category.message}</p>}
             </div>
         </div>
         <div>
@@ -138,8 +100,9 @@ const IngredientSelector = ({
                   {...register("area")}
                   options={ areas }
                   placeholder="Select an area"
-                  onChange=""
-                />
+                  onChange={(selectedOption) => setValue("area", selectedOption.label)}
+            />
+            {errors.area && <p className={styles.errorMsg}>{errors.area.message}</p>}
             </div>
         </div>
       </div>
@@ -154,7 +117,7 @@ const IngredientSelector = ({
               className={styles.select}
               onChange={(selectedOption) => setValue("ingredient", selectedOption)}
             />
-            {/* TODO: Add errors */}
+            {errors.ingredient && <p className={styles.errorMsg}>{errors.ingredient.message}</p>}
           </div>
 
         <div className={`${stylesInput.form__group} ${stylesInput.field}`}>
@@ -178,7 +141,7 @@ const IngredientSelector = ({
         onClick={ addIngredient }
         iconId="icon-plus"
         iconStyle={styles.addBtnIcon}
-        className={styles.buttonAdd}
+        classname={styles.buttonAdd}
       />
       {isIngredientListVisible && (
         <ul className={styles.list}>
