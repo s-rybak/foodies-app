@@ -18,11 +18,9 @@ const CategoryList = ({handleSelect}) => {
 
   const { categories } = useSelector(selectCategories);
 
-
-
   return (
     <div className={style["category-list"]}>
-      {categories.length > 0 && (
+      {categories && categories.length > 0 && (
         <>
           {(showAll ? categories : categories.slice(0, 11)).map((category, index) => (
             <CardCategory

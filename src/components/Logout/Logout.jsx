@@ -5,7 +5,6 @@ import { logoutUser } from "../../redux/auth/authOperations";
 
 import Button from '../shared/Button/Button';
 import styles from './Logout.module.css';
-import { Navigate, useNavigate } from "react-router-dom";
 
 export const Logout = ({ setModalLogoutOpen }) => {
     const dispatch = useDispatch()
