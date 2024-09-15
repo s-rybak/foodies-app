@@ -18,6 +18,7 @@ function RecipeMainInfo({
 	ingredients,
 	instructions,
 	recipeId,
+	isFavorite
 }) {
 	return (
 		<div className={css.container}>
@@ -38,6 +39,7 @@ function RecipeMainInfo({
 				</div>
 				<RecipeIngredients ingredients={ingredients} />
 				<RecipePreparation
+					isFavorite={isFavorite}
 					instructions={instructions}
 					recipeId={recipeId}
 				/>

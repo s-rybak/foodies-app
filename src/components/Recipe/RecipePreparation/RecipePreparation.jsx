@@ -6,13 +6,14 @@ import RecipeFavoriteButton from "../RecipeFavoriteButton/RecipeFavoriteButton";
 import { useSelector } from "react-redux";
 import { selectAuthIsSignedIn } from "../../../redux/auth/authSelectors";
 
-function RecipePreparation({ instructions, recipeId }) {
+function RecipePreparation({ instructions, recipeId, isFavorite }) {
+	console.log(isFavorite, 'asd')
 	const isSignedIn = useSelector(selectAuthIsSignedIn);
 	return (
 		<div>
 			<SectionTitle className={css.title}>Recipe Preparation</SectionTitle>
 			<Text className={css.text}>{instructions}</Text>
-			{isSignedIn ? <RecipeFavoriteButton recipeId={recipeId} /> : <></>}
+			{isSignedIn ? <RecipeFavoriteButton recipeId={recipeId} favorite={isFavorite} /> : <></>}
 		</div>
 	);
 }

@@ -15,8 +15,8 @@ const RecipeList = ({recipes}) => {
 	}, [dispatch]);
 
 	const isFavorite = (id) => {
-		console.log(favoriteRecipes, id);
-		return false
+		const isFavorite = favoriteRecipes.findIndex((recipe) => recipe.recipeId === id);
+		return isFavorite !== -1;
 	}
 
 

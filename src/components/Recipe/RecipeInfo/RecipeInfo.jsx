@@ -26,7 +26,6 @@ function RecipeInfo() {
 		// Recive list of recipe by id from database
 		dispatch(getRecipeById(recipeId));
 	}, [dispatch, recipeId]);
-
 	return (
 		<>
 			{isLoading ? (
@@ -44,6 +43,7 @@ function RecipeInfo() {
 					ingredients={recipeById.ingredients}
 					instructions={recipeById.instructions}
 					recipeId={recipeById.id}
+					isFavorite={recipeById.isFavirote}
 				/>
 			) : (
 				<p>Recipe not found</p>

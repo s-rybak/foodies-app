@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteRecipes } from "../../../redux/recipes/recipesSelectors";
+import {selectFavoriteRecipes, selectIsLoadingFavorite} from "../../../redux/recipes/recipesSelectors";
 import {
 	addFavoriteRecipe,
 	getFavoriteRecipes,
@@ -14,28 +14,20 @@ function RecipeCardFavoriteButton({ idRecipe, favorite }) {
 	const [isFavorite, setIsFavorite] = useState(favorite);
 	const dispatch = useDispatch();
 
-	const favoriteRecipes = useSelector(selectFavoriteRecipes);
+	const loading = useSelector(selectIsLoadingFavorite);
 
-	useEffect(() => {
-		if (
-			favoriteRecipes && favoriteRecipes.findIndex((recipe) => recipe.recipeId === idRecipe) === -1
-		) {
-			setIsFavorite(false);
-			return;
-		}
-		setIsFavorite(true);
-	}, [favoriteRecipes,idRecipe,setIsFavorite]);
 
 	const handleAddToFavorite = async (id) => {
-		dispatch(addFavoriteRecipe(id));
-		dispatch(getFavoriteRecipes());
+		if (loading) return;
 		setIsFavorite(true);
+		dispatch(addFavoriteRecipe(id));
+
 	};
 
 	const handleRemoveFromFavorite = async (id) => {
-		dispatch(removeFromFavoriteRecipe(id));
-		dispatch(getFavoriteRecipes());
+		if (loading) return;
 		setIsFavorite(false);
+		dispatch(removeFromFavoriteRecipe(id));
 	};
 	return (
 		<>
