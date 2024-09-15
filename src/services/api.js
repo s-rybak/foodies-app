@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
-const BASE_URL = 'https://foodies-api-hrrk.onrender.com';
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+
 /**
  * Axios instance with default common settings.
  */
