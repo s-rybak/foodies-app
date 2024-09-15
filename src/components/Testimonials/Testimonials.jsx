@@ -28,6 +28,8 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
+  if (isLoading) return <></>;
+  if (error) return <></>;
 
   return (
     <div className={styles.testimonials}>

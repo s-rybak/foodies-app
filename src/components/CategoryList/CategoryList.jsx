@@ -18,7 +18,7 @@ const CategoryList = ({handleSelect}) => {
 
   const { categories } = useSelector(selectCategories);
 
-  console.log(categories)
+
 
   return (
     <div className={style["category-list"]}>
