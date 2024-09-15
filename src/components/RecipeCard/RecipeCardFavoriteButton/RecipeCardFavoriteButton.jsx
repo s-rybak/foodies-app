@@ -10,19 +10,21 @@ import css from "./RecipeCardFavoriteButton.module.css";
 import icons from "assets/img/icons/icons.svg";
 import {fetchCategories} from "../../../redux/categories/categoriesOperations";
 
-function RecipeCardFavoriteButton({ idRecipe }) {
-	const [isFavorite, setIsFavorite] = useState(false);
+function RecipeCardFavoriteButton({ idRecipe, favorite }) {
+	const [isFavorite, setIsFavorite] = useState(favorite);
 	const dispatch = useDispatch();
 
 	const favoriteRecipes = useSelector(selectFavoriteRecipes);
-	useEffect(() => {
-		dispatch(getFavoriteRecipes());
-	}, [dispatch]);
 
 	useEffect(() => {
-		const isRecipeFavorite = favoriteRecipes?.some(recipe => recipe.recipeId === idRecipe);
-		setIsFavorite(isRecipeFavorite || false);
-	}, [favoriteRecipes, idRecipe]);
+		if (
+			favoriteRecipes && favoriteRecipes.findIndex((recipe) => recipe.recipeId === idRecipe) === -1
+		) {
+			setIsFavorite(false);
+			return;
+		}
+		setIsFavorite(true);
+	}, [favoriteRecipes,idRecipe,setIsFavorite]);
 
 	const handleAddToFavorite = async (id) => {
 		dispatch(addFavoriteRecipe(id));
@@ -37,7 +39,7 @@ function RecipeCardFavoriteButton({ idRecipe }) {
 	};
 	return (
 		<>
-			{!isFavorite ? (
+			{isFavorite ? (
 				<button
 					className={css.btn}
 					type="button"
