@@ -7,7 +7,7 @@ import CategoryList from "../../components/CategoryList/CategoryList";
 import RecipeList from "../../components/RecipeList/recipeList";
 import Pagination from "../../components/Pagination/Pagination";
 import RecipeFilters from "../../components/RecipeFilters/recipeFilters";
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import api from "../../services/api";
 import icons from "../../assets/img/icons/icons.svg";
 import {useLocation} from "react-router-dom";
