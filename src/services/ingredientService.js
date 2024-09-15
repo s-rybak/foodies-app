@@ -25,7 +25,7 @@ export async function useFetchIngredients() {
 
     fetchIngredients();
   }, [REACT_APP_BASE_URL]);
-  console.log({ ingredients });
+  //console.log({ ingredients });
   return { ingredients, isLoading, error };
 }
 

@@ -149,7 +149,7 @@ const AddRecipe = () => {
                 styleSVG={styles.iconTrash}
               />
 
-              <Button text="Publish" type="submit" classname={styles.button} />
+              <Button text="Publish" type="submit" className={styles.button} />
             </div>
           </div>
         </div>

@@ -12,13 +12,10 @@ import stylesInput from "../CustomInput.module.css";
 
 import { selectCategories } from "../../../redux/categories/categoriesSelectors";
 import { fetchCategories } from "../../../redux/categories/categoriesOperations";
-
-//import { useFetchIngredients } from "../../../services/ingredientService"
-
-
-
-// const categoriesData = fetchCategories();
-// console.log(categoriesData);
+import { selectIngredients } from "../../../redux/ingredients/ingredientsSelectors";
+import { fetchIngredients } from "../../../redux/ingredients/ingredientsOperations";
+import { selectAreas } from "../../../redux/areas/areasSelectors";
+import { fetchAreas } from "../../../redux/areas/areasOperations";
 
 const IngredientSelector = ({
   register,
@@ -33,47 +30,52 @@ const IngredientSelector = ({
 
   const dispatch = useDispatch();
   const categoriesData = useSelector(selectCategories);
+  console.log(categoriesData);
   useEffect(() => {
       dispatch(fetchCategories());
   }, [dispatch]);
   
-  console.log(categoriesData)
   
-  const ingredients = [
-    { value: "cabbage", label: "Cabbage" },
-    { value: "cucamber", label: "Cucamber" },
-    { value: "tomato", label: "Tomato" },
-    { value: "corn", label: "Corn" },
-    { value: "radish", label: "Radish" },
-    { value: "parsley", label: "Parsley" },
-  ];
-  const categories = [
-    { value: "beef", label: "Beef" },
-    { value: "breakfast", label: "Breakfast" },
-    { value: "desserts", label: "Desserts" },
-    { value: "lamb", label: "Lamb" },
-    { value: "miscellaneous", label: "Miscellaneous" },
-    { value: "pasta", label: "Pasta" },
-    { value: "pork", label: "Pork" },
-    { value: "seafood", label: "Seafood" },
-    { value: "side", label: "Side" },
-    { value: "starter", label: "Starter" },
-  ];
+  const categories = categoriesData.map(item => ({
+    value: item.id,
+    label: item.name,
+  }));
+
+  const ingredientsData = useSelector(selectIngredients);
+  console.log(ingredientsData);
+  useEffect(() => {
+      dispatch(fetchIngredients());
+  }, [dispatch]);
+  
+  
+  const ingredients = ingredientsData.map(item => ({
+    value: item.id,
+    label: item.name,
+    img: item.img,
+  }));
+
+  const areasData = useSelector(selectAreas);
+  console.log(areasData);
+  useEffect(() => {
+      dispatch(fetchAreas());
+  }, [dispatch]);
+    
+  const areas = areasData.map(item => ({
+    value: item.id,
+    label: item.name,
+  }));
+
   const ingredient = watch("ingredient");
   const measure = watch("measure");
 
   const addIngredient = () => {
-    console.log(ingredient);
-    console.log(measure);
     if (ingredient && measure) {
-      //const selectedIngredient = ingredients.find((item) => item.value === ingredient.value);
-
       setSelectedIngredients([
         ...selectedIngredients,
         {
           id: ingredient.value,
           measure,
-          //imageUrl: selectedIngredient.img,
+          imageUrl: ingredient.img,
           label: ingredient.label,
         },
       ]);
@@ -85,13 +87,12 @@ const IngredientSelector = ({
 
   
   const removeIngredient = (index) => {
-    //setSelectedIngredients(selectedIngredients.filter((_, i) => i !== index));
-    // if (selectedIngredients.length <= 1) {
-    //   setIsIngredientListVisible(false);
-    // }
+    setSelectedIngredients(selectedIngredients.filter((_, i) => i !== index));
+    if (selectedIngredients.length <= 1) {
+      setIsIngredientListVisible(false);
+    }
   };
 
-  //useAutoResizeTextarea(styles.textarea);
   return (
     <div className={styles.container}>
       <div className={`${stylesInput.form__group} ${stylesInput.field}`}>
@@ -128,6 +129,20 @@ const IngredientSelector = ({
           {/* TODO: Add errors */}
         </div>
       </div>
+      <div className={styles.area}>
+        <div className={styles.area}>
+          {/* TODO: Add loader? */}
+            <div>
+                <label>Area</label>
+                <Dropdown
+                  {...register("area")}
+                  options={ areas }
+                  placeholder="Select an area"
+                  onChange=""
+                />
+            </div>
+        </div>
+      </div>
       <div className={styles.ingredientAndQuantity}>
         {/* TODO: Add loader? */}
           <div>
@@ -157,6 +172,14 @@ const IngredientSelector = ({
           {/* TODO: Add errors */}
         </div>
       </div>
+      <Button
+        text="Add ingredient"
+        type="button"
+        onClick={ addIngredient }
+        iconId="icon-plus"
+        iconStyle={styles.addBtnIcon}
+        className={styles.buttonAdd}
+      />
       {isIngredientListVisible && (
         <ul className={styles.list}>
           {selectedIngredients.map((ingredient, index) => (
@@ -172,7 +195,7 @@ const IngredientSelector = ({
               </div>
               <div className={styles.textWrapper}>
                 <p>{ingredient.label}</p>
-                <p>{ingredient.measure}</p>
+                <p className={styles.ingredientMeasure}>{ingredient.measure}</p>
               </div>
               <IconButton
                 iconId="icon-close-btn"
@@ -184,14 +207,7 @@ const IngredientSelector = ({
           ))}
         </ul>
       )}
-      <Button
-        text="Add ingredient"
-        type="button"
-        onClick={ addIngredient }
-        iconId="icon-plus"
-        iconStyle={styles.addBtnIcon}
-        className={styles.buttonAdd}
-      />
+      
     </div>
   );
 };
