@@ -7,14 +7,13 @@ import {selectCategories} from "../../redux/categories/categoriesSelectors";
 
 const CategoryList = ({handleSelect}) => {
   const [showAll, setShowAll] = useState(false);
-
   const handleShowAll = () => {
     setShowAll(true);
   };
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCategories({limit: 20}));
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   const { categories } = useSelector(selectCategories);
