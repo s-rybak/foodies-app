@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import cx from "classnames";
 
 import icons from "assets/img/icons/icons.svg";
 import css from "./SignInForm.module.css";
@@ -99,7 +100,7 @@ const SignInForm = ({ variant }) => {
                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=^[A-Za-z\d@#%^$_!%*?\(\)&]{8,}$).*"
                 title="Password should have a minimum length of 8 characters, contain at least one letter (either uppercase or lowercase), at least one digit, may include special characters like @, #, %, ^, $, _, !, %, *, ?, ), (, and &"
                 required
-                className={css.input}
+                className={cx(css.input, css["password-field"])}
               />
               <button
                 className={css.showPass}
