@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { refreshUser } from "../redux/auth/authOperations";
 
 import SharedLayout from "layout/SharedLayout/SharedLayout.jsx";
+import { Verify } from "pages/Verify/Verify";
 
 const Home = lazy(() => import("pages/Home/Home.jsx"));
 const Category = lazy(() => import("pages/Category/Category.jsx"));
@@ -25,8 +26,9 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/category" element={<Category />} />
-          <Route path="/user/:id" element={<UserInfo/>} />
+          <Route path="/user/:id" element={<UserInfo />} />
           <Route path="/recipe/:recipeId" element={<Recipe />} />
+          <Route path="/auth/verify/:token" element={<Verify />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
