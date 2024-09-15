@@ -1,38 +1,38 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {createRecipe,deleteRecipe, getRecipeById} from "./recipesOperations";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+	getRecipeById,
+	createRecipe,
+	deleteRecipe,
+	getFavoriteRecipes,
+	addFavoriteRecipe,
+	removeFromFavoriteRecipe,
+	getPopularRecipes,
+} from "./recipesOperations";
 
 const initialState = {
 	selectedRecipe: null,
-	recipes: null,
 	favoriteRecipes: [],
+	isLoadingFavorite: false,
+	isErrorFavorite: null,
 	isLoading: false,
 	isError: null,
-	recipeCreate:{
-		lastCreatedRecipe:null,
+	popularRecipes: [],
+	isLoadingPopular: false,
+	isErrorPopular: null,
+	recipeCreate: {
+		lastCreatedRecipe: null,
 		isLoading: false,
 		isError: null,
 	},
-	recipeDelete:{
+	recipeDelete: {
 		isLoading: false,
 		isError: null,
-	}
+	},
 };
 
 const recipeSlice = createSlice({
 	name: "recipes",
 	initialState,
-	reducers: {
-		toggleFavoriteRecipe(state, action) {
-			const foundfavoriteRecipeIndex = state.favoriteRecipes.findIndex(
-				(recipe) => recipe.id === action.payload.id,
-			);
-			if (foundfavoriteRecipeIndex !== -1) {
-				state.favoriteRecipes.splice(foundfavoriteRecipeIndex, 1);
-				return;
-			}
-			state.favoriteRecipes.push(action.payload);
-		},
-	},
 	extraReducers: (builder) =>
 		builder
 			.addCase(getRecipeById.pending, (state, action) => {
@@ -46,6 +46,42 @@ const recipeSlice = createSlice({
 			.addCase(getRecipeById.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.selectedRecipe = action.payload;
+			})
+			.addCase(getFavoriteRecipes.pending, (state, action) => {
+				state.isLoadingFavorite = true;
+				state.isErrorFavorite = null;
+			})
+			.addCase(getFavoriteRecipes.rejected, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.isErrorFavorite = action.payload;
+			})
+			.addCase(getFavoriteRecipes.fulfilled, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.favoriteRecipes = action.payload;
+			})
+			.addCase(addFavoriteRecipe.pending, (state, action) => {
+				state.isLoadingFavorite = true;
+				state.isErrorFavorite = null;
+			})
+			.addCase(addFavoriteRecipe.rejected, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.isErrorFavorite = action.payload;
+			})
+			.addCase(addFavoriteRecipe.fulfilled, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.isErrorFavorite = null;
+			})
+			.addCase(removeFromFavoriteRecipe.pending, (state, action) => {
+				state.isLoadingFavorite = true;
+				state.isErrorFavorite = null;
+			})
+			.addCase(removeFromFavoriteRecipe.rejected, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.isErrorFavorite = action.payload;
+			})
+			.addCase(removeFromFavoriteRecipe.fulfilled, (state, action) => {
+				state.isLoadingFavorite = false;
+				state.isErrorFavorite = null;
 			})
 			.addCase(createRecipe.pending, (state) => {
 				state.recipeCreate.isLoading = true;
@@ -70,9 +106,18 @@ const recipeSlice = createSlice({
 				state.recipeDelete.isLoading = false;
 				state.recipeDelete.isError = action.payload;
 			})
-	,
+			.addCase(getPopularRecipes.pending, (state, action) => {
+				state.isLoadingPopular = true;
+				state.isErrorPopular = null;
+			})
+			.addCase(getPopularRecipes.rejected, (state, action) => {
+				state.isLoadingPopular = false;
+				state.isErrorPopular = action.payload;
+			})
+			.addCase(getPopularRecipes.fulfilled, (state, action) => {
+				state.isLoadingPopular = true;
+				state.popularRecipes = action.payload;
+			}),
 });
-
-export const { toggleFavoriteRecipe } = recipeSlice.actions;
 
 export const recipesReducer = recipeSlice.reducer;

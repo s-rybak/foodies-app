@@ -4,6 +4,13 @@
   padding: 10px;
 }
 
+.image {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  max-width: unset;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     padding: 15px;

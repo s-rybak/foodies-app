@@ -21,6 +21,7 @@
   background-color: var(--color-white);
   color: var(--color-main);
   border-color: var(--color-white);
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
