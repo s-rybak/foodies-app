@@ -13,6 +13,35 @@ export const getRecipeById = createAsyncThunk(
 	},
 );
 
+export const getUserRecipes = createAsyncThunk(
+    'recipes/getUserRecipes',
+    async ({ limit, page }, thunkApi) => {
+        try {
+            const { data } = await api.get(`/api/recipes/my-recipes`, {
+                params: { limit, page },
+            });
+            return data;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const getFavorites = createAsyncThunk(
+    'recipes/getFavorites',
+    async ({limit, page}, thunkApi) => {
+        try {
+            const { data } = await api.get(`/api/recipes/favorites`,{
+                params: { limit, page },
+            });
+            return data;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+);
+
+
 export const createRecipe = createAsyncThunk(
 	"recipes/createRecipe",
 	async (recipe, thunkApi) => {

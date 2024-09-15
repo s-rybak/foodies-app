@@ -1,44 +1,59 @@
-import React, { useEffect, useState } from "react";
-import PathInfo from "../../components/PathInfo/PathInfo";
-import MainTitle from "../../components/shared/MainTitle/MainTitle";
-import SubtitleComponent from "components/Subtitles/SubtitleComponent/SubtitleComponent";
-import Button from "components/shared/Button/Button";
-import styles from "./UserPage.module.css";
-import UserInfo from "components/UserInfo/UserInfo";
-import TabsList from "components/TabsList/TabsList";
-import ListItems from "components/ListItems/ListItems";
-import ListPagination from "components/ListPagination/ListPagination";
-import { Modal } from "components/Modal";
-import Logout from "components/Logout/Logout";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../../redux/users/userOperation";
-import { selectUser } from "../../redux/users/userSelectors";
+import React, { useEffect, useState } from 'react';
+import PathInfo from '../../components/PathInfo/PathInfo';
+import MainTitle from '../../components/shared/MainTitle/MainTitle';
+import SubtitleComponent from 'components/Subtitles/SubtitleComponent/SubtitleComponent';
+import Button from 'components/shared/Button/Button';
+import styles from './UserPage.module.css';
+import UserInfo from 'components/UserInfo/UserInfo';
+import TabsList from 'components/TabsList/TabsList';
+import ListItems from 'components/ListItems/ListItems';
 
-// const userData = {
-//   id: 'f8a2df06-eac5-49d1-8d13-47b21554ce7e',
-//   email: 'gol06rrzi7@vvatxiy.com',
-//   avatarURL: null,
-// };
+import Logout from 'components/Logout/Logout';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchFollowing,
+  fetchUser,
+  followUser,
+  unfollowUser,
+} from '../../redux/users/userOperation';
+import {
+  //selectFollowingUsers,
+  selectUser,
+} from '../../redux/users/userSelectors';
+//import Pagination from 'components/Pagination/Pagination';
+import {selectAuthUserId} from '../../redux/auth/authSelectors';
+import Loader from 'components/Loader/Loader';
+import CustomModal from 'components/shared/CustomModal/CustomModal';
 
 const UserPage = () => {
   const { id } = useParams();
+
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector(selectUser);
-  const [activeTab, setActiveTab] = useState("my-recipes");
+
+  const loggedInUserId = useSelector(selectAuthUserId);
+  //const followingUsers = useSelector(selectFollowingUsers);
+
+  const [activeTab, setActiveTab] = useState('my-recipes');
   const [, setPageNumber] = useState(1);
-  const [dataRecepi] = useState([
-    { id: "1", name: "Recipe 1" },
-    { id: "2", name: "Recipe 2" },
-  ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isOwnProfile = user.id === id;
+  const isOwnProfile = loggedInUserId === user.id;
+  const isFollowing = false;
 
   useEffect(() => {
     dispatch(fetchUser(id));
-  }, [id, dispatch]);
+    dispatch(fetchFollowing(loggedInUserId));
+  }, [id, dispatch, loggedInUserId]);
 
+  useEffect(() => {
+    if (isOwnProfile) {
+      setActiveTab('my-recipes');
+    } else {
+      setActiveTab('followers');
+    }
+  }, [isOwnProfile]);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -47,51 +62,58 @@ const UserPage = () => {
     setIsModalOpen(false);
   };
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = tab => {
     setActiveTab(tab);
     setPageNumber(1);
   };
 
-  if (loading) return <div>Завантаження...</div>;
+  const handleFollowToggle = () => {
+    if (isFollowing) {
+      dispatch(unfollowUser(user.id));
+    } else {
+      dispatch(followUser(user.id));
+    }
+  };
+
+  if (loading) return <Loader />;
   if (error) return <div>Помилка: {error}</div>;
 
   return (
     <div className={styles.userPageWrapper}>
-      <PathInfo currentPage="profile" />
-      <MainTitle text="Profile" addStyle={styles.userPageMainTitle} />
+      <PathInfo currentPage='profile' />
+      <MainTitle text='Profile' addStyle={styles.userPageMainTitle} />
       <SubtitleComponent className={styles.userPageSubtitle}>
         Reveal your culinary art, share your favorite recipe and create
         gastronomic masterpieces with us.
       </SubtitleComponent>
       <div className={styles.userWrapper}>
         <div className={styles.userInfoWrapper}>
-          <UserInfo user={user} />
+          <UserInfo user={user} isOwnProfile={isOwnProfile} />
           {isOwnProfile ? (
             <Button
-              text="Log out"
+              text='Log out'
               classname={styles.userPageButton}
               onClick={handleOpenModal}
             />
           ) : (
             <Button
-              text="Follow"
+              text={isFollowing ? 'Following' : 'Follow'}
               classname={styles.userPageButton}
-              // onClick={}
+              onClick={handleFollowToggle}
             />
           )}
         </div>
 
         <div className={styles.tabsWrapper}>
-          <TabsList isOwnProfile={true} onTabChange={handleTabChange} />
-          <ListItems activeTab={activeTab} data={dataRecepi} />
-          <ListPagination />
+          <TabsList isOwnProfile={isOwnProfile} onTabChange={handleTabChange} />
+          <ListItems activeTab={activeTab} userId={id} />
         </div>
       </div>
 
       {isModalOpen && (
-        <Modal>
+        <CustomModal isOpen={isModalOpen} onClose={handleCloseModal}>
           <Logout setModalLogoutOpen={handleCloseModal} />
-        </Modal>
+        </CustomModal>
       )}
     </div>
   );

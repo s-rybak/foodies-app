@@ -1,6 +1,6 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {persistReducer, persistStore, PERSIST} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { configureStore } from '@reduxjs/toolkit';
+import { persistReducer, persistStore, PERSIST } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 import {authReducer} from "./auth/authSlice";
 import categoriesReducer from "./categories/categoriesSlice";
@@ -18,9 +18,9 @@ const authConfig = {
 };
 
 const recipeConfig = {
-    key: "recipes",
-    storage,
-    whitelist: ["favoriteRecipes"],
+  key: 'recipes',
+  storage,
+  whitelist: ['favoriteRecipes'],
 };
 
 /**

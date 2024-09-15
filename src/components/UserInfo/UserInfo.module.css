@@ -88,6 +88,9 @@
   text-transform: uppercase;
   color: var(--color-main);
   margin-bottom: 18px;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .profile-data {

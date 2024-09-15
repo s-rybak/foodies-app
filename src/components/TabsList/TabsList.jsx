@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './TabsList.module.css';
+import {useNavigate} from "react-router-dom";
 
 const TabsList = ({ isOwnProfile, onTabChange }) => {
+  const navigate = useNavigate();
   const ownProfileTabs = [
     { id: 'my-recipes', label: 'My Recipes' },
     { id: 'my-favorites', label: 'My Favorites' },
@@ -20,6 +22,7 @@ const TabsList = ({ isOwnProfile, onTabChange }) => {
   const handleTabClick = tabId => {
     setActiveTab(tabId);
     onTabChange(tabId);
+    navigate(`?page=1`);
   };
 
   const tabs = isOwnProfile ? ownProfileTabs : otherProfileTabs;

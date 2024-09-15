@@ -13,11 +13,11 @@ function RecipeCardFavoriteButton({ idRecipe }) {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const dispatch = useDispatch();
 
-	const favoriteRecipes = useSelector(selectFavoriteRecipes);
+	const {favoriteRecipes} = useSelector(selectFavoriteRecipes);
 
 	useEffect(() => {
 		if (
-			favoriteRecipes.findIndex((recipe) => recipe.recipeId === idRecipe) === -1
+			favoriteRecipes && favoriteRecipes.findIndex((recipe) => recipe.recipeId === idRecipe) === -1
 		) {
 			setIsFavorite(false);
 			return;

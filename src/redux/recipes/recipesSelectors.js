@@ -1,10 +1,14 @@
-export const selectRecipe = (state) => state.recipes.selectedRecipe;
+export const selectRecipe = state => state.recipes.selectedRecipe;
 
-export const selectRecipeIsLoading = (state) => state.recipes.isLoading;
+export const selectRecipeIsLoading = state => state.recipes.isLoading;
 
-export const selectRecipeIsError = (state) => state.recipes.isError;
+export const selectRecipeIsError = state => state.recipes.isError;
 
-export const selectFavoriteRecipes = (state) => state.recipes.favoriteRecipes;
+export const selectFavoriteRecipes = state => state.recipes.favoriteRecipes;
+
+export const selectUserRecipes = state => state.recipes.recipes;
+
+export const selectMyFavorites = state => state.recipes.myFavorites;
 
 export const selectIsLoadingFavorite = (state) =>
 	state.recipes.isLoadingFavorite;

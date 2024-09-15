@@ -62,9 +62,9 @@ export default function Home() {
     const handleSelectFavoriteRecipe = useCallback(
         async (recipesData) => {
             const favoritesData = await fetchFavorites()
-            const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData);
+            const matchedRecipes = matchRecipeWithFavorites(recipesData || recipes, favoritesData.favoriteRecipes);
             setRecipes(matchedRecipes);
-        },[setRecipes,recipes]
+        },[recipes]
     )
 
     const matchRecipeWithFavorites = (recipes, favorites = []) => {
