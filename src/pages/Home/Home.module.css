@@ -1,0 +1,41 @@
+.recipes-category {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media screen and (min-width: 1440px) {
+    .recipes-category {
+        grid-template-columns: 330px 910px;
+        gap: 40px;
+    }
+}
+
+.icon {
+    transform: rotate(225deg);
+}
+
+.btn {
+    color: #050505;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.28px;
+    text-transform: uppercase;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.no-recipes {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #050505;
+    margin-top: 20px;
+    text-align: center;
+}
