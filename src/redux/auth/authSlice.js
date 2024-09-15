@@ -36,6 +36,9 @@ const authSlice = createSlice({
         state.isSignedIn = true;
         state.userData = action.payload;
       })
+      .addCase(verifyUserEmail.fulfilled, (state, action) => {
+        state.userData = state.userData ? { ...state.userData, verify: true } : { verify: true };
+      })
       .addCase(refreshUser.rejected, state => {
         state.token = initialState.token;
         state.userData = initialState.userData;
