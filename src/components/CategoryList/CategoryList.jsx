@@ -22,7 +22,7 @@ const CategoryList = ({handleSelect}) => {
 
 
   return (
-    <div> {/* You need to wrap the returned JSX in a container */}
+    <div className={style["category-list"]}>
       {categories.length > 0 && (
         <>
           {(showAll ? categories : categories.slice(0, 11)).map((category, index) => (

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
 	getRecipeById,
+	createRecipe,
+	deleteRecipe,
 	getFavoriteRecipes,
 	addFavoriteRecipe,
 	removeFromFavoriteRecipe,
@@ -13,6 +15,15 @@ const initialState = {
 	isErrorFavorite: null,
 	isLoading: false,
 	isError: null,
+	recipeCreate: {
+		lastCreatedRecipe: null,
+		isLoading: false,
+		isError: null,
+	},
+	recipeDelete: {
+		isLoading: false,
+		isError: null,
+	},
 };
 
 const recipeSlice = createSlice({
@@ -67,6 +78,29 @@ const recipeSlice = createSlice({
 			.addCase(removeFromFavoriteRecipe.fulfilled, (state, action) => {
 				state.isLoadingFavorite = false;
 				state.isErrorFavorite = null;
+			})
+			.addCase(createRecipe.pending, (state) => {
+				state.recipeCreate.isLoading = true;
+				state.recipeCreate.isError = null;
+			})
+			.addCase(createRecipe.fulfilled, (state, action) => {
+				state.recipeCreate.isLoading = false;
+				state.recipeCreate.lastCreatedRecipe = action.payload;
+			})
+			.addCase(createRecipe.rejected, (state, action) => {
+				state.recipeCreate.isLoading = false;
+				state.recipeCreate.isError = action.payload;
+			})
+			.addCase(deleteRecipe.pending, (state) => {
+				state.recipeDelete.isLoading = true;
+				state.recipeDelete.isError = null;
+			})
+			.addCase(deleteRecipe.fulfilled, (state, action) => {
+				state.recipeDelete.isLoading = false;
+			})
+			.addCase(deleteRecipe.rejected, (state, action) => {
+				state.recipeDelete.isLoading = false;
+				state.recipeDelete.isError = action.payload;
 			}),
 });
 
