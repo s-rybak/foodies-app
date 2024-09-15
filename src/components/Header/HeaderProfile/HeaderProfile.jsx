@@ -26,7 +26,6 @@ const HeaderProfile = ({ isHome, onClick }) => {
 	const name = userData?.name || "User";
 
 	const handlerOpenProfile = () => {
-		console.log(userData);
 		setToogleOpen(!toogleOpen);
 	};
 
