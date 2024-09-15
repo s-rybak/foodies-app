@@ -121,14 +121,16 @@ These features highlight the core functionalities of the app. (Screenshots will 
    npm install
    ```
 4. Start the development server:
-   `bash
- npm start
- `
+
+   ```bash
+   npm start
+   ```
+
    The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ## 4. Foodies Postman Documentation
 
-The API documentation is available on Postman for detailed interaction with the backend services.
+[The API documentation is available on Postman for detailed interaction with the backend services](https://www.postman.com/lunar-equinox-34533/team-4/documentation/w565zrf/foodies)
 
 ## 5. Foodies Backend Repository
 
