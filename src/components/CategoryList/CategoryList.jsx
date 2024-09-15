@@ -10,13 +10,12 @@ const CategoryList = ({handleSelect}) => {
   const handleShowAll = () => {
     setShowAll(true);
   };
+  const categories = useSelector(selectCategories);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [dispatch]);
-
-  const { categories } = useSelector(selectCategories);
+  }, [categories,dispatch]);
 
   return (
     <div className={style["category-list"]}>
