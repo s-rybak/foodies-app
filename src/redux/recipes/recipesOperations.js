@@ -25,7 +25,7 @@ export const getFavoriteRecipes = createAsyncThunk(
 	},
 );
 
-export const addFavoriteRecipes = createAsyncThunk(
+export const addFavoriteRecipe = createAsyncThunk(
 	"recipes/addFavoriteRecipe",
 	async (id, thunkApi) => {
 		try {
