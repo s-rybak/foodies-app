@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-
 import Dropdown from "../../shared/Dropdown/Dropdown";
 import Input from "../../shared/Input/Input";
 import Button from "../../shared/Button/Button";
@@ -81,7 +79,7 @@ const IngredientSelector = ({
                   {...register("category")}
                   options={ categories }
                   placeholder="Select a category"
-                  onChange={(selectedOption) => setValue("category", selectedOption.label)}
+                  onChange={(selectedOption) => setValue("category", selectedOption.value)}
             />
             {errors.category && <p className={styles.errorMsg}>{errors.category.message}</p>}
             </div>
@@ -100,7 +98,7 @@ const IngredientSelector = ({
                   {...register("area")}
                   options={ areas }
                   placeholder="Select an area"
-                  onChange={(selectedOption) => setValue("area", selectedOption.label)}
+                  onChange={(selectedOption) => setValue("area", selectedOption.value)}
             />
             {errors.area && <p className={styles.errorMsg}>{errors.area.message}</p>}
             </div>

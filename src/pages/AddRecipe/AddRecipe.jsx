@@ -56,7 +56,7 @@ const AddRecipe = () => {
     value: item.id,
     label: item.name,
   }));
-
+  
   const ingredientsData = useSelector(selectIngredients);
   useEffect(() => {
       dispatch(fetchIngredients());
@@ -99,22 +99,19 @@ const AddRecipe = () => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   const onSubmit = async (data) => {
-    console.log(data);
-
       dispatch(createRecipe({
         title: data.title,
         instructions: data.instructions,
         description: data.description,
         time: time.toString(),
-        category: data.category,
-        area: data.area,
+        categoryId: data.category,
+        areaId: data.area,
         thumb: data.thumb,
         ingredients: selectedIngredients.map((ingredient) => ({
           id: ingredient.id,
           measure: ingredient.measure,
         })),
       }))
-
   };
 
    const handleReset = () => {
