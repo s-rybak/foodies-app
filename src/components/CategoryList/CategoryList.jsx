@@ -7,7 +7,6 @@ import {selectCategories} from "../../redux/categories/categoriesSelectors";
 
 const CategoryList = ({handleSelect}) => {
   const [showAll, setShowAll] = useState(false);
-
   const handleShowAll = () => {
     setShowAll(true);
   };

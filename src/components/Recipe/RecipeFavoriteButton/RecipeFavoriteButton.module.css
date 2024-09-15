@@ -1,12 +1,36 @@
 .button {
   color: var(--color-gray);
   border-color: var(--color-gray);
+  min-width: 252px;
 }
 
 .button:hover {
   color: var(--color-white);
   border-color: var(--color-main);
   background-color: var(--color-main);
+}
+
+.button .loader {
+  height: 15px;
+  border-color: var(--color-white);
+}
+
+.button .loader::after {
+  border-color: var(--color-main);
+}
+
+.button:hover .loader {
+  border-color: var(--color-main);
+}
+
+.button:hover .loader::after {
+  border-color: var(--color-white);
+}
+
+@media screen and (min-width: 1440px) {
+  .button {
+    min-width: 282px;
+  }
 }
 
 @media screen and (min-width: 1440px) {

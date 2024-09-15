@@ -1,6 +1,19 @@
 .card {
   list-style: none;
   width: 100%;
+
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    max-width: 342px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .card {
+    max-width: 290px;
+  }
 }
 
 .image {
@@ -33,8 +46,16 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.2px;
-
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 500;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .info {
@@ -61,13 +82,13 @@
 
 .name {
   margin: 0;
-
   font-size: 14px;
   line-height: 20px;
-
   letter-spacing: -0.2px;
-
-
+  overflow: hidden;
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .buttons {
@@ -95,8 +116,7 @@
 }
 
 @media (min-width: 768px) {
-  .card {
-  }
+  .card {}
 
   .image {
     height: 275px;
@@ -128,6 +148,5 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .card {
-  }
+  .card {}
 }

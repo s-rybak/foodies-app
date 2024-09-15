@@ -3,9 +3,10 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   signUpUser,
   resendVerificationEmail,
-  signInUser,
   verifyUserEmail,
+  signInUser,
   refreshUser,
+  logoutUser,
 } from "./authOperations";
 
 const initialState = {
@@ -35,10 +36,16 @@ const authSlice = createSlice({
         state.isSignedIn = true;
         state.userData = action.payload;
       })
+      .addCase(verifyUserEmail.fulfilled, (state, action) => {
+        state.userData = state.userData ? { ...state.userData, verify: true } : { verify: true };
+      })
       .addCase(refreshUser.rejected, state => {
         state.token = initialState.token;
         state.userData = initialState.userData;
-        state.isLoading = initialState.isLoading;
+        state.isLoading = false;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
@@ -59,7 +66,8 @@ const authSlice = createSlice({
           resendVerificationEmail.fulfilled,
           verifyUserEmail.fulfilled,
           signInUser.fulfilled,
-          refreshUser.fulfilled
+          refreshUser.fulfilled,
+          logoutUser.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -70,7 +78,9 @@ const authSlice = createSlice({
           signUpUser.rejected,
           resendVerificationEmail.rejected,
           verifyUserEmail.rejected,
-          signInUser.rejected
+          signInUser.rejected,
+          // refreshUser.rejected should not set error
+          logoutUser.rejected
         ),
         (state, action) => {
           state.isLoading = false;

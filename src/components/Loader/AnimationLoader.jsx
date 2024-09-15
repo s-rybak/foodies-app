@@ -1,6 +1,7 @@
 import React from "react";
-import "./AnimationLoader.css";
+import style from "./AnimationLoader.module.css";
 
-const AnimationLoader = () => <div className="loader"></div>;
-
+const AnimationLoader = ({ className }) => (
+    <div className={`${className} ${style.loader}`}></div>
+);
 export default AnimationLoader;

@@ -14,59 +14,58 @@ import styles from "./Header.module.css";
 import SignInForm from "components/SignInForm/SignInForm";
 
 export default function Header() {
-  const { pathname } = useLocation();
+	const { pathname } = useLocation();
 
-  const isSignedIn = useSelector(selectAuthIsSignedIn);
+	const isSignedIn = useSelector(selectAuthIsSignedIn);
 
-  const [modalSignInOpen, setModalSignInOpen] = useState(false);
-  const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
-  const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+	const [modalSignInOpen, setModalSignInOpen] = useState(false);
+	const [modalSignUpOpen, setModalSignUpOpen] = useState(false);
+	const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
 
-  const isHome = pathname === "/" || pathname.split("/")[1] === "category";
+	const isHome = pathname === "/" || pathname.split("/")[1] === "category";
 
-  return (
-    <header className={cx(styles.header, !isHome && styles.headerAll)}>
-      <NavLink
-        className={cx(styles.logo, !isHome && styles.logo_white)}
-        to="/"
-        aria-label="Logo Foodies"
-      >
-        Foodies
-      </NavLink>
+	return (
+		<header className={cx(styles.header, !isHome && styles.headerAll)}>
+			<NavLink
+				className={cx(styles.logo, !isHome && styles.logo_white)}
+				to="/"
+				aria-label="Logo Foodies">
+				Foodies
+			</NavLink>
 
-      <HeaderNav isHome={isHome} />
+			<HeaderNav
+				isHome={isHome}
+				notAutorizedClick={() => setModalSignInOpen(true)}
+			/>
 
-      {isSignedIn ? (
-        <HeaderProfile
-          onClick={() => setModalLogoutOpen(true)}
-          isHome={isHome}
-        />
-      ) : (
-        <Auth
-          isHomepage={isHome}
-          openSignIn={() => setModalSignInOpen(true)}
-          openSignUp={() => setModalSignUpOpen(true)}
-        />
-      )}
+			{isSignedIn ? (
+				<HeaderProfile
+					onClick={() => setModalLogoutOpen(true)}
+					isHome={isHome}
+				/>
+			) : (
+				<Auth
+					isHomepage={isHome}
+					openSignIn={() => setModalSignInOpen(true)}
+					openSignUp={() => setModalSignUpOpen(true)}
+				/>
+			)}
 
-      <CustomModal
-        isOpen={!isSignedIn && modalSignInOpen}
-        onClose={() => setModalSignInOpen(false)}
-      >
-        <SignInForm variant="sign-in" />
-      </CustomModal>
-      <CustomModal
-        isOpen={modalSignUpOpen}
-        onClose={() => setModalSignUpOpen(false)}
-      >
-        <SignInForm variant="sign-up" />
-      </CustomModal>
-      <CustomModal
-        isOpen={modalLogoutOpen}
-        onClose={() => setModalLogoutOpen(false)}
-      >
-        <Logout setModalLogoutOpen={setModalLogoutOpen} />
-      </CustomModal>
-    </header>
-  );
+			<CustomModal
+				isOpen={!isSignedIn && modalSignInOpen}
+				onClose={() => setModalSignInOpen(false)}>
+				<SignInForm variant="sign-in" />
+			</CustomModal>
+			<CustomModal
+				isOpen={modalSignUpOpen}
+				onClose={() => setModalSignUpOpen(false)}>
+				<SignInForm variant="sign-up" />
+			</CustomModal>
+			<CustomModal
+				isOpen={modalLogoutOpen}
+				onClose={() => setModalLogoutOpen(false)}>
+				<Logout setModalLogoutOpen={setModalLogoutOpen} />
+			</CustomModal>
+		</header>
+	);
 }
