@@ -104,3 +104,8 @@ svg {
 .hide {
   display: none;
 }
+
+.pageLoader{
+  display: block;
+  margin: 30px auto;
+}
