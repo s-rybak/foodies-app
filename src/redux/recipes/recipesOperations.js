@@ -21,13 +21,27 @@ export const getUserRecipes = createAsyncThunk(
       const { data } = await api.get(`/api/recipes/my-recipes`, {
         params: { limit, page },
       });
-      console.log('data in recipesOperation', data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
+
+export const getFavorites = createAsyncThunk(
+  'recipes/getFavorites',
+  async ({limit, page}, thunkApi) => {
+    try {
+      const { data } = await api.get(`/api/recipes/favorites`,{
+        params: { limit, page },
+      });
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
 
 export const createRecipe = createAsyncThunk(
     "recipes/createRecipe",

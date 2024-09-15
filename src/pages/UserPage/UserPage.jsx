@@ -40,7 +40,7 @@ const UserPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isOwnProfile = loggedInUserId === user.id;
-  const isFollowing = followingUsers.includes(user.id);
+  const isFollowing = false;
 
   useEffect(() => {
     dispatch(fetchUser(id));
@@ -107,7 +107,6 @@ const UserPage = () => {
         <div className={styles.tabsWrapper}>
           <TabsList isOwnProfile={isOwnProfile} onTabChange={handleTabChange} />
           <ListItems activeTab={activeTab} userId={id} />
-          <Pagination />
         </div>
       </div>
 

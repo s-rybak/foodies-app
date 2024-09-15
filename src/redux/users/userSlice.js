@@ -13,12 +13,17 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: {},
-    followingUsers: [],
-    followers: [],
+    followingUsers: {
+      total: 0,
+      result: [],
+    },
+    followers: {
+      total: 0,
+      result: [],
+    },
     loading: false,
     error: null,
   },
-
   extraReducers: builder => {
     builder
       .addCase(fetchUser.pending, state => {
@@ -36,10 +41,10 @@ const userSlice = createSlice({
         state.user.avatar = action.payload.avatar;
       })
       .addCase(fetchFollowing.fulfilled, (state, action) => {
-        state.followingUsers = action.payload.users;
+        state.followingUsers = action.payload;
       })
       .addCase(fetchFollowers.fulfilled, (state, action) => {
-        state.followers = action.payload.users;
+        state.followers = action.payload;
       })
       .addCase(followUser.fulfilled, (state, action) => {
         state.followingUsers.push(action.payload);

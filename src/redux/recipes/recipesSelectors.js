@@ -8,6 +8,8 @@ export const selectFavoriteRecipes = state => state.recipes.favoriteRecipes;
 
 export const selectUserRecipes = state => state.recipes.recipes;
 
+export const selectMyFavorites = state => state.recipes.myFavorites;
+
 export const selectLastCreatedRecipe = (state) => state.recipes.recipeCreate.lastCreatedRecipe;
 
 export const selectRecipeCreateIsLoading = (state) => state.recipes.recipeCreate.isLoading;

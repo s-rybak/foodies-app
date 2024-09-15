@@ -2,7 +2,6 @@ import FollowerCard from './FollowerCard.jsx';
 import styles from './FollowerCard.module.css';
 
 const FollowerCardList = ({ data }) => {
-  console.log('data in FollowerCardList', data);
 
   return (
     <ul className={styles.followerCardList}>

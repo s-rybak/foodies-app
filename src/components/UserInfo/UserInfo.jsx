@@ -16,7 +16,6 @@ const UserInfo = ({ user, isOwnProfile }) => {
       dispatch(uploadAvatar(file));
     }
   };
-  console.log('user in UserInfo', user)
 
   return (
     <div className={style['profile-head-holder']}>
@@ -65,14 +64,14 @@ const UserInfo = ({ user, isOwnProfile }) => {
           <li className={style['profile-data-li']}>
             <span className={style['profile-data-li-name']}>Followers:</span>
             <span className={style['profile-data-li-value']}>
-              {user.followersUserCount}
+              {user.followingUsersCount}
             </span>
           </li>
           {isOwnProfile && (
             <li className={style['profile-data-li']}>
               <span className={style['profile-data-li-name']}>Following:</span>
               <span className={style['profile-data-li-value']}>
-                {user.followingUsersCount}
+                 {user.followersUserCount}
               </span>
             </li>
           )}

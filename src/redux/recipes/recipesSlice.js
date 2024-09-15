@@ -1,15 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   createRecipe,
-  deleteRecipe,
+  deleteRecipe, getFavorites,
   getRecipeById,
   getUserRecipes,
 } from './recipesOperations';
 
 const initialState = {
   selectedRecipe: null,
-  recipes: null,
+  recipes: {
+    total: 0,
+    result: [],
+  },
   favoriteRecipes: [],
+  myFavorites: {
+    total: 0,
+    favoriteRecipes: [],
+  },
   isLoading: false,
   isError: null,
   recipeCreate: {
@@ -26,20 +33,20 @@ const initialState = {
 const recipeSlice = createSlice({
   name: 'recipes',
   initialState,
-  reducers: {
-    toggleFavoriteRecipe(state, action) {
-      const foundfavoriteRecipeIndex = state.favoriteRecipes.findIndex(
-        recipe => recipe.id === action.payload.id
-      );
-      if (foundfavoriteRecipeIndex !== -1) {
-        state.favoriteRecipes.splice(foundfavoriteRecipeIndex, 1);
-        return;
-      }
-      state.favoriteRecipes.push(action.payload);
-    },
-  },
   extraReducers: builder =>
     builder
+      .addCase(getFavorites.pending, (state, action) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(getFavorites.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = action.payload;
+      })
+      .addCase(getFavorites.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.myFavorites = action.payload;
+      })
       .addCase(getRecipeById.pending, (state, action) => {
         state.isLoading = true;
         state.isError = null;
@@ -85,7 +92,7 @@ const recipeSlice = createSlice({
       })
       .addCase(getUserRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.recipes = action.payload.recipes;
+        state.recipes = action.payload;
       }),
 });
 

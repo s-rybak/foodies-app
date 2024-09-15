@@ -14,7 +14,7 @@ const deleteRecipe = async id => {
 };
 
 const RecipePreview = ({ recipe, onDelete }) => {
-  const { id, title, description, imageUrl } = recipe;
+  const { id, title, description, imageUrl, thumb } = recipe;
 
   const handleDelete = async () => {
     try {
@@ -28,7 +28,7 @@ const RecipePreview = ({ recipe, onDelete }) => {
   return (
     <div className={styles.recipeCard}>
       <img
-        src={imageUrl || 'path/to/placeholder_image.jpg'}
+        src={imageUrl || thumb || 'path/to/placeholder_image.jpg'}
         alt={title}
         className={styles.recipeImage}
       />
