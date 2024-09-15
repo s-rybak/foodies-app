@@ -38,7 +38,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.token = initialState.token;
         state.userData = initialState.userData;
-        state.isLoading = initialState.isLoading;
+        state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(
