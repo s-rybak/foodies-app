@@ -1,31 +1,36 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { verifyUserEmail } from "../../redux/auth/authOperations";
-import { AnimatedIconText } from "components/AnimatedIcon/AnimatedIconText";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+import {verifyUserEmail} from "../../redux/auth/authOperations";
+import {AnimatedIconText} from "components/AnimatedIcon/AnimatedIconText";
+import {selectAuthError, selectAuthIsLoading, selectAuthIsVerified} from "../../redux/auth/authSelectors";
+import AnimationLoader from "../../components/Loader/AnimationLoader";
 
 export const Verify = () => {
-  const { token } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [success, setSuccess] = useState(null);
+    const {token} = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isVerified = useSelector(selectAuthIsVerified);
+    const isLoading = useSelector(selectAuthIsLoading);
+    const error = useSelector(selectAuthError);
 
-  if (token) {
-    dispatch(verifyUserEmail(token))
-      .then((action) => {
-        if (verifyUserEmail.fulfilled.match(action)) {
-          setSuccess({
-            title: "Verficiation successful!",
-            message: `Your email has been verified!`,
-          });
-        }
-      })
-      .then(() => {
+    if (isVerified) {
+
         setTimeout(() => {
-          navigate("/auth/sign-in");
+            navigate("/");
         }, 3000);
-      });
-  }
+    }
 
-  return <>{success && <AnimatedIconText.Success {...success} />}</>;
+    useEffect(() => {
+        if (token && !isVerified) {
+            dispatch(verifyUserEmail(token))
+        }
+    }, [dispatch, token, isVerified]);
+
+
+    return <>
+        {isLoading && <div style={{textAlign: "center", margin: "20px"}}><AnimationLoader/></div>}
+        {isVerified && <AnimatedIconText.Success title={"Verficiation successful!"} message={"Your email has been verified!"} />}
+        {error && <AnimatedIconText.Failure title={"Error"} message={error} />}
+    </>;
 };

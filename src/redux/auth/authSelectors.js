@@ -11,6 +11,8 @@ export const selectAuthUserId = createSelector(
 
 export const selectAuthIsSignedIn = state => state.auth.isSignedIn;
 
+export const selectAuthIsVerified = state => !!state.auth?.userData?.verify;
+
 export const selectAuthIsLoading = state => state.auth.isLoading;
 
 export const selectAuthError = state => state.auth.error;
