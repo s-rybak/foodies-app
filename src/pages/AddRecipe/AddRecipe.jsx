@@ -97,8 +97,8 @@ const AddRecipe = () => {
   useAutoResizeTextarea(styles.textarea);
 
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-
   const onSubmit = async (data) => {
+    
       dispatch(createRecipe({
         title: data.title,
         instructions: data.instructions,
@@ -152,7 +152,7 @@ const AddRecipe = () => {
                 placeholder="The name of the recipe"
                 classname={styles.nameInput}
               />
-              {/* TODO: add errors parser */}
+              {errors.title && <p className={styles.errorTitle}>{errors.title.message}</p>}
             </div>
 
             <div className={styles.recipeData}>
@@ -171,7 +171,9 @@ const AddRecipe = () => {
                     watch={watch}
                     errors={errors}
                   />
-                  {/* TODO: add errors parser */}
+                  {errors.selectedIngredients && (
+                    <p className={styles.errorMsg}>{errors.selectedIngredients.message}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -193,7 +195,9 @@ const AddRecipe = () => {
                 <span className={styles.symbolCounter}>
                   {wordCount}/{maxWords}
                 </span>
-                {/* TODO: add errors parser */}
+                {errors.instructions && (
+                  <p className={styles.errorMsg}>{errors.instructions.message}</p>
+                )}
               </div>
             </div>
             <div className={styles.buttonWrapper}>

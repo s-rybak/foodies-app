@@ -8,8 +8,6 @@ import TimeCounter from "../TimeCounter/TimeCounter"
 import styles from "./IngredientSelector.module.css";
 import stylesInput from "../CustomInput.module.css";
 
-
-
 const IngredientSelector = ({
   register,
   ingredients,
@@ -69,7 +67,7 @@ const IngredientSelector = ({
         </label>
         <span className={styles.symbolCounter}>{watch("description")?.length || 0}/200</span>
       </div>
-      {/* TODO: Add errors */}
+      {errors.description && <p className={styles.errorMsg}>{errors.description.message}</p>}
       <div className={styles.selectors_time_wrapp}>
         <div className={styles.categoryAndTime}>
           {/* TODO: Add loader? */}
@@ -86,7 +84,7 @@ const IngredientSelector = ({
         </div>
         <div>
           <TimeCounter time={time} setTime={setTime} />
-          {/* TODO: Add errors */}
+          {errors.time && <p className={styles.errorMsg}>{errors.time.message}</p>}
         </div>
       </div>
       <div className={styles.area}>
@@ -130,7 +128,7 @@ const IngredientSelector = ({
           <label className={stylesInput.form__label} htmlFor="measure">
             Enter quantity
           </label>
-          {/* TODO: Add errors */}
+          {errors.measure && <p className={styles.errorMsg}>{errors.measure.message}</p>}
         </div>
       </div>
       <Button
