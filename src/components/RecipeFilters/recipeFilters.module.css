@@ -1,11 +1,46 @@
+/* Обгортка для контейнера */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Стилі для select */
 .select {
   border-radius: 20px;
   padding: 8px;
-  width: 330px;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  padding-right: 40px; /* Додатковий відступ для стрілки */
 }
 
+/* Стрілка за допомогою псевдоелемента */
+.select-wrapper:after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 30%;
+  transform: rotate(90deg);
+  transition: transform 1s;
+  width: 16px;
+  height: 16px;
+  background: url("../../assets/img/icons/arrow_best.svg");
+  background-size: contain; /* Масштабувати SVG */
+  background-repeat: no-repeat; /* Не повторювати SVG */
+  pointer-events: none; /* Щоб SVG не блокував взаємодію */
+}
+
+.select-wrapper:focus-within:after {
+  transform: rotate(270deg);
+}
+
+/*
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
 }
+*/
