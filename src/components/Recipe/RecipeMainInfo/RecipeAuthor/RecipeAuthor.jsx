@@ -23,7 +23,7 @@ function RecipeAuthor({ user }) {
 					to={`/user/${user.id}`}>
 					<img
 						className={css.photo}
-						src={user.img || emptyAvatar}
+						src={user.avatar || emptyAvatar}
 						alt={user.name}
 						width={32}
 						height={32}
@@ -39,7 +39,7 @@ function RecipeAuthor({ user }) {
 					className={css.button}>
 					<img
 						className={css.photo}
-						src={user.img || emptyAvatar}
+						src={user.avatar || emptyAvatar}
 						alt={user.name}
 						width={32}
 						height={32}
