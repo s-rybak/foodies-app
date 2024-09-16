@@ -8,6 +8,7 @@
   border-radius: 30px;
   border: 1px solid var(--color-gray);
 }
+
 @media screen and (min-width: 768px) {
   .wrapper {
     width: 394px;
@@ -45,12 +46,13 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
+  object-fit: cover;
 }
 
 .no-image {
-  border-radius: 0;
-  width: 60px;
-  height: 60px;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 .upload-avatar {
@@ -72,6 +74,7 @@
   cursor: pointer;
   width: 41px;
   height: 41px;
+  stroke: white;
 }
 .upload-avatar input {
   position: absolute;
