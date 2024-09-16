@@ -119,7 +119,7 @@ const UserPage = () => {
 
         <div className={styles.tabsWrapper}>
           <TabsList isOwnProfile={isOwnProfile} onTabChange={handleTabChange} />
-          <ListItems activeTab={activeTab} userId={id} />
+          <ListItems isOwnProfile={isOwnProfile} activeTab={activeTab} userId={id} />
         </div>
       </div>
 

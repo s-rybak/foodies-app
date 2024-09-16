@@ -8,7 +8,7 @@ import {
     removeFromFavoriteRecipe,
     getPopularRecipes,
     getUserRecipes,
-    getFavorites,
+    getFavorites, queryRecipes,
 } from "./recipesOperations";
 
 const initialState = {
@@ -38,6 +38,14 @@ const initialState = {
         isLoading: false,
         isError: null,
     },
+    queryRecipes: {
+        isLoading: false,
+        isError: null,
+        result: {
+            total: 0,
+            recipes: [],
+        }
+    }
 };
 
 const recipeSlice = createSlice({
@@ -151,6 +159,18 @@ const recipeSlice = createSlice({
             .addCase(getUserRecipes.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.recipes = action.payload;
+            })
+            .addCase(queryRecipes.pending, state => {
+                state.queryRecipes.isLoading = true;
+                state.queryRecipes.isError = null;
+            })
+            .addCase(queryRecipes.rejected, (state, action) => {
+                state.queryRecipes.isLoading = false;
+                state.queryRecipes.isError = action.payload;
+            })
+            .addCase(queryRecipes.fulfilled, (state, action) => {
+                state.queryRecipes.isLoading = false;
+                state.queryRecipes.result = action.payload;
             }),
 });
 

@@ -35,3 +35,11 @@ export const selectPopularRecipes = (state) => state.recipes.popularRecipes;
 export const selectIsLoadingPopular = (state) => state.recipes.isLoadingPopular;
 
 export const selectIsErrorPopular = (state) => state.recipes.isErrorPopular;
+
+export const selectQueryRecipes = (state) => state.recipes.queryRecipes.result;
+
+export const selectQueryRecipesIsLoading = (state) =>
+	state.recipes.queryRecipes.isLoading;
+
+export const selectQueryRecipesIsError = (state) =>
+	state.recipes.queryRecipes.isError;

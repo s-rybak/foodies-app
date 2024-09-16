@@ -134,3 +134,17 @@ export const getPopularRecipes = createAsyncThunk(
 		}
 	},
 );
+
+export const queryRecipes = createAsyncThunk(
+	"recipes/getRecipes",
+	async (query, thunkApi) => {
+		try {
+			const { data } = await api.get("/api/recipes", {
+				params: query,
+			});
+			return data;
+		} catch (error) {
+			return thunkApi.rejectWithValue(error.message);
+		}
+	},
+);
