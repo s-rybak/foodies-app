@@ -26,7 +26,7 @@ const FollowerCard = ({ data, tab, handleFollowUser, handleUnfollowUser }) => {
       <div className={styles.followerData}>
         <img
           src={
-            data.avatarURL ||
+            data.avatar ||
             'https://gravatar.com/avatar/000000000000000000000000000000000000000000000000000000?d=mp'
           }
           className={styles.smallProfilePhoto}
