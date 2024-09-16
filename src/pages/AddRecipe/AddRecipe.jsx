@@ -218,17 +218,16 @@ const AddRecipe = () => {
               </div>
             </div>
             <div className={styles.buttonWrapper}>
-              <IconButton
-                iconId="icon-trash"
-                type="button"
-                onClick={handleReset}
-                width="20"
-                height="20"
-                style={styles.trashBtn}
-                styleSVG={styles.iconTrash}
-              />
-
-              {isLoadingCreateRecipe ? <AnimationLoader />: <Button text="Publish" type="submit" className={styles.button} /> }
+              {isLoadingCreateRecipe ? <AnimationLoader />:
+                  <><IconButton
+                      iconId="icon-trash"
+                      type="button"
+                      onClick={handleReset}
+                      width="20"
+                      height="20"
+                      style={styles.trashBtn}
+                      styleSVG={styles.iconTrash}
+                  /> <Button text="Publish" type="submit" className={styles.button} /></> }
             </div>
           </div>
         </div>
