@@ -23,8 +23,8 @@ import {
 } from '../../redux/users/userSelectors';
 //import Pagination from 'components/Pagination/Pagination';
 import {selectAuthUserId} from '../../redux/auth/authSelectors';
-import Loader from 'components/Loader/Loader';
 import CustomModal from 'components/shared/CustomModal/CustomModal';
+import AnimationLoader from "../../components/Loader/AnimationLoader";
 
 const UserPage = () => {
   const { id } = useParams();
@@ -75,7 +75,7 @@ const UserPage = () => {
     }
   };
 
-  if (loading) return <Loader />;
+  if (loading) return <AnimationLoader className={styles.pageLoader} />;
   if (error) return <div>Помилка: {error}</div>;
 
   return (

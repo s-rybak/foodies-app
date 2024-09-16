@@ -12,8 +12,6 @@ import CustomModal from "../../shared/CustomModal/CustomModal";
 import HeaderModal from "../HeaderModal/HeaderModal";
 import styleModal from "../HeaderModal/HeaderModal.module.css";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
-
 const HeaderProfile = ({ isHome, onClick }) => {
 	const userData = useSelector(selectAuthUserData);
 

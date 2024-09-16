@@ -3,7 +3,6 @@ import styles from './RecipePreview.module.css';
 import { Link } from 'react-router-dom';
 import Icon from '../shared/Icon/Icon';
 import api from '../../services/api'
-import {getFavorites} from "../../redux/recipes/recipesOperations";
 
 const deleteRecipe = async id => {
   try {

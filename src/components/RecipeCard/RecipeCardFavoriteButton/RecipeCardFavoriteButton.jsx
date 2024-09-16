@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {selectFavoriteRecipes, selectIsLoadingFavorite} from "../../../redux/recipes/recipesSelectors";
+import { selectIsLoadingFavorite} from "../../../redux/recipes/recipesSelectors";
 import {
 	addFavoriteRecipe,
-	getFavoriteRecipes,
 	removeFromFavoriteRecipe,
 } from "../../../redux/recipes/recipesOperations";
 import css from "./RecipeCardFavoriteButton.module.css";
