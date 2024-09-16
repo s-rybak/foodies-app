@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTestimonials } from "../../redux/testimonials/testimonialsOperations";
 import {
   selectTestimonials,
-  selectLoading,
-  selectError,
 } from "../../redux/testimonials/testimonialsSelectors";
 import styles from "./Testimonials.module.css";
 import Icon from "../shared/Icon/Icon";
@@ -12,8 +10,6 @@ import Icon from "../shared/Icon/Icon";
 const Testimonials = () => {
   const dispatch = useDispatch();
   const testimonials = useSelector(selectTestimonials);
-  const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

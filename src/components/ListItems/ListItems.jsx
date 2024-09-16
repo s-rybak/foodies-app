@@ -61,7 +61,7 @@ const ListItems = ({activeTab, userId, isOwnProfile}) => {
         } else if (activeTab === 'my-favorites') {
             dispatch(getFavorites({limit: 9, page: page}));
         }
-    }, [dispatch, activeTab, userId, page]);
+    }, [dispatch, activeTab, userId, page,isOwnProfile]);
 
     return (
         <div className={styles.litsItemWrapper}>
