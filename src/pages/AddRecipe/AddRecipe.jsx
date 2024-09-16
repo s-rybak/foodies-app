@@ -60,7 +60,7 @@ const AddRecipe = () => {
   
   const ingredientsData = useSelector(selectIngredients);
   useEffect(() => {
-      dispatch(fetchIngredients());
+    dispatch(fetchIngredients());
   }, [dispatch]);
   
   
@@ -123,7 +123,7 @@ const AddRecipe = () => {
            toast.error('Failed to create recipe: No payload in response');
         }
     } catch (error) {
-      toast.error(`Error creating recipe ${error} words`);
+      toast.error(`Error creating recipe: ${error}`);
     }
 };
 
