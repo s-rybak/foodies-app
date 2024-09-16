@@ -26,6 +26,8 @@ import { selectAreas } from "../../redux/areas/areasSelectors";
 import { fetchAreas } from "../../redux/areas/areasOperations";
 
 import { createRecipe } from "../../redux/recipes/recipesOperations";
+import {selectRecipeCreateIsLoading} from "../../redux/recipes/recipesSelectors";
+import AnimationLoader from "../../components/Loader/AnimationLoader";
 
 const AddRecipe = () => {
   const {
@@ -48,6 +50,7 @@ const AddRecipe = () => {
   const [imagePreview, setImagePreview] = useState(null);
 
   const dispatch = useDispatch();
+  const isLoadingCreateRecipe = useSelector(selectRecipeCreateIsLoading);
   const categoriesData = useSelector(selectCategories);
   useEffect(() => {
       dispatch(fetchCategories());
@@ -225,7 +228,7 @@ const AddRecipe = () => {
                 styleSVG={styles.iconTrash}
               />
 
-              <Button text="Publish" type="submit" className={styles.button} />
+              {isLoadingCreateRecipe ? <AnimationLoader />: <Button text="Publish" type="submit" className={styles.button} /> }
             </div>
           </div>
         </div>
