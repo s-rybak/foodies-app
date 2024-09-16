@@ -114,7 +114,7 @@ const AddRecipe = () => {
             })),
         }));
 
-        if (response.payload) {
+        if (response.payload && response.payload.title) {
           const createdRecipeName = response.payload.title;
           toast.success(`Recipe added: ${createdRecipeName}`);
           navigate(`/user/${response.payload.user.id}`);
