@@ -37,7 +37,7 @@ export const RecipeCard = ({ recipe, isFavorite }) => {
 					{isSignIn ? <RecipeCardFavoriteButton idRecipe={recipe.id} favorite={isFavorite}/> : <></>}
 
 					<NavLink
-						to={`recipe/${recipe.id}`}
+						to={`/recipe/${recipe.id}`}
 						className={css.btn}
 						type="button">
 						<svg className={css.icon}>
