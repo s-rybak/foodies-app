@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { selectAuthIsSignedIn } from "../../../redux/auth/authSelectors";
 
 function RecipePreparation({ instructions, recipeId, isFavorite }) {
-	console.log(isFavorite, 'asd')
 	const isSignedIn = useSelector(selectAuthIsSignedIn);
 	return (
 		<div>

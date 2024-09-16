@@ -50,9 +50,13 @@ const userSlice = createSlice({
         // state.followingUsers = action.payloa;
       })
       .addCase(unfollowUser.fulfilled, (state, action) => {
-        state.followingUsers = state.followingUsers.filter(
-          userId => userId !== action.payload
-        );
+        if (Array.isArray(state.followingUsers)) {
+          state.followingUsers = state.followingUsers.filter(
+            userId => userId !== action.payload
+          );
+        } else {
+          console.error('followingUsers is not an array:', state.followingUsers);
+        }
       });
   },
 });

@@ -18,6 +18,7 @@ import {
   unfollowUser,
 } from '../../redux/users/userOperation';
 import {
+  selectFollowingUsers,
   //selectFollowingUsers,
   selectUser,
 } from '../../redux/users/userSelectors';
@@ -33,19 +34,29 @@ const UserPage = () => {
   const { user, loading, error } = useSelector(selectUser);
 
   const loggedInUserId = useSelector(selectAuthUserId);
-  //const followingUsers = useSelector(selectFollowingUsers);
+  const followingUsers = useSelector(selectFollowingUsers);
 
   const [activeTab, setActiveTab] = useState('my-recipes');
   const [, setPageNumber] = useState(1);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isOwnProfile = loggedInUserId === user.id;
-  const isFollowing = false;
+  const [isFollowing, setIsFollowing] = useState(false);
 
   useEffect(() => {
     dispatch(fetchUser(id));
-    dispatch(fetchFollowing(loggedInUserId));
+    dispatch(fetchFollowing({userId: loggedInUserId}));
   }, [id, dispatch, loggedInUserId]);
+
+  useEffect(() => {
+    if (followingUsers && followingUsers.users) {
+      followingUsers.users.forEach(user => {
+        if (user.id === id) {
+          setIsFollowing(true);
+        }
+      });
+    }
+  }, [followingUsers, id]);
 
   useEffect(() => {
     if (isOwnProfile) {
@@ -70,8 +81,10 @@ const UserPage = () => {
   const handleFollowToggle = () => {
     if (isFollowing) {
       dispatch(unfollowUser(user.id));
+      setIsFollowing(false);
     } else {
       dispatch(followUser(user.id));
+      setIsFollowing(true);
     }
   };
 

@@ -55,7 +55,6 @@ export const fetchFollowing = createAsyncThunk(
         const { data } = await api.get(`/api/users/${userId}/followers`, {
           params: { limit, page },
         });
-        console.log(data)
         return data.followers;
       } catch (error) {
         return rejectWithValue(error.message);
