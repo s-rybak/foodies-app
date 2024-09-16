@@ -29,8 +29,6 @@ export default function Home() {
     const page = queryParams.get("page") || 1;
 
 
-
-
     const handleChangeFilter = (selectedId, type) => {
         type === 'ingredients' ? setIngredientId(selectedId) : setAreaId(selectedId);
     };

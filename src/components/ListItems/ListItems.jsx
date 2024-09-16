@@ -59,7 +59,7 @@ const ListItems = ({ activeTab, userId }) => {
   return (
     <div className={styles.litsItemWrapper}>
       <ul>
-        {activeTab === 'my-recipes' || activeTab === 'recipes' ? (
+        {activeTab === 'my-recipes' ? (
           recipes.recipes?.length > 0 ? (
             <>
               {recipes.recipes.map(recipe => (
