@@ -16,7 +16,7 @@ const TabsList = ({ isOwnProfile, onTabChange }) => {
   ];
 
   const [activeTab, setActiveTab] = useState(
-    isOwnProfile ? 'my-recipes' : 'recipes'
+    isOwnProfile ? 'my-recipes' : 'followers'
   );
 
   const handleTabClick = tabId => {
